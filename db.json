@@ -1,0 +1,807 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@uzshop.uz",
+      "password": "password123",
+      "role": "Admin",
+      "name": "Super Admin",
+      "phone": "+998901234567"
+    },
+    {
+      "id": "2",
+      "email": "manager@uzshop.uz",
+      "password": "password123",
+      "role": "Manager",
+      "name": "Jasur Rahimov",
+      "phone": "+998935551122"
+    },
+    {
+      "id": "3",
+      "email": "operator@uzshop.uz",
+      "password": "password123",
+      "role": "CallCenter",
+      "name": "Madina Karimova",
+      "phone": "+998974443322"
+    },
+    {
+      "id": "4",
+      "email": "ali@uzshop.uz",
+      "password": "password123",
+      "role": "User",
+      "name": "Ali Valiyev",
+      "phone": "+998991234567"
+    },
+    {
+      "id": "5",
+      "email": "nigora@uzshop.uz",
+      "password": "password123",
+      "role": "User",
+      "name": "Nigora Yusupova",
+      "phone": "+998909876543"
+    },
+    {
+      "name": "Odiljon Ilhomjonov",
+      "email": "oilhomjonov7@gmail.com",
+      "password": "odiljon",
+      "role": "Admin",
+      "phone": "+998 99 137 00 23",
+      "id": "DZscHSyt6e0"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Smartfonlar",
+      "slug": "smartphones",
+      "icon": "Smartphone"
+    },
+    {
+      "id": "cat-2",
+      "name": "Noutbuklar",
+      "slug": "laptops",
+      "icon": "Laptop"
+    },
+    {
+      "id": "cat-3",
+      "name": "Smart soatlar",
+      "slug": "smartwatches",
+      "icon": "Watch"
+    },
+    {
+      "id": "cat-4",
+      "name": "Quloqchinlar",
+      "slug": "headphones",
+      "icon": "Headphones"
+    },
+    {
+      "id": "cat-5",
+      "name": "Aksessuarlar",
+      "slug": "accessories",
+      "icon": "Cpu"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-101",
+      "categoryId": "cat-1",
+      "title": "iPhone 15 Pro Max",
+      "price": 1450,
+      "discountPrice": 1350,
+      "stock": 12,
+      "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80",
+      "description": "256GB Natural Titanium, Super Retina XDR OLED, A17 Pro chip, Dynamic Island.",
+      "rating": 4.9,
+      "salesCount": 42
+    },
+    {
+      "id": "prod-102",
+      "categoryId": "cat-1",
+      "title": "Samsung Galaxy S24 Ultra",
+      "price": 1380,
+      "discountPrice": 1250,
+      "stock": 18,
+      "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80",
+      "description": "512GB Titanium Gray, Galaxy AI imkoniyatlari, 200MP kamera, S-Pen o'rnatilgan.",
+      "rating": 4.8,
+      "salesCount": 35
+    },
+    {
+      "id": "prod-103",
+      "categoryId": "cat-1",
+      "title": "Xiaomi 14 Ultra",
+      "price": 1100,
+      "discountPrice": 990,
+      "stock": 8,
+      "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80",
+      "description": "Leica optikasi, 1 dyuymli asosiy sensor, Snapdragon 8 Gen 3, 90W HyperCharge.",
+      "rating": 4.7,
+      "salesCount": 19
+    },
+    {
+      "id": "prod-104",
+      "categoryId": "cat-2",
+      "title": "MacBook Pro 16\" M3 Max",
+      "price": 3200,
+      "discountPrice": 2999,
+      "stock": 6,
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80",
+      "description": "36GB Unified Memory, 1TB SSD, Liquid Retina XDR displey, Space Black.",
+      "rating": 5,
+      "salesCount": 14
+    },
+    {
+      "id": "prod-105",
+      "categoryId": "cat-2",
+      "title": "MacBook Air 15\" M2",
+      "price": 1350,
+      "discountPrice": 1220,
+      "stock": 15,
+      "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80",
+      "description": "Yupqa va yengil korpus, 18 soat batareya quvvati, 500 nit yorqinlik.",
+      "rating": 4.8,
+      "salesCount": 27
+    },
+    {
+      "id": "prod-106",
+      "categoryId": "cat-2",
+      "title": "ASUS ROG Zephyrus G16",
+      "price": 2400,
+      "discountPrice": 2250,
+      "stock": 16,
+      "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=80",
+      "description": "Intel Core Ultra 9, RTX 4080 12GB, 240Hz OLED ekran, 32GB RAM, 1TB SSD.",
+      "rating": 4.9,
+      "salesCount": 11
+    },
+    {
+      "id": "prod-107",
+      "categoryId": "cat-3",
+      "title": "Apple Watch Ultra 2",
+      "price": 890,
+      "discountPrice": 820,
+      "stock": 9,
+      "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=80",
+      "description": "49mm Titandan korpus, 3000 nit displey, suv osti va tog' sporti uchun tayyor.",
+      "rating": 4.9,
+      "salesCount": 31
+    },
+    {
+      "id": "prod-109",
+      "categoryId": "cat-4",
+      "title": "AirPods Max (Space Gray)",
+      "price": 590,
+      "discountPrice": 520,
+      "stock": 7,
+      "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&auto=format&fit=crop&q=80",
+      "description": "Active Noise Cancellation, Shaxsiy fazoviy ovoz, Hi-Fi akustika va nafis metall dizayn.",
+      "rating": 4.7,
+      "salesCount": 18
+    },
+    {
+      "id": "prod-110",
+      "categoryId": "cat-4",
+      "title": "Sony WH-1000XM5",
+      "price": 420,
+      "discountPrice": 360,
+      "stock": 14,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80",
+      "description": "Sanoat yetakchisi bo'lgan shovqinni bostirish (ANC), 30 soat batareya, multipoint ulanish.",
+      "rating": 4.9,
+      "salesCount": 45
+    },
+    {
+      "id": "prod-111",
+      "categoryId": "cat-5",
+      "title": "Apple MagSafe Battery Pack",
+      "price": 110,
+      "discountPrice": 95,
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=600&auto=format&fit=crop&q=80",
+      "description": "iPhone uchun magnitli simsiz quvvatlagich, ixcham va xavfsiz.",
+      "rating": 4.5,
+      "salesCount": 38
+    },
+    {
+      "id": "prod-112",
+      "categoryId": "cat-1",
+      "title": "Google Pixel 8 Pro",
+      "price": 980,
+      "discountPrice": 880,
+      "stock": 12,
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
+      "description": "Tensor G3 protsessor, Magic Editor, 7 yillik rasmiy Android yangilanish kafolati.",
+      "rating": 4.6,
+      "salesCount": 26
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-5001",
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-101",
+          "title": "iPhone 15 Pro Max",
+          "quantity": 1,
+          "price": 1350,
+          "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1350,
+      "status": "Delivered",
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Ali Valiyev",
+        "phone": "+998991234567",
+        "address": "Toshkent sh., Chilonzor 5-mavze, 12-uy"
+      },
+      "createdAt": "2026-09-10T12:00:00Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-10T12:00:00Z",
+          "note": "Buyurtma qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-11T09:38:48.946Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:46:52.655Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:57:37.168Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "id": "ord-5002",
+      "userId": 5,
+      "items": [
+        {
+          "productId": "prod-107",
+          "title": "Apple Watch Ultra 2",
+          "quantity": 1,
+          "price": 820,
+          "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "productId": "prod-110",
+          "title": "Sony WH-1000XM5",
+          "quantity": 1,
+          "price": 360,
+          "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1180,
+      "status": "Delivered",
+      "paymentMethod": "Click",
+      "customerInfo": {
+        "name": "Nigora Yusupova",
+        "phone": "+998909876543",
+        "address": "Samarqand sh., Registon ko'chasi 45"
+      },
+      "createdAt": "2026-09-09T16:30:00Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-09T16:30:00Z",
+          "note": "Buyurtma berildi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-09T17:10:00Z",
+          "note": "Operator tomonidan telefon orqali tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:46:51.821Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:57:17.701Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "id": "ord-5003",
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-105",
+          "title": "MacBook Air 15\" M2",
+          "quantity": 1,
+          "price": 1220,
+          "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1220,
+      "status": "Delivered",
+      "paymentMethod": "Naqd pul",
+      "customerInfo": {
+        "name": "Ali Valiyev",
+        "phone": "+998991234567",
+        "address": "Toshkent sh., Yunusobod 14-mavze"
+      },
+      "createdAt": "2026-09-08T09:15:00Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-08T09:15:00Z",
+          "note": "Buyurtma berildi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-08T10:00:00Z",
+          "note": "Tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-08T14:20:00Z",
+          "note": "Kuryerga topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:56:17.318Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "id": "ord-5004",
+      "userId": 1,
+      "items": [
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 1,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1250,
+      "status": "Delivered",
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Super Admin",
+        "phone": "+998901234567",
+        "address": "Toshkent sh., Amir Temur shoh ko'chasi 107"
+      },
+      "createdAt": "2026-09-07T11:00:00Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-07T11:00:00Z",
+          "note": "Yaratildi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-07T11:45:00Z",
+          "note": "Tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-07T14:00:00Z",
+          "note": "Yetkazishga jo'natildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-07T18:30:00Z",
+          "note": "Muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 1,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "productId": "prod-103",
+          "title": "Xiaomi 14 Ultra",
+          "quantity": 1,
+          "price": 990,
+          "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 2240,
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Ali Valiyev",
+        "phone": "+998991234567",
+        "address": "qumariq",
+        "note": ""
+      },
+      "id": "VlnWRXHE7Jk",
+      "status": "Delivered",
+      "createdAt": "2026-09-10T15:23:00.238Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-10T15:23:00.238Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-11T09:54:18.986Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:54:21.102Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:58:10.951Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "userId": 1789119937492,
+      "items": [
+        {
+          "productId": "prod-101",
+          "title": "iPhone 15 Pro Max",
+          "quantity": 12,
+          "price": 1350,
+          "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 18,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 38700,
+      "paymentMethod": "Naqd pul",
+      "customerInfo": {
+        "name": "Odiljon Ilhomjonov",
+        "phone": "+998 99 137 00 23",
+        "address": "vaw",
+        "note": ""
+      },
+      "id": "0OUDZCWesTw",
+      "status": "Delivered",
+      "createdAt": "2026-09-11T09:46:17.222Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-11T09:46:17.222Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-11T09:54:16.369Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:54:16.935Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:56:29.385Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:58:19.868Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 4,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 5000,
+      "paymentMethod": "Click",
+      "customerInfo": {
+        "name": "Ali Valiyev",
+        "phone": "+998991234567",
+        "address": "obod tumani",
+        "note": ""
+      },
+      "id": "TJQOkq6orNg",
+      "status": "Delivered",
+      "createdAt": "2026-09-11T09:47:48.372Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-11T09:47:48.372Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:54:15.120Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:58:23.269Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-101",
+          "title": "iPhone 15 Pro Max",
+          "quantity": 1,
+          "price": 1350,
+          "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1350,
+      "status": "Delivered",
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Sardor Rahimov",
+        "phone": "+998901234567",
+        "address": "Toshkent sh., Yunusobod 4-mavze, 15-uy"
+      },
+      "createdAt": "2026-09-11T10:00:00.000Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-11T10:00:00.000Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-11T09:56:39.203Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:56:42.218Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:58:15.551Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:58:27.119Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ],
+      "id": "QQSSUFkiATE"
+    },
+    {
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-107",
+          "title": "Apple Watch Ultra 2",
+          "quantity": 1,
+          "price": 820,
+          "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 820,
+      "status": "Delivered",
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Javohir Toshmatov",
+        "phone": "+998935552233",
+        "address": "Toshkent sh., Mirzo Ulugʻbek tumani, 28-uy"
+      },
+      "createdAt": "2026-09-11T10:15:00.000Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-11T10:15:00.000Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-11T09:58:16.651Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-11T09:58:21.167Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-11T09:58:32.350Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ],
+      "id": "7cko2xvjl4s"
+    },
+    {
+      "userId": 1789375919008,
+      "items": [
+        {
+          "productId": "prod-111",
+          "title": "Apple MagSafe Battery Pack",
+          "quantity": 25,
+          "price": 95,
+          "image": "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "productId": "prod-112",
+          "title": "Google Pixel 8 Pro",
+          "quantity": 9,
+          "price": 880,
+          "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "productId": "prod-110",
+          "title": "Sony WH-1000XM5",
+          "quantity": 14,
+          "price": 360,
+          "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 18,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 37835,
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Odiljon Ilhomjonov",
+        "phone": "+998 99 137 00 23",
+        "address": "m,w",
+        "note": ""
+      },
+      "id": "DBN1UMOcf5I",
+      "status": "Delivered",
+      "createdAt": "2026-09-14T08:52:44.300Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-14T08:52:44.300Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-14T08:53:06.083Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-14T08:57:53.231Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Pending",
+          "date": "2026-09-14T08:57:58.645Z",
+          "note": "Operator tomonidan Kutilmoqda holatiga o'tkazildi"
+        },
+        {
+          "status": "Cancelled",
+          "date": "2026-09-14T08:58:01.130Z",
+          "note": "Operator tomonidan bekor qilindi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-14T09:35:34.360Z",
+          "note": "Operator tomonidan Yetkazildi holatiga o'tkazildi"
+        }
+      ]
+    },
+    {
+      "userId": 1789376237888,
+      "items": [
+        {
+          "productId": "prod-106",
+          "title": "ASUS ROG Zephyrus G16",
+          "quantity": 9,
+          "price": 2250,
+          "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 20250,
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Odiljon Ilhomjonov",
+        "phone": "+998 99 137 00 23",
+        "address": "cesa",
+        "note": ""
+      },
+      "id": "3yKozfoDy14",
+      "status": "Delivered",
+      "createdAt": "2026-09-14T08:57:31.518Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-14T08:57:31.518Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Confirmed",
+          "date": "2026-09-14T08:58:02.830Z",
+          "note": "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          "status": "Shipped",
+          "date": "2026-09-14T08:58:04.596Z",
+          "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-14T09:34:59.445Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      "userId": null,
+      "items": [
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 13,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 16250,
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "Odiljon Ilhomjonov",
+        "phone": "+998 910u482",
+        "address": "fw",
+        "note": ""
+      },
+      "id": "y0E7egcpnh0",
+      "status": "Delivered",
+      "createdAt": "2026-09-14T09:01:26.943Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-14T09:01:26.943Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Cancelled",
+          "date": "2026-09-14T09:01:53.060Z",
+          "note": "Operator tomonidan bekor qilindi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-14T09:35:55.993Z",
+          "note": "Operator tomonidan Yetkazildi holatiga o'tkazildi"
+        }
+      ]
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
