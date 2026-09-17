@@ -15,17 +15,22 @@ export const showToast = {
   }
 };
 
+const MAX_TOASTS = 3;
+
 export const ToastContainer = () => {
   const [toasts, setToasts] = useState([]);
 
   useEffect(() => {
     toastHandler = ({ type, title, message }) => {
       const id = Date.now() + Math.random();
-      setToasts(prev => [...prev, { id, type, title, message }]);
+      setToasts(prev => {
+        const updated = [...prev, { id, type, title, message }];
+        return updated.length > MAX_TOASTS ? updated.slice(-MAX_TOASTS) : updated;
+      });
 
       setTimeout(() => {
         setToasts(prev => prev.filter(t => t.id !== id));
-      }, 4000);
+      }, 3000);
     };
 
     return () => {

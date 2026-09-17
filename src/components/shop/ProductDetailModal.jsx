@@ -3,8 +3,11 @@ import { useCartStore } from '../../store/useCartStore';
 import { formatCurrency, formatUZS } from '../../utils/formatters';
 import { X, ShoppingCart, Star, ShieldCheck, Truck, RotateCcw, Plus, Minus, Check } from 'lucide-react';
 import { showToast } from '../common/Toast';
+import { handleImageError } from '../../utils/imageFallback';
+import { useTranslation } from '../../utils/useTranslation';
 
 export const ProductDetailModal = ({ product, isOpen, onClose }) => {
+  const { t } = useTranslation();
   const { addItem, items } = useCartStore();
   const [quantity, setQuantity] = useState(1);
 
@@ -23,7 +26,7 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
     if (isOutOfStock) return;
     const added = addItem(product, quantity);
     if (added) {
-      showToast.success(`${quantity} ta "${product.title}" savatchaga qo'shildi!`);
+      showToast.success(`${quantity} ${t('common.itemsCount')} "${product.title}" ${t('product.addedToast')}`);
       onClose();
     }
   };
@@ -51,11 +54,12 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
           <img
             src={product.image}
             alt={product.title}
+            onError={(e) => handleImageError(e, product.title)}
             className="w-full h-full object-cover"
           />
           {discountPercent && (
             <span className="absolute top-4 left-4 px-2.5 py-1 rounded-xl bg-rose-500 text-white text-xs font-extrabold shadow-md">
-              Chegirma -{discountPercent}%
+              {t('catalog.discountOff')} -{discountPercent}%
             </span>
           )}
         </div>
@@ -66,7 +70,7 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
             <div className="flex items-center gap-1.5 text-xs text-amber-500 font-bold mb-1">
               <Star className="w-4 h-4 fill-amber-400" />
               <span>{product.rating || 4.9}</span>
-              <span className="text-slate-400 font-normal">({product.salesCount || 15} ta baholangan)</span>
+              <span className="text-slate-400 font-normal">({product.salesCount || 15} {t('catalog.rated')})</span>
             </div>
 
             <h2 className="text-xl font-black text-slate-900 leading-tight">
@@ -87,7 +91,7 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
 
             {/* Description */}
             <div className="mt-4 pt-4 border-t border-slate-100">
-              <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">Tavsif:</h4>
+              <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">{t('product.description')}</h4>
               <p className="text-xs text-slate-600 leading-relaxed">
                 {product.description}
               </p>
@@ -95,13 +99,13 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
 
             {/* Stock status */}
             <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs">
-              <span className="text-slate-500">Ombor holati:</span>
+              <span className="text-slate-500">{t('product.stockStatus')}</span>
               {isOutOfStock ? (
-                <span className="font-bold text-rose-600">Sotuvda tugagan</span>
+                <span className="font-bold text-rose-600">{t('product.outOfStock')}</span>
               ) : (
                 <span className="font-bold text-emerald-600 flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-                  Mavjud: {product.stock} dona
+                  {t('product.inStock')}: {product.stock} {t('common.itemsCount')}
                 </span>
               )}
             </div>
@@ -110,11 +114,11 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
             <div className="mt-4 space-y-2 text-[11px] text-slate-500">
               <div className="flex items-center gap-2">
                 <Truck className="w-3.5 h-3.5 text-brand-600" />
-                <span>24 soat ichida butun O'zbekiston bo'ylab yetkazish</span>
+                <span>{t('product.guarantee24h')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-3.5 h-3.5 text-brand-600" />
-                <span>12 oylik rasmiy kafolat va xizmat</span>
+                <span>{t('product.guarantee12m')}</span>
               </div>
             </div>
           </div>
@@ -123,7 +127,7 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
           <div className="mt-6 pt-4 border-t border-slate-100 space-y-3">
             {!isOutOfStock && (
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-700">Miqdor:</span>
+                <span className="text-xs font-semibold text-slate-700">{t('product.quantity')}</span>
                 <div className="flex items-center border border-slate-200 rounded-xl overflow-hidden bg-white">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -157,10 +161,10 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
               <ShoppingCart className="w-4 h-4" />
               <span>
                 {isOutOfStock
-                  ? "Sotuvda mavjud emas"
+                  ? t('product.notAvailable')
                   : maxCanAdd <= 0
-                  ? "Barcha tovarlar savatchada"
-                  : `Savatchaga qo'shish (${formatCurrency((product.discountPrice || product.price) * quantity)})`}
+                  ? t('product.maxInCart')
+                  : `${t('product.addToCart')} (${formatCurrency((product.discountPrice || product.price) * quantity)})`}
               </span>
             </button>
           </div>

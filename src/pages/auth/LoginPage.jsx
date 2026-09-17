@@ -4,53 +4,22 @@ import { useAuthStore } from '../../store/useAuthStore';
 import { authApi } from '../../api/client';
 import { showToast } from '../../components/common/Toast';
 import {
-  ShoppingBag,
   Mail,
   Lock,
   ArrowRight,
   ShieldCheck,
-  PackageCheck,
-  Headphones,
-  UserCheck,
   Sparkles
 } from 'lucide-react';
 
 const DEMO_ACCOUNTS = [
   {
     role: 'Admin',
-    name: 'Super Admin',
-    email: 'admin@uzshop.uz',
-    password: 'password123',
+    name: 'Odiljon Ilhomjonov',
+    email: 'oilhomjonov7@gmail.com',
+    password: 'odiljon',
     icon: ShieldCheck,
-    desc: 'Analitika, barcha maʼlumotlar va rollar nazorati',
+    desc: 'Boshqaruvchi: Analitika, barcha maʼlumotlar va rollar nazorati',
     badgeClass: 'bg-rose-100 text-rose-800 border-rose-200 hover:border-rose-400'
-  },
-  {
-    role: 'Manager',
-    name: 'Jasur Rahimov',
-    email: 'manager@uzshop.uz',
-    password: 'password123',
-    icon: PackageCheck,
-    desc: 'Mahsulotlar CRUD, zaxira (stock) va narxlar',
-    badgeClass: 'bg-indigo-100 text-indigo-800 border-indigo-200 hover:border-indigo-400'
-  },
-  {
-    role: 'CallCenter',
-    name: 'Madina Karimova',
-    email: 'operator@uzshop.uz',
-    password: 'password123',
-    icon: Headphones,
-    desc: 'Buyurtmalar oqimi va mijozlar bilan aloqa',
-    badgeClass: 'bg-amber-100 text-amber-800 border-amber-200 hover:border-amber-400'
-  },
-  {
-    role: 'User',
-    name: 'Ali Valiyev',
-    email: 'ali@uzshop.uz',
-    password: 'password123',
-    icon: UserCheck,
-    desc: 'Katalog, savatcha va buyurtma berish',
-    badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200 hover:border-emerald-400'
   }
 ];
 
@@ -97,21 +66,16 @@ export const LoginPage = () => {
     setEmail(acc.email);
     setPassword(acc.password);
     
-    // Auto-login for best tester UX
     login({
-      id: acc.role === 'Admin' ? 1 : acc.role === 'Manager' ? 2 : acc.role === 'CallCenter' ? 3 : 4,
+      id: '1',
       email: acc.email,
-      role: acc.role,
+      role: 'Admin',
       name: acc.name,
-      phone: '+998901234567'
-    }, `mock-jwt-token-${acc.role.toLowerCase()}`);
+      phone: '+998991370023'
+    }, 'mock-jwt-token-admin');
 
     showToast.success(`${acc.name} (${acc.role}) sifatida tizimga kirildi!`);
-    
-    if (acc.role === 'Admin') navigate('/admin');
-    else if (acc.role === 'Manager') navigate('/manager');
-    else if (acc.role === 'CallCenter') navigate('/callcenter');
-    else navigate('/');
+    navigate('/admin');
   };
 
   return (
@@ -120,9 +84,11 @@ export const LoginPage = () => {
         {/* Left Form */}
         <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-500 text-white flex items-center justify-center shadow-lg shadow-brand-500/20">
-              <ShoppingBag className="w-5 h-5" />
-            </div>
+            <img
+              src="/uzshop-emblem.png"
+              alt="UzShop Logo"
+              className="w-11 h-11 rounded-2xl object-cover shadow-md shadow-emerald-950/10 ring-1 ring-slate-200/80"
+            />
             <div>
               <h2 className="text-xl font-black text-slate-900 leading-tight">Tizimga Kirish</h2>
               <p className="text-xs text-slate-400">UzShop platformasiga xush kelibsiz</p>
@@ -138,7 +104,7 @@ export const LoginPage = () => {
               <input
                 type="email"
                 required
-                placeholder="admin@uzshop.uz"
+                placeholder="oilhomjonov7@gmail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 outline-none transition"
@@ -182,19 +148,21 @@ export const LoginPage = () => {
           </div>
         </div>
 
-        {/* Right 1-Click Demo Accounts Grid */}
+        {/* Right 1-Click Admin Account */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-900">
+          <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-950">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-amber-600" />
-              <h3 className="text-xs font-black uppercase tracking-wider">Tezkor Sinov Rejimi (1-Click Demo)</h3>
+              <Sparkles className="w-4 h-4 text-rose-600" />
+              <h3 className="text-xs font-black uppercase tracking-wider text-rose-900">
+                Administrator Tezkor Kirish (1-Click)
+              </h3>
             </div>
-            <p className="text-[11px] text-amber-800 mt-1">
-              TZ dagi har bir rolni (RBAC) sinovdan o'tkazish uchun quyidagi hisoblardan birini tanlang:
+            <p className="text-xs text-rose-800 mt-1 leading-relaxed">
+              Boshqaruvchi hisobi bilan 1-bosishda to'g'ridan-to'g'ri tizimga kiring:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             {DEMO_ACCOUNTS.map(acc => {
               const Icon = acc.icon;
               return (
@@ -202,20 +170,24 @@ export const LoginPage = () => {
                   key={acc.role}
                   type="button"
                   onClick={() => handle1ClickDemo(acc)}
-                  className={`p-4 rounded-2xl border text-left transition transform hover:-translate-y-0.5 shadow-sm bg-white hover:shadow-md flex flex-col justify-between ${acc.badgeClass}`}
+                  className="p-5 rounded-2xl border border-rose-200 hover:border-rose-400 bg-white hover:bg-rose-50/40 text-left transition-all transform hover:-translate-y-0.5 shadow-sm hover:shadow-md flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-black">{acc.role}</span>
-                      <Icon className="w-4 h-4" />
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+                        {acc.role} (Boshqaruvchi)
+                      </span>
+                      <div className="w-9 h-9 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:bg-rose-100 transition">
+                        <Icon className="w-5 h-5" />
+                      </div>
                     </div>
-                    <p className="text-xs font-bold text-slate-900 truncate">{acc.name}</p>
-                    <p className="text-[10px] text-slate-500 font-mono mt-0.5">{acc.email}</p>
-                    <p className="text-[11px] text-slate-600 mt-2 line-clamp-2 leading-tight">{acc.desc}</p>
+                    <h4 className="text-base font-extrabold text-slate-900">{acc.name}</h4>
+                    <p className="text-xs text-slate-500 font-mono mt-0.5">{acc.email}</p>
+                    <p className="text-xs text-slate-600 mt-2.5 leading-relaxed">{acc.desc}</p>
                   </div>
-                  <div className="mt-3 pt-2 border-t border-slate-200/60 text-[10px] font-bold flex items-center justify-between text-slate-700">
+                  <div className="mt-5 pt-3 border-t border-slate-100 text-xs font-bold flex items-center justify-between text-rose-600 group-hover:text-rose-700">
                     <span>1-bosishda kirish</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition" />
                   </div>
                 </button>
               );

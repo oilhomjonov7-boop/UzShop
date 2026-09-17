@@ -5,8 +5,11 @@ import { formatCurrency, formatUZS } from '../../utils/formatters';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
 import { CheckoutModal } from './CheckoutModal';
 import { Link } from 'react-router-dom';
+import { handleImageError } from '../../utils/imageFallback';
+import { useTranslation } from '../../utils/useTranslation';
 
 export const CartDrawer = () => {
+  const { t } = useTranslation();
   const { items, isCartOpen, setIsCartOpen, updateQuantity, removeItem, getTotalPrice, getTotalCount } = useCartStore();
   const { isAuthenticated } = useAuthStore();
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -35,7 +38,7 @@ export const CartDrawer = () => {
             <div className="p-5 border-b border-slate-100 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5 text-brand-600" />
-                <h3 className="font-bold text-slate-900 text-lg">Savatcha ({count})</h3>
+                <h3 className="font-bold text-slate-900 text-lg">{t('cart.title')} ({count})</h3>
               </div>
               <button
                 onClick={() => setIsCartOpen(false)}
@@ -52,15 +55,15 @@ export const CartDrawer = () => {
                   <div className="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-4">
                     <ShoppingBag className="w-10 h-10" />
                   </div>
-                  <h4 className="text-base font-bold text-slate-800">Savatchangiz bo'sh</h4>
+                  <h4 className="text-base font-bold text-slate-800">{t('cart.emptyTitle')}</h4>
                   <p className="text-xs text-slate-500 mt-1 max-w-[240px]">
-                    Katalogdan o'zingizga ma'qul mahsulotlarni tanlab, savatchaga qo'shishingiz mumkin.
+                    {t('cart.emptyDesc')}
                   </p>
                   <button
                     onClick={() => setIsCartOpen(false)}
                     className="mt-5 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold shadow-md transition"
                   >
-                    Katalogga o'tish
+                    {t('cart.goToCatalog')}
                   </button>
                 </div>
               ) : (
@@ -77,6 +80,7 @@ export const CartDrawer = () => {
                       <img
                         src={product.image}
                         alt={product.title}
+                        onError={(e) => handleImageError(e, product.title)}
                         className="w-20 h-20 rounded-xl object-cover border border-slate-200 flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0 flex flex-col justify-between">
@@ -88,7 +92,7 @@ export const CartDrawer = () => {
                             <button
                               onClick={() => removeItem(product.id)}
                               className="text-slate-400 hover:text-rose-600 transition p-0.5"
-                              title="O'chirish"
+                              title={t('common.delete')}
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
@@ -123,7 +127,7 @@ export const CartDrawer = () => {
                               className={`p-1 transition ${
                                 isMaxStock ? 'text-slate-200 cursor-not-allowed' : 'text-slate-500 hover:bg-slate-100'
                               }`}
-                              title={isMaxStock ? "Ombordagi bor miqdorga yetildi" : "Oshirish"}
+                              title={isMaxStock ? t('cart.maxStockWarning') : ''}
                             >
                               <Plus className="w-3 h-3" />
                             </button>
@@ -134,7 +138,7 @@ export const CartDrawer = () => {
                               {formatCurrency(itemTotal)}
                             </span>
                             {isMaxStock && (
-                              <span className="text-[9px] text-amber-600 font-medium">Maksimal zaxira</span>
+                              <span className="text-[9px] text-amber-600 font-medium">{t('product.maxInCart')}</span>
                             )}
                           </div>
                         </div>
@@ -150,15 +154,15 @@ export const CartDrawer = () => {
               <div className="p-5 border-t border-slate-100 bg-white space-y-4">
                 <div className="space-y-1.5 text-xs">
                   <div className="flex justify-between text-slate-500">
-                    <span>Mahsulotlar soni:</span>
-                    <span className="font-semibold text-slate-800">{count} dona</span>
+                    <span>{t('cart.itemsCount')}</span>
+                    <span className="font-semibold text-slate-800">{count} {t('common.itemsCount')}</span>
                   </div>
                   <div className="flex justify-between text-slate-500">
-                    <span>Yetkazib berish:</span>
-                    <span className="font-semibold text-emerald-600">Bepul (Aksiya)</span>
+                    <span>{t('cart.delivery')}</span>
+                    <span className="font-semibold text-emerald-600">{t('cart.deliveryFree')}</span>
                   </div>
                   <div className="flex justify-between items-baseline pt-2 border-t border-slate-100">
-                    <span className="text-sm font-bold text-slate-900">Jami summa:</span>
+                    <span className="text-sm font-bold text-slate-900">{t('cart.total')}</span>
                     <div className="text-right">
                       <span className="text-lg font-black text-brand-600 block">
                         {formatCurrency(total)}
@@ -174,7 +178,7 @@ export const CartDrawer = () => {
                   onClick={handleOpenCheckout}
                   className="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2 transition transform active:scale-98"
                 >
-                  <span>Buyurtma berish</span>
+                  <span>{t('cart.checkout')}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

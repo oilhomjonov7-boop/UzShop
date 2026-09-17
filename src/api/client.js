@@ -1,5 +1,6 @@
 import { INITIAL_DATA } from './initialData';
 import { useAuthStore } from '../store/useAuthStore';
+import { filterProductsMultilingual } from '../utils/multilingualSearch';
 
 const BASE_URL = 'http://localhost:5001';
 const STORAGE_KEY = 'uzshop_database';
@@ -12,7 +13,49 @@ const getLocalDb = () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_DATA));
       return INITIAL_DATA;
     }
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    if (parsed && Array.isArray(parsed.users)) {
+      const adminUser = INITIAL_DATA.users.find(u => u.role === 'Admin');
+      const idx = parsed.users.findIndex(u => u.role === 'Admin' || u.email === 'admin@uzshop.uz' || u.email === 'oilhomjonov7@gmail.com');
+      if (idx !== -1 && adminUser) {
+        parsed.users[idx] = { ...parsed.users[idx], ...adminUser };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+      }
+    }
+    if (parsed && Array.isArray(parsed.products)) {
+      let needsSave = false;
+      const initialMap = new Map(INITIAL_DATA.products.map(p => [p.id, p]));
+      parsed.products.forEach(p => {
+        const init = initialMap.get(p.id);
+        if (init && init.image) {
+          // If product in local storage has broken 404 URL or is missing image
+          if (
+            !p.image ||
+            p.image.includes('photo-1622445262464-84b1456045b6') ||
+            p.image.includes('photo-1584990347449-3997782b7194') ||
+            p.image.includes('photo-1559591937-e10323971e48') ||
+            p.image.includes('photo-1609592424368-278c2e6f4370')
+          ) {
+            p.image = init.image;
+            needsSave = true;
+          }
+        }
+      });
+      // Also ensure all products exist if localStorage was created with an old subset
+      if (parsed.products.length < INITIAL_DATA.products.length) {
+        const existingIds = new Set(parsed.products.map(p => p.id));
+        INITIAL_DATA.products.forEach(p => {
+          if (!existingIds.has(p.id)) {
+            parsed.products.push(p);
+            needsSave = true;
+          }
+        });
+      }
+      if (needsSave) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+      }
+    }
+    return parsed;
   } catch (err) {
     console.error('Error reading localStorage DB:', err);
     return INITIAL_DATA;
@@ -116,7 +159,7 @@ export const authApi = {
 
 // ---------------- PRODUCTS API ----------------
 export const productsApi = {
-  async getAll({ categoryId, search, sort, minPrice, maxPrice } = {}) {
+  async getAll({ categoryId, search, sort, minPrice, maxPrice, discountOnly, inStockOnly, minRating } = {}) {
     const serverResult = await request('/products');
     let products = [];
 
@@ -129,16 +172,20 @@ export const productsApi = {
       products = getLocalDb().products;
     }
 
+    const baseProductList = [...products];
     if (categoryId && categoryId !== 'all') {
       products = products.filter(p => p.categoryId === categoryId);
     }
 
-    if (search) {
-      const q = search.toLowerCase().trim();
-      products = products.filter(p =>
-        p.title.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q)
-      );
+    if (search && search.trim()) {
+      const categories = getLocalDb().categories || INITIAL_DATA.categories || [];
+      const searchFiltered = filterProductsMultilingual(products, search, categories);
+      if (searchFiltered.length === 0 && categoryId && categoryId !== 'all') {
+        // Fall back to searching across all categories if the active category produced no matches
+        products = filterProductsMultilingual(baseProductList, search, categories);
+      } else {
+        products = searchFiltered;
+      }
     }
 
     if (minPrice !== undefined && minPrice !== '') {
@@ -149,6 +196,18 @@ export const productsApi = {
       products = products.filter(p => (p.discountPrice || p.price) <= Number(maxPrice));
     }
 
+    if (discountOnly) {
+      products = products.filter(p => p.discountPrice && p.price > p.discountPrice);
+    }
+
+    if (inStockOnly) {
+      products = products.filter(p => p.stock > 0);
+    }
+
+    if (minRating) {
+      products = products.filter(p => (p.rating || 0) >= Number(minRating));
+    }
+
     if (sort === 'price-asc') {
       products.sort((a, b) => (a.discountPrice || a.price) - (b.discountPrice || b.price));
     } else if (sort === 'price-desc') {
@@ -157,6 +216,12 @@ export const productsApi = {
       products.sort((a, b) => (b.salesCount || 0) - (a.salesCount || 0));
     } else if (sort === 'rating') {
       products.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    } else if (sort === 'discount') {
+      products.sort((a, b) => {
+        const discA = a.discountPrice ? a.price - a.discountPrice : 0;
+        const discB = b.discountPrice ? b.price - b.discountPrice : 0;
+        return discB - discA;
+      });
     }
 
     return products;

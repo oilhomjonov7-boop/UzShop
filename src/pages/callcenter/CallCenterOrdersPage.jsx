@@ -4,6 +4,7 @@ import { ordersApi } from '../../api/client';
 import { formatCurrency, formatUZS, formatDate, ORDER_STATUSES } from '../../utils/formatters';
 import { TableSkeleton } from '../../components/common/SkeletonLoader';
 import { showToast } from '../../components/common/Toast';
+import { handleImageError } from '../../utils/imageFallback';
 import {
   Headphones,
   Search,
@@ -350,7 +351,12 @@ export const CallCenterOrdersPage = () => {
               <div className="space-y-2">
                 {selectedOrder.items?.map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-2 rounded-xl border border-slate-100">
-                    <img src={item.image} alt={item.title} className="w-10 h-10 rounded-lg object-cover" />
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      onError={(e) => handleImageError(e, item.title)}
+                      className="w-10 h-10 rounded-lg object-cover"
+                    />
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-bold text-slate-900 truncate">{item.title}</p>
                       <p className="text-[10px] text-slate-500">{item.quantity} dona × {formatCurrency(item.price)}</p>

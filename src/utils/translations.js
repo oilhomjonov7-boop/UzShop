@@ -1,0 +1,1128 @@
+// Comprehensive translations dictionary for UzShop
+// Languages: 'uz' (O'zbekcha), 'ru' (Русский), 'en' (English), 'uz-cyr' (Ўзбекча)
+
+export const CATEGORY_TRANSLATIONS = {
+  'cat-1': {
+    uz: 'Smartfonlar',
+    ru: 'Смартфоны',
+    en: 'Smartphones',
+    'uz-cyr': 'Смартфонлар'
+  },
+  'cat-2': {
+    uz: 'Noutbuklar',
+    ru: 'Ноутбуки',
+    en: 'Laptops',
+    'uz-cyr': 'Ноутбуклар'
+  },
+  'cat-3': {
+    uz: 'Smart soatlar',
+    ru: 'Смарт-часы',
+    en: 'Smart Watches',
+    'uz-cyr': 'Смарт соатлар'
+  },
+  'cat-4': {
+    uz: 'Quloqchinlar',
+    ru: 'Наушники',
+    en: 'Headphones',
+    'uz-cyr': 'Қулоқчинлар'
+  },
+  'cat-5': {
+    uz: 'Aksessuarlar',
+    ru: 'Аксессуары',
+    en: 'Accessories',
+    'uz-cyr': 'Акссессуарлар'
+  },
+  'cat-6': {
+    uz: 'Kiyim va Poyabzal',
+    ru: 'Одежда и обувь',
+    en: 'Clothing & Shoes',
+    'uz-cyr': 'Кийим ва Поябзал'
+  },
+  'cat-7': {
+    uz: 'Uy va Oshxona',
+    ru: 'Дом и кухня',
+    en: 'Home & Kitchen',
+    'uz-cyr': 'Уй ва Ошхона'
+  },
+  'cat-8': {
+    uz: 'Sport va Fitnes',
+    ru: 'Спорт и фитнес',
+    en: 'Sports & Fitness',
+    'uz-cyr': 'Спорт ва Фитнес'
+  },
+  'cat-9': {
+    uz: 'Kitoblar',
+    ru: 'Книги',
+    en: 'Books',
+    'uz-cyr': 'Китоблар'
+  },
+  'cat-10': {
+    uz: "Go'zallik & Parvarish",
+    ru: 'Красота и уход',
+    en: 'Beauty & Care',
+    'uz-cyr': 'Гўзаллик ва Парвариш'
+  },
+  'cat-11': {
+    uz: 'Oziq-ovqat va Qahva',
+    ru: 'Продукты и кофе',
+    en: 'Food & Coffee',
+    'uz-cyr': 'Озиқ-овқат ва Қаҳва'
+  },
+  'cat-12': {
+    uz: 'Avtotovarlar',
+    ru: 'Автотовары',
+    en: 'Auto Products',
+    'uz-cyr': 'Автотоварлар'
+  },
+  'cat-13': {
+    uz: 'Bolalar Dunyosi',
+    ru: 'Детский мир',
+    en: 'Kids World',
+    'uz-cyr': 'Болалар Дунёси'
+  }
+};
+
+export const CITIES_TRANSLATIONS = {
+  tashkent: {
+    name: { uz: 'Toshkent', ru: 'Ташкент', en: 'Tashkent', 'uz-cyr': 'Тошкент' },
+    time: { uz: 'Bugun yoki ertaga', ru: 'Сегодня или завтра', en: 'Today or tomorrow', 'uz-cyr': 'Бугун ёки эртага' }
+  },
+  samarkand: {
+    name: { uz: 'Samarqand', ru: 'Самарканд', en: 'Samarkand', 'uz-cyr': 'Самарқанд' },
+    time: { uz: '1 kunda bepul', ru: 'Бесплатно за 1 день', en: 'Free in 1 day', 'uz-cyr': '1 кунда бепул' }
+  },
+  bukhara: {
+    name: { uz: 'Buxoro', ru: 'Бухара', en: 'Bukhara', 'uz-cyr': 'Бухоро' },
+    time: { uz: '1 kunda bepul', ru: 'Бесплатно за 1 день', en: 'Free in 1 day', 'uz-cyr': '1 кунда бепул' }
+  },
+  andijan: {
+    name: { uz: 'Andijon', ru: 'Андижан', en: 'Andijan', 'uz-cyr': 'Андижон' },
+    time: { uz: '1-2 kunda', ru: 'За 1-2 дня', en: 'In 1-2 days', 'uz-cyr': '1-2 кунда' }
+  },
+  fergana: {
+    name: { uz: "Farg'ona", ru: 'Фергана', en: 'Fergana', 'uz-cyr': 'Фарғона' },
+    time: { uz: '1-2 kunda', ru: 'За 1-2 дня', en: 'In 1-2 days', 'uz-cyr': '1-2 кунда' }
+  },
+  namangan: {
+    name: { uz: 'Namangan', ru: 'Наманган', en: 'Namangan', 'uz-cyr': 'Наманган' },
+    time: { uz: '1-2 kunda', ru: 'За 1-2 дня', en: 'In 1-2 days', 'uz-cyr': '1-2 кунда' }
+  },
+  khorezm: {
+    name: { uz: 'Xorazm', ru: 'Хорезм', en: 'Khorezm', 'uz-cyr': 'Хоразм' },
+    time: { uz: '2 kunda', ru: 'За 2 дня', en: 'In 2 days', 'uz-cyr': '2 кунда' }
+  },
+  qashqadaryo: {
+    name: { uz: 'Qarshi', ru: 'Карши', en: 'Karshi', 'uz-cyr': 'Қарши' },
+    time: { uz: '1-2 kunda', ru: 'За 1-2 дня', en: 'In 1-2 days', 'uz-cyr': '1-2 кунда' }
+  },
+  nukus: {
+    name: { uz: 'Nukus', ru: 'Нукус', en: 'Nukus', 'uz-cyr': 'Нукус' },
+    time: { uz: '2 kunda', ru: 'За 2 дня', en: 'In 2 days', 'uz-cyr': '2 кунда' }
+  }
+};
+
+export const TRANSLATIONS = {
+  uz: {
+    common: {
+      officialMarket: 'Rasmiy Market',
+      catalog: 'Katalog',
+      search: 'Qidirish',
+      clear: 'Tozalash',
+      all: 'Barchasi',
+      allProducts: 'Barcha mahsulotlar',
+      apply: "Qo'llash",
+      cancel: 'Bekor qilish',
+      delete: "O'chirish",
+      save: 'Saqlash',
+      close: 'Yopish',
+      loading: 'Yuklanmoqda...',
+      itemsCount: 'ta tovar',
+      productsCount: 'ta mahsulot',
+      perMonth: '/oy',
+      currencySymbol: '$',
+      free: 'Bepul',
+      home: 'Bosh sahifa',
+      today: 'Bugun',
+      tomorrow: 'Ertaga',
+      in1Day: '1 kunda',
+      in2Days: '2 kunda'
+    },
+    nav: {
+      searchPlaceholder: 'Mahsulotlar va turkumlarni qidirish (masalan: telefon, soat, noutbuk)...',
+      searchBtn: 'Qidirish',
+      cityTitle: 'Yetkazib berish shahri',
+      discounts: 'Chegirmalar',
+      popular: 'Ommabop',
+      installment: '0-0-12 Nasiya',
+      myOrders: 'Buyurtmalarim',
+      control: 'Boshqaruv',
+      staffSection: "Xodimlar boshqaruv bo'limi",
+      callcenter: 'Operator (CallCenter)',
+      warehouse: 'Ombor Boshqaruvi',
+      analytics: 'Analitika & KPI',
+      usersRoles: 'Foydalanuvchilar & Rollar',
+      userRole: 'Tizim roli',
+      login: 'Kirish',
+      register: "Ro'yxatdan o'tish",
+      wishlist: 'Sevimlilar',
+      cart: 'Savat',
+      trendTitle: 'Trendda:',
+      weekDiscounts: 'Hafta Chegirmalari',
+      searchLiveTitle: "Ko'p tilli qidiruv natijalari:",
+      seeAllInCatalog: "Barcha natijalarni katalogda ko'rish",
+      noResultsFor: 'bo\'yicha mahsulot topilmadi',
+      historyOrders: 'Buyurtmalarim tarixi',
+      productsAndStock: 'Mahsulotlar va ombor',
+      operatorOrders: 'Operator buyurtmalari',
+      adminPanel: 'Admin boshqaruv paneli',
+      logout: 'Tizimdan chiqish',
+      selectLanguage: 'Tilni tanlang',
+      langLabel: 'til / язык'
+    },
+    catalog: {
+      dealOfTheDay: 'KUN TOVARI',
+      addToCart: 'Savatga',
+      discountOff: 'Chegirma',
+      purchases: 'xarid',
+      rated: 'ta baholangan',
+      trustPillars: {
+        oneDayTitle: '1 Kunda Yetkazish',
+        oneDayDesc: "O'zbekiston bo'ylab 24 soatda",
+        originalTitle: '100% Original Sifat',
+        originalDesc: 'Rasmiy kafolat & sifat nazorati',
+        returnsTitle: '14 Kun Qaytarish',
+        returnsDesc: 'Oson va muammosiz almashtirish',
+        installmentTitle: "Qulay Muddatli To'lov",
+        installmentDesc: '0-0-12 Payme, Uzum Nasiya'
+      },
+      slides: [
+        {
+          badge: '🔥 BAHORIY MEGA CHEGIRMALAR',
+          title: '50% gacha Super Chegirmalar',
+          subtitle: 'Eng sara smartfonlar, noutbuklar va gadjetlarga rasmiy kafolat bilan maxsus narxlar!',
+          ctaText: 'Xarid qilish',
+          highlight: 'Kafolatlangan chegirma'
+        },
+        {
+          badge: '⚡ 1 KUNDA YETKAZISH • 100% BEPUL',
+          title: "Butun O'zbekiston Bo'ylab Yetkazish",
+          subtitle: 'Bugun xarid qiling — ertaga ostonangizda qabul qiling. Tezkor kuryerlik xizmati!',
+          ctaText: "Katalogni ko'rish",
+          highlight: '24 soatda yetkazish'
+        },
+        {
+          badge: '✨ YANGI MAVSUM TRENDLARI',
+          title: 'Zamonaviy Kiyim & Poyabzallar',
+          subtitle: 'Erkaklar va ayollar uchun yangi mavsum kolleksiyasi: bejirim uslub va yuqori qulaylik!',
+          ctaText: 'Kolleksiyani tanlash',
+          highlight: 'Yangi kolleksiya'
+        },
+        {
+          badge: "💳 0-0-12 MUDDATLI TO'LOV",
+          title: "Boshlang'ich To'lovsiz Bo'lib To'lash",
+          subtitle: 'Ortiqcha foizsiz va hujjatlarsiz 12 oygacha qulay muddatli xarid imkoniyati!',
+          ctaText: 'Barchasini ko\'rish',
+          highlight: "0% Boshlang'ich to'lov"
+        }
+      ],
+      sort: {
+        label: 'Saralash',
+        popular: 'Saralash: Ommabop',
+        mostBought: "Ko'p xarid qilingan",
+        rating: "Reyting bo'yicha",
+        priceAsc: 'Arzondan qimmatga',
+        priceDesc: 'Qimmatdan arzonga',
+        discount: 'Katta chegirmalar'
+      },
+      priceFilter: {
+        title: 'Narx ($):',
+        from: 'Dan',
+        to: 'Gacha',
+        clearFilter: 'Filtrni tozalash'
+      },
+      empty: {
+        title: 'Hech qanday mahsulot topilmadi',
+        desc: "Qidiruv parametrlarini o'zgartirib ko'ring yoki filtrlarni tozalang.",
+        btn: 'Filtrlarni tozalash'
+      },
+      pagination: {
+        prev: 'Oldingi',
+        next: 'Keyingi',
+        page: 'Sahifa'
+      }
+    },
+    filters: {
+      title: 'Filtrlar',
+      clearAll: 'Tozalash',
+      categories: 'Turkumlar',
+      allGoods: 'Barcha tovarlar',
+      priceRange: "Narx oralig'i ($)",
+      from: 'Dan',
+      to: 'Gacha',
+      applyPrice: "Narxni qo'llash",
+      upTo100: '$100 gacha',
+      range100_500: '$100 - $500',
+      range500_1000: '$500 - $1,000',
+      above1000: '$1,000 dan yuqori',
+      specialOffers: 'Maxsus takliflar',
+      onlyDiscounted: 'Faqat chegirmadagi tovarlar',
+      onlyInStock: 'Faqat omborda borlar',
+      highRating: '4.8+ yuqori reyting',
+      searchResultsTitle: '🔍 Qidiruv natijalari',
+      allCatalogTitle: '⚡ Barcha Mahsulotlar',
+      allDiscountsTitle: '🔥 Chegirmadagi barcha tovarlar',
+      searchSubtext: "so'rovi bo'yicha sara natijalar",
+      activeFilters: 'Faol filtrlar:',
+      searchCatalogPlaceholder: 'Katalog ichidan qidirish (nomi, brendi, modeli, toifasi)...',
+      showResults: 'Natijalar',
+      perPage: 'Sahifada:',
+      clearAllBtn: "Barchasini o'chirish",
+      priceBadge: 'Narx:',
+      searchBadge: 'Qidiruv:',
+      ratingBadge: 'Reyting',
+      errorTitle: "Ma'lumotlarni yuklashda xatolik yuz berdi",
+      errorDesc: "Iltimos, qayta urinib ko'ring yoki sahifani yangilang.",
+      noResultsTitle: 'Mos mahsulotlar topilmadi',
+      noResultsDesc: "Qidiruv so'zini yoki belgilangan filtrlarni yumshatib ko'ring.",
+      clearAllFiltersBtn: 'Barcha filtrlarni tozalash'
+    },
+    product: {
+      inStock: 'Mavjud',
+      outOfStock: 'Tugagan',
+      leftInStock: 'ta qoldi',
+      oneDay: '1 kunda',
+      installment: 'oyiga',
+      addToCart: 'Savatchaga',
+      inCart: 'Savatchada',
+      maxInCart: 'Maksimal zaxira',
+      notAvailable: "Sotuvda yo'q",
+      addedToast: "savatchaga qo'shildi!",
+      wishlistAddedToast: "sevimlilarga qo'shildi!",
+      wishlistRemovedToast: "sevimlilardan olib tashlandi",
+      description: 'Tavsif:',
+      stockStatus: 'Ombor holati:',
+      guarantee24h: "24 soat ichida butun O'zbekiston bo'ylab yetkazish",
+      guarantee12m: '12 oylik rasmiy kafolat va servis xizmati',
+      quantity: 'Miqdor:',
+      addToWishlist: "Sevimlilarga qo'shish",
+      removeFromWishlist: "Sevimlilardan o'chirish"
+    },
+    cart: {
+      title: 'Savatcha',
+      emptyTitle: "Savatchangiz bo'sh",
+      emptyDesc: "Katalogdan o'zingizga ma'qul mahsulotlarni tanlab, savatchaga qo'shishingiz mumkin.",
+      goToCatalog: "Katalogga o'tish",
+      itemsCount: 'Mahsulotlar soni:',
+      delivery: 'Yetkazib berish:',
+      deliveryFree: 'Bepul (Aksiya)',
+      total: 'Jami summa:',
+      checkout: 'Buyurtma berish',
+      maxStockWarning: 'Ombordagi bor miqdorga yetildi'
+    },
+    wishlist: {
+      breadcrumb: 'Sevimlilar',
+      title: 'Sevimli Mahsulotlarim',
+      goodsCount: 'ta tovar',
+      desc: "Siz tanlagan va keyinroq sotib olish uchun saqlab qo'yilgan mahsulotlar",
+      addAllToCart: 'Barchasini savatga qo\'shish',
+      clearAll: 'Tozalash',
+      emptyTitle: "Sevimlilar ro'yxatingiz bo'sh",
+      emptyDesc: "Siz hali birorta ham mahsulotni yoqtirganlar ro'yxatiga qo'shmadingiz.",
+      exploreCatalog: 'Mahsulotlarni ko\'rish',
+      recommendedGoods: "Sizga ma'qul kelishi mumkin bo'lgan tovarlar",
+      confirmClear: "Barcha sevimli mahsulotlarni ro'yxatdan o'chirmoqchimisiz?",
+      clearedToast: "Sevimlilar ro'yxati tozalandi",
+      addedAllToast: "ta mahsulot savatchaga qo'shildi!"
+    },
+    orders: {
+      title: 'Mening Buyurtmalarim',
+      desc: "Barcha buyurtmalaringiz va ularning yetkazib berilish holatini real vaqtda kuzatib boring.",
+      emptyTitle: 'Sizda hali buyurtmalar mavjud emas',
+      emptyDesc: "Katalogimizdagi zamonaviy mahsulotlarni ko'zdan kechirib, birinchi buyurtmangizni bering!",
+      goToCatalog: "Katalogga o'tish",
+      orderNo: 'Buyurtma',
+      status: 'Holat:',
+      deliveryAddress: 'Yetkazish manzili:',
+      totalPrice: 'Jami narxi:',
+      totalPay: "Jami to'lov:",
+      datePlaced: 'Rasmiylashtirilgan sana:',
+      stepperTitle: 'Buyurtma Harakati',
+      orderedGoods: 'Buyurtma qilingan tovarlar:',
+      deliveryInfo: "Yetkazib berish ma'lumotlari:",
+      recipient: 'Qabul qiluvchi',
+      cancelledAlert: "Ushbu buyurtma bekor qilingan. Qo'shimcha ma'lumot uchun operatorimizga murojaat qiling.",
+      steps: {
+        pending: 'Kutilmoqda',
+        confirmed: 'Tasdiqlandi',
+        shipped: "Yo'lda",
+        delivered: 'Yetkazildi',
+        cancelled: 'Bekor qilingan'
+      }
+    },
+    footer: {
+      tagline: 'Texnologiya va hayot uchun',
+      aboutText: "UzShop — elektron tijorat jarayonlarini (mahsulotlar katalogi, savatcha, buyurtmalar oqimi, ombor va xodimlar boshqaruvi) to'liq avtomatlashtiruvchi zamonaviy web-platforma.",
+      catalogTitle: 'Katalog',
+      rolesTitle: 'Tizim Rollari (RBAC)',
+      contactTitle: 'Aloqa & Manzil',
+      address: 'Toshkent sh., Chilonzor 5-mavze',
+      workingHours: 'Har kuni 09:00 dan 21:00 gacha',
+      rights: 'Barcha huquqlar himoyalangan.',
+      supportTitle: "Operator ko'magi",
+      supportDesc: 'Har kuni 09:00 dan 21:00 gacha'
+    }
+  },
+
+  ru: {
+    common: {
+      officialMarket: 'Официальный Маркет',
+      catalog: 'Каталог',
+      search: 'Поиск',
+      clear: 'Очистить',
+      all: 'Все',
+      allProducts: 'Все товары',
+      apply: 'Применить',
+      cancel: 'Отмена',
+      delete: 'Удалить',
+      save: 'Сохранить',
+      close: 'Закрыть',
+      loading: 'Загрузка...',
+      itemsCount: 'товаров',
+      productsCount: 'товаров',
+      perMonth: '/мес',
+      currencySymbol: '$',
+      free: 'Бесплатно',
+      home: 'Главная',
+      today: 'Сегодня',
+      tomorrow: 'Завтра',
+      in1Day: 'за 1 день',
+      in2Days: 'за 2 дня'
+    },
+    nav: {
+      searchPlaceholder: 'Поиск товаров и категорий (например: смартфон, часы, ноутбук)...',
+      searchBtn: 'Найти',
+      cityTitle: 'Город доставки',
+      discounts: 'Скидки',
+      popular: 'Популярное',
+      installment: '0-0-12 Рассрочка',
+      myOrders: 'Мои заказы',
+      control: 'Управление',
+      staffSection: 'Панель управления персоналом',
+      callcenter: 'Оператор (Call-центр)',
+      warehouse: 'Управление складом',
+      analytics: 'Аналитика и KPI',
+      usersRoles: 'Пользователи и роли',
+      userRole: 'Роль в системе',
+      login: 'Войти',
+      register: 'Регистрация',
+      wishlist: 'Избранное',
+      cart: 'Корзина',
+      trendTitle: 'В тренде:',
+      weekDiscounts: 'Скидки недели',
+      searchLiveTitle: 'Результаты поиска:',
+      seeAllInCatalog: 'Смотреть все результаты в каталоге',
+      noResultsFor: 'По запросу ничего не найдено',
+      historyOrders: 'История моих заказов',
+      productsAndStock: 'Товары и склад',
+      operatorOrders: 'Заказы оператора',
+      adminPanel: 'Панель администратора',
+      logout: 'Выйти из системы',
+      selectLanguage: 'Выберите язык',
+      langLabel: 'язык / til'
+    },
+    catalog: {
+      dealOfTheDay: 'ТОВАР ДНЯ',
+      addToCart: 'В корзину',
+      discountOff: 'Скидка',
+      purchases: 'покупок',
+      rated: 'оценок',
+      trustPillars: {
+        oneDayTitle: 'Доставка за 1 день',
+        oneDayDesc: 'По всему Узбекистану за 24 часа',
+        originalTitle: '100% Оригинальное качество',
+        originalDesc: 'Официальная гарантия и контроль качества',
+        returnsTitle: '14 дней на возврат',
+        returnsDesc: 'Легкий и быстрый обмен товаров',
+        installmentTitle: 'Удобная рассрочка',
+        installmentDesc: '0-0-12 Payme, Uzum Nasiya'
+      },
+      slides: [
+        {
+          badge: '🔥 ВЕСЕННИЕ МЕГА СКИДКИ',
+          title: 'Супер скидки до 50%',
+          subtitle: 'Специальные цены на лучшие смартфоны, ноутбуки и гаджеты с официальной гарантией!',
+          ctaText: 'Купить сейчас',
+          highlight: 'Гарантированная скидка'
+        },
+        {
+          badge: '⚡ ДОСТАВКА ЗА 1 ДЕНЬ • БЕСПЛАТНО',
+          title: 'Доставка по всему Узбекистану',
+          subtitle: 'Покупайте сегодня — получайте завтра прямо у порога. Быстрая курьерская служба!',
+          ctaText: 'Перейти в каталог',
+          highlight: 'Доставка за 24 часа'
+        },
+        {
+          badge: '✨ ТРЕНДЫ НОВОГО СЕЗОНА',
+          title: 'Стильная одежда и обувь',
+          subtitle: 'Новая коллекция для мужчин и женщин: элегантный стиль и непревзойденный комфорт!',
+          ctaText: 'Выбрать коллекцию',
+          highlight: 'Новая коллекция'
+        },
+        {
+          badge: '💳 РАССРОЧКА 0-0-12',
+          title: 'Покупка в рассрочку без переплат',
+          subtitle: 'Удобная рассрочка до 12 месяцев без первоначального взноса и лишних документов!',
+          ctaText: 'Смотреть все',
+          highlight: '0% первый взнос'
+        }
+      ],
+      sort: {
+        label: 'Сортировка',
+        popular: 'Сортировка: Популярные',
+        mostBought: 'Много покупок',
+        rating: 'По рейтингу',
+        priceAsc: 'Сначала дешевле',
+        priceDesc: 'Сначала дороже',
+        discount: 'Большие скидки'
+      },
+      priceFilter: {
+        title: 'Цена ($):',
+        from: 'От',
+        to: 'До',
+        clearFilter: 'Сбросить фильтр'
+      },
+      empty: {
+        title: 'Товары не найдены',
+        desc: 'Попробуйте изменить параметры поиска или сбросить фильтры.',
+        btn: 'Сбросить фильтры'
+      },
+      pagination: {
+        prev: 'Назад',
+        next: 'Вперед',
+        page: 'Страница'
+      }
+    },
+    filters: {
+      title: 'Фильтры',
+      clearAll: 'Сбросить',
+      categories: 'Категории',
+      allGoods: 'Все товары',
+      priceRange: 'Диапазон цен ($)',
+      from: 'От',
+      to: 'До',
+      applyPrice: 'Применить цену',
+      upTo100: 'До $100',
+      range100_500: '$100 - $500',
+      range500_1000: '$500 - $1,000',
+      above1000: 'Выше $1,000',
+      specialOffers: 'Специальные предложения',
+      onlyDiscounted: 'Только со скидкой',
+      onlyInStock: 'Только в наличии',
+      highRating: 'Рейтинг 4.8+',
+      searchResultsTitle: '🔍 Результаты поиска',
+      allCatalogTitle: '⚡ Все товары',
+      allDiscountsTitle: '🔥 Все товары со скидкой',
+      searchSubtext: 'лучшие результаты по вашему запросу',
+      activeFilters: 'Активные фильтры:',
+      searchCatalogPlaceholder: 'Поиск по каталогу (название, бренд, модель, категория)...',
+      showResults: 'Показать результаты',
+      perPage: 'На странице:',
+      clearAllBtn: 'Сбросить все',
+      priceBadge: 'Цена:',
+      searchBadge: 'Поиск:',
+      ratingBadge: 'Рейтинг',
+      errorTitle: 'Произошла ошибка при загрузке данных',
+      errorDesc: 'Пожалуйста, попробуйте еще раз или обновите страницу.',
+      noResultsTitle: 'Подходящие товары не найдены',
+      noResultsDesc: 'Попробуйте изменить поисковый запрос или сбросить фильтры.',
+      clearAllFiltersBtn: 'Сбросить все фильтры'
+    },
+    product: {
+      inStock: 'В наличии',
+      outOfStock: 'Распродано',
+      leftInStock: 'осталось',
+      oneDay: 'за 1 день',
+      installment: 'в месяц',
+      addToCart: 'В корзину',
+      inCart: 'В корзине',
+      maxInCart: 'Макс. количество',
+      notAvailable: 'Нет в продаже',
+      addedToast: 'добавлен в корзину!',
+      wishlistAddedToast: 'добавлен в избранное!',
+      wishlistRemovedToast: 'удален из избранного',
+      description: 'Описание:',
+      stockStatus: 'Наличие на складе:',
+      guarantee24h: 'Доставка по всему Узбекистану в течение 24 часов',
+      guarantee12m: '12 месяцев официальной гарантии и обслуживания',
+      quantity: 'Количество:',
+      addToWishlist: 'Добавить в избранное',
+      removeFromWishlist: 'Удалить из избранного'
+    },
+    cart: {
+      title: 'Корзина',
+      emptyTitle: 'Ваша корзина пуста',
+      emptyDesc: 'Вы можете выбрать понравившиеся товары из каталога и добавить их в корзину.',
+      goToCatalog: 'Перейти в каталог',
+      itemsCount: 'Количество товаров:',
+      delivery: 'Доставка:',
+      deliveryFree: 'Бесплатно (Акция)',
+      total: 'Итого к оплате:',
+      checkout: 'Оформить заказ',
+      maxStockWarning: 'Достигнут предел доступного на складе количества'
+    },
+    wishlist: {
+      breadcrumb: 'Избранное',
+      title: 'Мои избранные товары',
+      goodsCount: 'товаров',
+      desc: 'Товары, сохраненные вами для последующей покупки',
+      addAllToCart: 'Добавить все в корзину',
+      clearAll: 'Очистить',
+      emptyTitle: 'Список избранного пуст',
+      emptyDesc: 'Вы еще не добавили ни одного товара в список желаемого.',
+      exploreCatalog: 'Посмотреть каталог',
+      recommendedGoods: 'Товары, которые могут вам понравиться',
+      confirmClear: 'Вы действительно хотите очистить список избранного?',
+      clearedToast: 'Список избранного очищен',
+      addedAllToast: 'товаров добавлено в корзину!'
+    },
+    orders: {
+      title: 'Мои заказы',
+      desc: 'Отслеживайте все ваши заказы и статус их доставки в режиме реального времени.',
+      emptyTitle: 'У вас пока нет заказов',
+      emptyDesc: 'Ознакомьтесь с товарами в нашем каталоге и сделайте свой первый заказ!',
+      goToCatalog: 'Перейти в каталог',
+      orderNo: 'Заказ',
+      status: 'Статус:',
+      deliveryAddress: 'Адрес доставки:',
+      totalPrice: 'Общая сумма:',
+      totalPay: 'Итого к оплате:',
+      datePlaced: 'Дата оформления:',
+      stepperTitle: 'Статус заказа',
+      orderedGoods: 'Заказанные товары:',
+      deliveryInfo: 'Данные доставки:',
+      recipient: 'Получатель',
+      cancelledAlert: 'Этот заказ был отменен. Для получения дополнительной информации свяжитесь с оператором.',
+      steps: {
+        pending: 'В ожидании',
+        confirmed: 'Подтвержден',
+        shipped: 'В пути',
+        delivered: 'Доставлен',
+        cancelled: 'Отменен'
+      }
+    },
+    footer: {
+      tagline: 'Для технологий и жизни',
+      aboutText: 'UzShop — современная веб-платформа для полной автоматизации электронной коммерции: каталог товаров, корзина, управление заказами, склад и роли персонала.',
+      catalogTitle: 'Каталог',
+      rolesTitle: 'Роли в системе (RBAC)',
+      contactTitle: 'Контакты и адрес',
+      address: 'г. Ташкент, Чиланзар 5-й квартал',
+      workingHours: 'Ежедневно с 09:00 до 21:00',
+      rights: 'Все права защищены.',
+      supportTitle: 'Поддержка оператора',
+      supportDesc: 'Ежедневно с 09:00 до 21:00'
+    }
+  },
+
+  en: {
+    common: {
+      officialMarket: 'Official Market',
+      catalog: 'Catalog',
+      search: 'Search',
+      clear: 'Clear',
+      all: 'All',
+      allProducts: 'All Products',
+      apply: 'Apply',
+      cancel: 'Cancel',
+      delete: 'Delete',
+      save: 'Save',
+      close: 'Close',
+      loading: 'Loading...',
+      itemsCount: 'items',
+      productsCount: 'products',
+      perMonth: '/mo',
+      currencySymbol: '$',
+      free: 'Free',
+      home: 'Home',
+      today: 'Today',
+      tomorrow: 'Tomorrow',
+      in1Day: 'in 1 day',
+      in2Days: 'in 2 days'
+    },
+    nav: {
+      searchPlaceholder: 'Search products and categories (e.g., smartphone, watch, laptop)...',
+      searchBtn: 'Search',
+      cityTitle: 'Delivery City',
+      discounts: 'Discounts',
+      popular: 'Popular',
+      installment: '0-0-12 Installment',
+      myOrders: 'My Orders',
+      control: 'Management',
+      staffSection: 'Staff Management Console',
+      callcenter: 'Call Center Operator',
+      warehouse: 'Inventory Management',
+      analytics: 'Analytics & KPIs',
+      usersRoles: 'Users & Roles',
+      userRole: 'System Role',
+      login: 'Log In',
+      register: 'Sign Up',
+      wishlist: 'Wishlist',
+      cart: 'Cart',
+      trendTitle: 'Trending:',
+      weekDiscounts: 'Weekly Deals',
+      searchLiveTitle: 'Multilingual search results:',
+      seeAllInCatalog: 'View all results in catalog',
+      noResultsFor: 'No products found for',
+      historyOrders: 'Order history',
+      productsAndStock: 'Products & inventory',
+      operatorOrders: 'Operator orders',
+      adminPanel: 'Admin dashboard',
+      logout: 'Log Out',
+      selectLanguage: 'Select language',
+      langLabel: 'lang / til'
+    },
+    catalog: {
+      dealOfTheDay: 'DEAL OF THE DAY',
+      addToCart: 'Add to Cart',
+      discountOff: 'Discount',
+      purchases: 'orders',
+      rated: 'reviews',
+      trustPillars: {
+        oneDayTitle: '1-Day Fast Delivery',
+        oneDayDesc: 'Across Uzbekistan within 24 hours',
+        originalTitle: '100% Original Quality',
+        originalDesc: 'Official warranty & quality control',
+        returnsTitle: '14 Days Easy Returns',
+        returnsDesc: 'Hassle-free replacement policy',
+        installmentTitle: 'Easy Installments',
+        installmentDesc: '0-0-12 Payme, Uzum Nasiya'
+      },
+      slides: [
+        {
+          badge: '🔥 SPRING MEGA SALE',
+          title: 'Super Discounts up to 50%',
+          subtitle: 'Exclusive deals on smartphones, laptops, and smart gadgets with official warranty!',
+          ctaText: 'Shop Now',
+          highlight: 'Guaranteed discount'
+        },
+        {
+          badge: '⚡ 1-DAY FAST SHIPPING • 100% FREE',
+          title: 'Nationwide Delivery across Uzbekistan',
+          subtitle: 'Order today — receive it at your doorstep tomorrow. Fast courier delivery!',
+          ctaText: 'Explore Catalog',
+          highlight: '24-hour delivery'
+        },
+        {
+          badge: '✨ NEW SEASON TRENDS',
+          title: 'Fashionable Clothes & Shoes',
+          subtitle: 'Fresh collection for men and women: immaculate style and top tier comfort!',
+          ctaText: 'Browse Collection',
+          highlight: 'New collection'
+        },
+        {
+          badge: '💳 0-0-12 INSTALLMENTS',
+          title: 'Pay in Installments with 0% Down',
+          subtitle: 'Convenient installments up to 12 months with no extra fee and no extra paperwork!',
+          ctaText: 'View All',
+          highlight: '0% Down payment'
+        }
+      ],
+      sort: {
+        label: 'Sort',
+        popular: 'Sort by: Popular',
+        mostBought: 'Best Selling',
+        rating: 'Highest Rated',
+        priceAsc: 'Price: Low to High',
+        priceDesc: 'Price: High to Low',
+        discount: 'Biggest Discounts'
+      },
+      priceFilter: {
+        title: 'Price ($):',
+        from: 'Min',
+        to: 'Max',
+        clearFilter: 'Reset Filter'
+      },
+      empty: {
+        title: 'No products found',
+        desc: 'Try adjusting your search query or reset active filters.',
+        btn: 'Reset Filters'
+      },
+      pagination: {
+        prev: 'Previous',
+        next: 'Next',
+        page: 'Page'
+      }
+    },
+    filters: {
+      title: 'Filters',
+      clearAll: 'Clear All',
+      categories: 'Categories',
+      allGoods: 'All Goods',
+      priceRange: 'Price Range ($)',
+      from: 'Min',
+      to: 'Max',
+      applyPrice: 'Apply Price',
+      upTo100: 'Up to $100',
+      range100_500: '$100 - $500',
+      range500_1000: '$500 - $1,000',
+      above1000: 'Over $1,000',
+      specialOffers: 'Special Offers',
+      onlyDiscounted: 'Discounted only',
+      onlyInStock: 'In stock only',
+      highRating: '4.8+ Top Rated',
+      searchResultsTitle: '🔍 Search Results',
+      allCatalogTitle: '⚡ All Products',
+      allDiscountsTitle: '🔥 All Discounted Deals',
+      searchSubtext: 'top matched results for your query',
+      activeFilters: 'Active filters:',
+      searchCatalogPlaceholder: 'Search catalog (name, brand, model, category)...',
+      showResults: 'Show Results',
+      perPage: 'Per page:',
+      clearAllBtn: 'Clear all',
+      priceBadge: 'Price:',
+      searchBadge: 'Search:',
+      ratingBadge: 'Rating',
+      errorTitle: 'An error occurred while loading data',
+      errorDesc: 'Please try again or refresh the page.',
+      noResultsTitle: 'No matching products found',
+      noResultsDesc: 'Try softening your search query or clearing active filters.',
+      clearAllFiltersBtn: 'Clear all filters'
+    },
+    product: {
+      inStock: 'In Stock',
+      outOfStock: 'Sold Out',
+      leftInStock: 'left in stock',
+      oneDay: 'in 1 day',
+      installment: 'per month',
+      addToCart: 'Add to Cart',
+      inCart: 'In Cart',
+      maxInCart: 'Max reached',
+      notAvailable: 'Out of stock',
+      addedToast: 'added to cart!',
+      wishlistAddedToast: 'added to wishlist!',
+      wishlistRemovedToast: 'removed from wishlist',
+      description: 'Description:',
+      stockStatus: 'Stock Status:',
+      guarantee24h: 'Fast delivery across Uzbekistan in 24 hours',
+      guarantee12m: '12 months official warranty and maintenance',
+      quantity: 'Quantity:',
+      addToWishlist: 'Add to wishlist',
+      removeFromWishlist: 'Remove from wishlist'
+    },
+    cart: {
+      title: 'Shopping Cart',
+      emptyTitle: 'Your cart is empty',
+      emptyDesc: 'Explore our catalog and add items you like to your shopping cart.',
+      goToCatalog: 'Go to Catalog',
+      itemsCount: 'Items quantity:',
+      delivery: 'Delivery:',
+      deliveryFree: 'Free (Promo)',
+      total: 'Total amount:',
+      checkout: 'Proceed to Checkout',
+      maxStockWarning: 'Maximum stock limit reached'
+    },
+    wishlist: {
+      breadcrumb: 'Wishlist',
+      title: 'My Wishlist',
+      goodsCount: 'items',
+      desc: 'Items saved by you to purchase anytime later',
+      addAllToCart: 'Add All to Cart',
+      clearAll: 'Clear All',
+      emptyTitle: 'Your wishlist is empty',
+      emptyDesc: 'You have not added any favorite products to your wishlist yet.',
+      exploreCatalog: 'Explore Catalog',
+      recommendedGoods: 'Products you may like',
+      confirmClear: 'Are you sure you want to clear your wishlist?',
+      clearedToast: 'Wishlist has been cleared',
+      addedAllToast: 'items added to cart!'
+    },
+    orders: {
+      title: 'My Orders',
+      desc: 'Track all your placed orders and their shipping status in real-time.',
+      emptyTitle: 'No orders yet',
+      emptyDesc: 'Browse through our premium catalog and place your very first order!',
+      goToCatalog: 'Go to Catalog',
+      orderNo: 'Order',
+      status: 'Status:',
+      deliveryAddress: 'Delivery Address:',
+      totalPrice: 'Total Price:',
+      totalPay: 'Total payment:',
+      datePlaced: 'Date placed:',
+      stepperTitle: 'Order Progress',
+      orderedGoods: 'Ordered Items:',
+      deliveryInfo: 'Delivery Information:',
+      recipient: 'Recipient',
+      cancelledAlert: 'This order has been cancelled. Please contact our customer service for more details.',
+      steps: {
+        pending: 'Pending',
+        confirmed: 'Confirmed',
+        shipped: 'Shipped',
+        delivered: 'Delivered',
+        cancelled: 'Cancelled'
+      }
+    },
+    footer: {
+      tagline: 'For technology & everyday life',
+      aboutText: 'UzShop is an advanced e-commerce web platform fully automating products catalog, shopping cart, orders management, warehousing, and role-based staff operations.',
+      catalogTitle: 'Catalog',
+      rolesTitle: 'System Roles (RBAC)',
+      contactTitle: 'Contact & Address',
+      address: 'Tashkent, Chilanzar 5th block',
+      workingHours: 'Every day from 09:00 to 21:00',
+      rights: 'All rights reserved.',
+      supportTitle: 'Operator Support',
+      supportDesc: 'Every day from 09:00 to 21:00'
+    }
+  },
+
+  'uz-cyr': {
+    common: {
+      officialMarket: 'Расмий Маркет',
+      catalog: 'Каталог',
+      search: 'Қидириш',
+      clear: 'Тозалаш',
+      all: 'Барчаси',
+      allProducts: 'Барча маҳсулотлар',
+      apply: 'Қўллаш',
+      cancel: 'Бекор қилиш',
+      delete: 'Ўчириш',
+      save: 'Сақлаш',
+      close: 'Ёпиш',
+      loading: 'Юкланмоқда...',
+      itemsCount: 'та товар',
+      productsCount: 'та маҳсулот',
+      perMonth: '/ой',
+      currencySymbol: '$',
+      free: 'Бепул',
+      home: 'Бош саҳифа',
+      today: 'Бугун',
+      tomorrow: 'Эртага',
+      in1Day: '1 кунда',
+      in2Days: '2 кунда'
+    },
+    nav: {
+      searchPlaceholder: 'Маҳсулотлар ва туркумларни қидириш (масалан: телефон, соат, ноутбук)...',
+      searchBtn: 'Қидириш',
+      cityTitle: 'Етказиб бериш шаҳри',
+      discounts: 'Чегирмалар',
+      popular: 'Оммабоп',
+      installment: '0-0-12 Насия',
+      myOrders: 'Буюртмаларим',
+      control: 'Бошқарув',
+      staffSection: 'Ходимлар бошқарув бўлими',
+      callcenter: 'Оператор (Call-марказ)',
+      warehouse: 'Омбор бошқаруви',
+      analytics: 'Аналитика & KPI',
+      usersRoles: 'Фойдаланувчилар & Роллар',
+      userRole: 'Тизим роли',
+      login: 'Кириш',
+      register: "Рўйхатдан ўтиш",
+      wishlist: 'Севимлилар',
+      cart: 'Сават',
+      trendTitle: 'Трендда:',
+      weekDiscounts: 'Ҳафта чегирмалари',
+      searchLiveTitle: 'Кўп тилли қидирув натижалари:',
+      seeAllInCatalog: 'Барча натижаларни каталогда кўриш',
+      noResultsFor: 'бўйича маҳсулот топилмади',
+      historyOrders: 'Буюртмаларим тарихи',
+      productsAndStock: 'Маҳсулотлар ва омбор',
+      operatorOrders: 'Оператор буюртмалари',
+      adminPanel: 'Админ бошқарув панели',
+      logout: 'Тизимдан чиқиш',
+      selectLanguage: 'Тилни танланг',
+      langLabel: 'тил / язык'
+    },
+    catalog: {
+      dealOfTheDay: 'КУН ТОВАРИ',
+      addToCart: 'Саватга',
+      discountOff: 'Чегирма',
+      purchases: 'харид',
+      rated: 'та баҳоланган',
+      trustPillars: {
+        oneDayTitle: '1 Кунда Етказиш',
+        oneDayDesc: 'Ўзбекистон бўйлаб 24 соатда',
+        originalTitle: '100% Оригинал Сифат',
+        originalDesc: 'Расмий кафолат & сифат назорати',
+        returnsTitle: '14 Кун Қайтариш',
+        returnsDesc: 'Осон ва муаммосиз алмаштириш',
+        installmentTitle: 'Қулай Муддатли Тўлов',
+        installmentDesc: '0-0-12 Payme, Uzum Nasiya'
+      },
+      slides: [
+        {
+          badge: '🔥 БАҲОРИЙ МЕГА ЧЕГИРМАЛАР',
+          title: '50% гача Супер Чегирмалар',
+          subtitle: 'Энг сара смартфонлар, ноутбуклар ва гаджетларга расмий кафолат билан махсус нархлар!',
+          ctaText: 'Харид қилиш',
+          highlight: 'Кафолатланган чегирма'
+        },
+        {
+          badge: '⚡ 1 КУНДА ЕТКАЗИШ • 100% БЕПУЛ',
+          title: 'Бутун Ўзбекистон Бўйлаб Етказиш',
+          subtitle: 'Бугун харид қилинг — эртага остонангизда қабул қилинг. Тезкор курьерлик хизмати!',
+          ctaText: 'Каталогни кўриш',
+          highlight: '24 соатда етказиш'
+        },
+        {
+          badge: '✨ ЯНГИ МАВСУМ ТРЕНДЛАРИ',
+          title: 'Замонавий Кийим & Поябзаллар',
+          subtitle: 'Эркаклар ва аёллар учун янги мавсум коллекцияси: бежирим услуб ва юқори қулайлик!',
+          ctaText: 'Коллекцияни танлаш',
+          highlight: 'Янги коллекция'
+        },
+        {
+          badge: '💳 0-0-12 МУДДАТЛИ ТЎЛОВ',
+          title: 'Бошланғич Тўловсиз Бўлиб Тўлаш',
+          subtitle: 'Ортиқча фоизсиз ва ҳужжатларсиз 12 ойгача қулай муддатли харид имконияти!',
+          ctaText: 'Барчасини кўриш',
+          highlight: '0% Бошланғич тўлов'
+        }
+      ],
+      sort: {
+        label: 'Саралаш',
+        popular: 'Саралаш: Оммабоп',
+        mostBought: 'Кўп харид қилинган',
+        rating: 'Рейтинг бўйича',
+        priceAsc: 'Арзондан қимматга',
+        priceDesc: 'Қимматдан арзонга',
+        discount: 'Катта чегирмалар'
+      },
+      priceFilter: {
+        title: 'Нарх ($):',
+        from: 'Дан',
+        to: 'Гача',
+        clearFilter: 'Фильтрни тозалаш'
+      },
+      empty: {
+        title: 'Ҳеч қандай маҳсулот топилмади',
+        desc: 'Қидирув параметрларини ўзгартириб кўринг ёки фильтрларни тозаланг.',
+        btn: 'Фильтрларни тозалаш'
+      },
+      pagination: {
+        prev: 'Олдинги',
+        next: 'Кейинги',
+        page: 'Саҳифа'
+      }
+    },
+    filters: {
+      title: 'Фильтрлар',
+      clearAll: 'Тозалаш',
+      categories: 'Туркумлар',
+      allGoods: 'Барча товарлар',
+      priceRange: 'Нарх оралиғи ($)',
+      from: 'Дан',
+      to: 'Гача',
+      applyPrice: 'Нархни қўллаш',
+      upTo100: '$100 гача',
+      range100_500: '$100 - $500',
+      range500_1000: '$500 - $1,000',
+      above1000: '$1,000 дан юқори',
+      specialOffers: 'Махсус таклифлар',
+      onlyDiscounted: 'Фақат чегирмадаги товарлар',
+      onlyInStock: 'Фақат омборда борлар',
+      highRating: '4.8+ юқори рейтинг',
+      searchResultsTitle: '🔍 Қидирув натижалари',
+      allCatalogTitle: '⚡ Барча Маҳсулотлар',
+      allDiscountsTitle: '🔥 Чегирмадаги барча товарлар',
+      searchSubtext: 'сўрови бўйича сара натижалар',
+      activeFilters: 'Фаол фильтрлар:',
+      searchCatalogPlaceholder: 'Каталог ичидан қидириш (номи, бренди, модели, тоифаси)...',
+      showResults: 'Натижалар',
+      perPage: 'Саҳифада:',
+      clearAllBtn: 'Барчасини ўчириш',
+      priceBadge: 'Нарх:',
+      searchBadge: 'Қидирув:',
+      ratingBadge: 'Рейтинг',
+      errorTitle: 'Маълумотларни юклашда хатолик юз берди',
+      errorDesc: 'Илтимос, қайта уриниб кўринг ёки саҳифани янгиланг.',
+      noResultsTitle: 'Мос маҳсулотлар топилмади',
+      noResultsDesc: 'Қидирув сўзини ёки белгиланган фильтрларни юмшатиб кўринг.',
+      clearAllFiltersBtn: 'Барча фильтрларни тозалаш'
+    },
+    product: {
+      inStock: 'Мавжуд',
+      outOfStock: 'Тугаган',
+      leftInStock: 'та қолди',
+      oneDay: '1 кунда',
+      installment: 'ойига',
+      addToCart: 'Саватга',
+      inCart: 'Саватда',
+      maxInCart: 'Максимал захира',
+      notAvailable: 'Сотувда йўқ',
+      addedToast: 'саватга қўшилди!',
+      wishlistAddedToast: 'севимлиларга қўшилди!',
+      wishlistRemovedToast: 'севимлилардан олиб ташланди',
+      description: 'Тавсиф:',
+      stockStatus: 'Омбор ҳолати:',
+      guarantee24h: '24 соат ичида бутун Ўзбекистон бўйлаб етказиш',
+      guarantee12m: '12 ойлик расмий кафолат ва сервис хизмати',
+      quantity: 'Миқдор:',
+      addToWishlist: 'Севимлиларга қўшиш',
+      removeFromWishlist: 'Севимлилардан ўчириш'
+    },
+    cart: {
+      title: 'Саватча',
+      emptyTitle: 'Саватчангиз бўш',
+      emptyDesc: 'Каталогдош маҳсулотлардан ўзингизга маъқулларини танлаб, саватчага қўшишингиз мумкин.',
+      goToCatalog: 'Каталогга ўтиш',
+      itemsCount: 'Маҳсулотлар сони:',
+      delivery: 'Етказиб бериш:',
+      deliveryFree: 'Бепул (Аксия)',
+      total: 'Жами сумма:',
+      checkout: 'Буюртма бериш',
+      maxStockWarning: 'Омбордаги бор миқдорга етилди'
+    },
+    wishlist: {
+      breadcrumb: 'Севимлилар',
+      title: 'Севимли Маҳсулотларим',
+      goodsCount: 'та товар',
+      desc: 'Сиз танлаган ва кейинроқ сотиб олиш учун сақлаб қўйилган маҳсулотлар',
+      addAllToCart: 'Барчасини саватга қўшиш',
+      clearAll: 'Тозалаш',
+      emptyTitle: 'Севимлилар рўйхатингиз бўш',
+      emptyDesc: 'Сиз ҳали бирорта ҳам маҳсулотни севимлилар рўйхатига қўшмадингиз.',
+      exploreCatalog: 'Маҳсулотларни кўриш',
+      recommendedGoods: 'Сизга маъқул келиши мумкин бўлган товарлар',
+      confirmClear: 'Барча севимли маҳсулотларни рўйхатдан ўчирмоқчимисиз?',
+      clearedToast: 'Севимлилар рўйхати тозаланди',
+      addedAllToast: 'та маҳсулот саватчага қўшилди!'
+    },
+    orders: {
+      title: 'Менинг Буюртмаларим',
+      desc: 'Барча буюртмаларингиз ва уларнинг етказиб берилиш ҳолатини реал вақтда кузатиб боринг.',
+      emptyTitle: 'Сизда ҳали буюртмалар мавжуд эмас',
+      emptyDesc: 'Каталогимиздаги замонавий маҳсулотларни кўздан кечириб, биринчи буюртмангизни беринг!',
+      goToCatalog: 'Каталогга ўтиш',
+      orderNo: 'Буюртма',
+      status: 'Ҳолат:',
+      deliveryAddress: 'Етказиш манзили:',
+      totalPrice: 'Жами нархи:',
+      totalPay: 'Жами тўлов:',
+      datePlaced: 'Расмийлаштирилган сана:',
+      stepperTitle: 'Буюртма Ҳаракати',
+      orderedGoods: 'Буюртма қилинган товарлар:',
+      deliveryInfo: 'Етказиб бериш маълумотлари:',
+      recipient: 'Қабул қилувчи',
+      cancelledAlert: 'Ушбу буюртма бекор қилинган. Қўшимча маълумот учун операторимизга мурожаат қилинг.',
+      steps: {
+        pending: 'Кутилмоқда',
+        confirmed: 'Тасдиқланди',
+        shipped: 'Йўлда',
+        delivered: 'Етказилди',
+        cancelled: 'Бекор қилинган'
+      }
+    },
+    footer: {
+      tagline: 'Технология ва ҳаёт учун',
+      aboutText: 'UzShop — электрон тижорат жараёнларини (маҳсулотлар каталоги, саватча, буюртмалар оқими, омбор ва ходимлар бошқаруви) тўлиқ автоматлаштирувчи замонавий веб-платформа.',
+      catalogTitle: 'Каталог',
+      rolesTitle: 'Тизим Роллари (RBAC)',
+      contactTitle: 'Алоқа & Манзил',
+      address: 'Тошкент ш., Чилонзор 5-мавзе',
+      workingHours: 'Ҳар куни 09:00 дан 21:00 гача',
+      rights: 'Барча ҳуқуқлар ҳимояланган.',
+      supportTitle: 'Оператор кўмаги',
+      supportDesc: 'Ҳар куни 09:00 дан 21:00 гача'
+    }
+  }
+};

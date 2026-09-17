@@ -1,9 +1,15 @@
 import React from 'react';
-import { Navigate, useLocation, Link } from 'react-router-dom';
+import { Navigate, useLocation, Link, Outlet } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 import { RoleBadge } from './RoleBadge';
-import { ShieldAlert, ArrowLeft, Home } from 'lucide-react';
+import { ShieldAlert, Home } from 'lucide-react';
 
+/**
+ * ProtectedRoute guards routes for authenticated users and specific roles.
+ * - Redirects unauthenticated users to /login preserving the requested path.
+ * - Shows 403 Forbidden for unauthorized roles (Admin has universal access).
+ * - Supports both `<ProtectedRoute>{children}</ProtectedRoute>` and layout routes with `<Outlet />`.
+ */
 export const ProtectedRoute = ({ children, allowedRoles = [] }) => {
   const { user, isAuthenticated } = useAuthStore();
   const location = useLocation();
@@ -12,12 +18,17 @@ export const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Check if role is allowed
-  if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
+  // Check if role is allowed. Admin has universal access.
+  const isAllowed =
+    allowedRoles.length === 0 ||
+    allowedRoles.includes(user.role) ||
+    user.role === 'Admin';
+
+  if (!isAllowed) {
     return (
       <div className="min-h-[75vh] flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200 shadow-xl text-center">
-          <div className="w-16 h-16 bg-rose-50 border border-rose-200 rounded-2xl flex items-center justify-center mx-auto mb-5 text-rose-600">
+        <div className="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200 shadow-xl text-center animate-fade-in">
+          <div className="w-16 h-16 bg-rose-50 border border-rose-200 rounded-2xl flex items-center justify-center mx-auto mb-5 text-rose-600 shadow-inner">
             <ShieldAlert className="w-8 h-8" />
           </div>
 
@@ -71,5 +82,27 @@ export const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     );
   }
 
-  return children;
+  return children ? children : <Outlet />;
+};
+
+/**
+ * GuestRoute ensures pages like /login and /register are only accessible to non-authenticated visitors.
+ * If already logged in, redirects to the role's appropriate home or the previous path.
+ */
+export const GuestRoute = ({ children }) => {
+  const { user, isAuthenticated } = useAuthStore();
+  const location = useLocation();
+
+  if (isAuthenticated && user) {
+    const from = location.state?.from?.pathname;
+    if (from && from !== '/login' && from !== '/register') {
+      return <Navigate to={from} replace />;
+    }
+    if (user.role === 'Admin') return <Navigate to="/admin" replace />;
+    if (user.role === 'Manager') return <Navigate to="/manager" replace />;
+    if (user.role === 'CallCenter') return <Navigate to="/callcenter" replace />;
+    return <Navigate to="/" replace />;
+  }
+
+  return children ? children : <Outlet />;
 };

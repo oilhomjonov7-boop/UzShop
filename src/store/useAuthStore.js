@@ -4,15 +4,9 @@ import { persist } from 'zustand/middleware';
 export const useAuthStore = create(
   persist(
     (set, get) => ({
-      user: {
-        id: 4,
-        email: "ali@uzshop.uz",
-        role: "User",
-        name: "Ali Valiyev",
-        phone: "+998991234567"
-      },
-      token: "mock-jwt-token-user-4",
-      isAuthenticated: true,
+      user: null,
+      token: null,
+      isAuthenticated: false,
 
       login: (userData, token) => {
         set({
@@ -38,9 +32,30 @@ export const useAuthStore = create(
         });
       },
 
+      syncProfile: async () => {
+        const currentUser = get().user;
+        if (!currentUser?.email) return;
+
+        try {
+          const res = await fetch(`http://localhost:5001/users?email=${encodeURIComponent(currentUser.email)}`);
+          if (res.ok) {
+            const data = await res.json();
+            const fresh = Array.isArray(data) && data.length > 0 ? data[0] : (data?.email ? data : null);
+            if (fresh) {
+              const { password: _, ...cleanUser } = fresh;
+              set({ user: cleanUser, isAuthenticated: true });
+              return cleanUser;
+            }
+          }
+        } catch (err) {
+          // Keep current state when offline
+        }
+      },
+
       hasRole: (allowedRoles) => {
         const currentUser = get().user;
         if (!currentUser) return false;
+        if (currentUser.role === 'Admin') return true;
         if (Array.isArray(allowedRoles)) {
           return allowedRoles.includes(currentUser.role);
         }

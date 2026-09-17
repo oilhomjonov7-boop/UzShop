@@ -4,6 +4,8 @@ import { ordersApi } from '../../api/client';
 import { useAuthStore } from '../../store/useAuthStore';
 import { formatCurrency, formatUZS, formatDate, ORDER_STATUSES } from '../../utils/formatters';
 import { TableSkeleton } from '../../components/common/SkeletonLoader';
+import { handleImageError } from '../../utils/imageFallback';
+import { useTranslation } from '../../utils/useTranslation';
 import {
   Package,
   Clock,
@@ -18,15 +20,27 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const TIMELINE_STEPS = [
-  { key: 'Pending', label: 'Kutilmoqda', icon: Clock },
-  { key: 'Confirmed', label: 'Tasdiqlandi', icon: CheckCircle2 },
-  { key: 'Shipped', label: "Yo'lda", icon: Truck },
-  { key: 'Delivered', label: 'Yetkazildi', icon: Package },
-];
-
 export const MyOrdersPage = () => {
+  const { t } = useTranslation();
   const { user } = useAuthStore();
+
+  const TIMELINE_STEPS = [
+    { key: 'Pending', label: t('orders.steps.pending'), icon: Clock },
+    { key: 'Confirmed', label: t('orders.steps.confirmed'), icon: CheckCircle2 },
+    { key: 'Shipped', label: t('orders.steps.shipped'), icon: Truck },
+    { key: 'Delivered', label: t('orders.steps.delivered'), icon: Package },
+  ];
+
+  const getStatusLabel = (status) => {
+    switch (status) {
+      case 'Pending': return t('orders.steps.pending');
+      case 'Confirmed': return t('orders.steps.confirmed');
+      case 'Shipped': return t('orders.steps.shipped');
+      case 'Delivered': return t('orders.steps.delivered');
+      case 'Cancelled': return t('orders.steps.cancelled');
+      default: return status;
+    }
+  };
 
   const { data: orders = [], isLoading, isError } = useQuery({
     queryKey: ['orders', 'my-orders', user?.id],
@@ -49,9 +63,9 @@ export const MyOrdersPage = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900">Mening Buyurtmalarim</h1>
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900">{t('orders.title')}</h1>
         <p className="text-xs sm:text-sm text-slate-500 mt-1">
-          Barcha buyurtmalaringiz va ularning yetkazib berilish holatini real vaqtda kuzatib boring.
+          {t('orders.desc')}
         </p>
       </div>
 
@@ -60,24 +74,24 @@ export const MyOrdersPage = () => {
       ) : isError ? (
         <div className="text-center py-12 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
           <AlertCircle className="w-10 h-10 text-rose-500 mx-auto mb-2" />
-          <h3 className="text-base font-bold text-slate-900">Buyurtmalarni yuklab bo'lmadi</h3>
-          <p className="text-xs text-slate-500 mt-1">Iltimos, internet aloqasini tekshiring.</p>
+          <h3 className="text-base font-bold text-slate-900">Xatolik yuz berdi</h3>
+          <p className="text-xs text-slate-500 mt-1">Iltimos, qayta urinib ko'ring.</p>
         </div>
       ) : orders.length === 0 ? (
         <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
           <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-3">
             <Package className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-slate-800">Sizda hali buyurtmalar mavjud emas</h3>
+          <h3 className="text-lg font-bold text-slate-800">{t('orders.emptyTitle')}</h3>
           <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-            Katalogimizdagi zamonaviy mahsulotlarni ko'zdan kechirib, birinchi buyurtmangizni bering!
+            {t('orders.emptyDesc')}
           </p>
           <Link
             to="/"
             className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold shadow-md transition"
           >
             <ShoppingBag className="w-4 h-4" />
-            <span>Katalogga o'tish</span>
+            <span>{t('orders.goToCatalog')}</span>
           </Link>
         </div>
       ) : (
@@ -100,20 +114,20 @@ export const MyOrdersPage = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-extrabold text-sm text-slate-900">Buyurtma #{order.id}</h3>
+                        <h3 className="font-extrabold text-sm text-slate-900">{t('orders.orderNo')} #{order.id}</h3>
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${statusConfig.badgeClass}`}>
                           <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${statusConfig.dotClass}`}></span>
-                          {statusConfig.label}
+                          {getStatusLabel(order.status)}
                         </span>
                       </div>
                       <span className="text-[11px] text-slate-400 block mt-0.5">
-                        Rasmiylashtirilgan sana: {formatDate(order.createdAt)}
+                        {t('orders.datePlaced')} {formatDate(order.createdAt)}
                       </span>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-xs text-slate-400 block font-medium">Jami to'lov:</span>
+                    <span className="text-xs text-slate-400 block font-medium">{t('orders.totalPay')}</span>
                     <span className="text-base font-black text-brand-600 block">
                       {formatCurrency(order.totalAmount)}
                     </span>
@@ -126,13 +140,13 @@ export const MyOrdersPage = () => {
                 {/* Visual Timeline Stepper */}
                 <div className="p-5 sm:p-6 border-b border-slate-100">
                   <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
-                    Buyurtma Harakati
+                    {t('orders.stepperTitle')}
                   </h4>
 
                   {isCancelled ? (
                     <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl flex items-center gap-2.5 text-rose-700 text-xs">
                       <XCircle className="w-5 h-5 flex-shrink-0" />
-                      <span>Ushbu buyurtma bekor qilingan. Qo'shimcha ma'lumot uchun operatorimizga murojaat qiling.</span>
+                      <span>{t('orders.cancelledAlert')}</span>
                     </div>
                   ) : (
                     <div className="relative">
@@ -187,19 +201,20 @@ export const MyOrdersPage = () => {
                 <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/30">
                   {/* Items list */}
                   <div>
-                    <h5 className="text-xs font-bold text-slate-700 mb-3">Buyurtma qilingan tovarlar:</h5>
+                    <h5 className="text-xs font-bold text-slate-700 mb-3">{t('orders.orderedGoods')}</h5>
                     <div className="space-y-2.5">
                       {order.items?.map((item, i) => (
                         <div key={i} className="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-100">
                           <img
                             src={item.image}
                             alt={item.title}
+                            onError={(e) => handleImageError(e, item.title)}
                             className="w-12 h-12 rounded-lg object-cover border border-slate-200"
                           />
                           <div className="flex-1 min-w-0">
                             <h6 className="text-xs font-bold text-slate-900 truncate">{item.title}</h6>
                             <p className="text-[11px] text-slate-500">
-                              {item.quantity} dona × {formatCurrency(item.price)}
+                              {item.quantity} {t('common.itemsCount')} × {formatCurrency(item.price)}
                             </p>
                           </div>
                           <span className="text-xs font-extrabold text-slate-900">
@@ -213,7 +228,7 @@ export const MyOrdersPage = () => {
                   {/* Customer details */}
                   <div className="bg-white p-4 rounded-2xl border border-slate-100 flex flex-col justify-between">
                     <div>
-                      <h5 className="text-xs font-bold text-slate-700 mb-2.5">Yetkazib berish ma'lumotlari:</h5>
+                      <h5 className="text-xs font-bold text-slate-700 mb-2.5">{t('orders.deliveryInfo')}</h5>
                       <div className="space-y-2 text-xs text-slate-600">
                         <div className="flex items-center gap-2">
                           <MapPin className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
@@ -225,7 +240,7 @@ export const MyOrdersPage = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                          <span>Qabul qiluvchi: {order.customerInfo?.name}</span>
+                          <span>{t('orders.recipient')}: {order.customerInfo?.name}</span>
                         </div>
                       </div>
                     </div>

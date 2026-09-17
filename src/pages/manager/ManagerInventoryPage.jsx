@@ -4,6 +4,7 @@ import { productsApi, categoriesApi } from '../../api/client';
 import { formatCurrency, formatUZS } from '../../utils/formatters';
 import { TableSkeleton } from '../../components/common/SkeletonLoader';
 import { showToast } from '../../components/common/Toast';
+import { handleImageError } from '../../utils/imageFallback';
 import {
   Boxes,
   Plus,
@@ -234,14 +235,14 @@ export const ManagerInventoryPage = () => {
 
       {/* Filter Toolbar */}
       <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-6 shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
-        <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+        <div className="relative w-full md:w-88">
+          <Search className="w-4.5 h-4.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Mahsulot nomi bo'yicha qidiruv..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"
+            className="w-full pl-10 pr-4 py-2.5 sm:py-3 text-sm rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 outline-none transition-all shadow-xs"
           />
         </div>
 
@@ -310,6 +311,7 @@ export const ManagerInventoryPage = () => {
                           <img
                             src={product.image}
                             alt={product.title}
+                            onError={(e) => handleImageError(e, product.title)}
                             className="w-12 h-12 rounded-xl object-cover border border-slate-200 flex-shrink-0"
                           />
                           <div>
