@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
+import { useCartStore } from '../../store/useCartStore';
 import { authApi } from '../../api/client';
 import { showToast } from '../../components/common/Toast';
 import { ShoppingBag, Mail, Lock, User, Phone, ArrowRight } from 'lucide-react';
@@ -17,6 +18,9 @@ export const RegisterPage = () => {
 
   const { login } = useAuthStore();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from || '/';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +40,12 @@ export const RegisterPage = () => {
 
       login(res.user, res.token);
       showToast.success(`Xush kelibsiz, ${res.user.name}! Hisobingiz yaratildi.`);
-      navigate('/');
+      
+      const cartItems = useCartStore.getState().items;
+      if (cartItems.length > 0) {
+        useCartStore.getState().setIsCartOpen(true);
+      }
+      navigate(from !== '/login' && from !== '/register' ? from : '/', { replace: true });
     } catch (err) {
       showToast.error(err.message || "Ro'yxatdan o'tishda xatolik yuz berdi");
     } finally {

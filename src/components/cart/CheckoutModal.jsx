@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { showToast } from '../common/Toast';
 import confetti from 'canvas-confetti';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from '../../utils/useTranslation';
 import {
   X,
   CreditCard,
@@ -17,10 +18,12 @@ import {
   CheckCircle2,
   Package,
   ShieldCheck,
-  ArrowRight
+  ArrowRight,
+  Lock
 } from 'lucide-react';
 
 export const CheckoutModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const { items, getTotalPrice, clearCart, setIsCartOpen } = useCartStore();
   const { user, isAuthenticated } = useAuthStore();
   const queryClient = useQueryClient();
@@ -67,6 +70,46 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
+  if (!isAuthenticated || !user) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div
+          onClick={onClose}
+          className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+        />
+        <div className="relative bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-100 z-10 animate-slide-up space-y-4">
+          <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto">
+            <Lock className="w-7 h-7" />
+          </div>
+          <h3 className="text-xl font-black text-slate-900">{t('auth.authRequiredTitle')}</h3>
+          <p className="text-xs text-slate-500 leading-relaxed">{t('auth.authRequiredDesc')}</p>
+          <div className="flex gap-2.5 pt-2">
+            <button
+              onClick={() => {
+                onClose();
+                setIsCartOpen(false);
+                navigate('/login');
+              }}
+              className="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition cursor-pointer"
+            >
+              {t('auth.loginBtn')}
+            </button>
+            <button
+              onClick={() => {
+                onClose();
+                setIsCartOpen(false);
+                navigate('/register');
+              }}
+              className="flex-1 py-3 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs transition cursor-pointer"
+            >
+              {t('auth.registerBtn')}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -76,7 +119,7 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
     }
 
     const orderPayload = {
-      userId: user ? user.id : 4, // Default to demo user if guest
+      userId: user.id,
       items: items.map(i => ({
         productId: i.product.id,
         title: i.product.title,

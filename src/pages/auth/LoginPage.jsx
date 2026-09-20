@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
+import { useCartStore } from '../../store/useCartStore';
 import { authApi } from '../../api/client';
 import { showToast } from '../../components/common/Toast';
 import {
@@ -32,7 +33,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || location.state?.from || '/';
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +43,12 @@ export const LoginPage = () => {
       const res = await authApi.login({ email, password });
       login(res.user, res.token);
       showToast.success(`Xush kelibsiz, ${res.user.name}!`, "Tizimga muvaffaqiyatli kirildi");
+
+      // Re-open cart if user has pending items to purchase
+      const cartItems = useCartStore.getState().items;
+      if (cartItems.length > 0 && res.user.role === 'User') {
+        useCartStore.getState().setIsCartOpen(true);
+      }
 
       // Redirect depending on role
       if (from !== '/' && from !== '/login') {

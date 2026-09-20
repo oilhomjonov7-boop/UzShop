@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 import { useAuthStore } from '../../store/useAuthStore';
 import { formatCurrency, formatUZS } from '../../utils/formatters';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, Lock } from 'lucide-react';
 import { CheckoutModal } from './CheckoutModal';
+import { AuthRequiredModal } from '../auth/AuthRequiredModal';
 import { Link } from 'react-router-dom';
 import { handleImageError } from '../../utils/imageFallback';
 import { useTranslation } from '../../utils/useTranslation';
 
 export const CartDrawer = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { items, isCartOpen, setIsCartOpen, updateQuantity, removeItem, getTotalPrice, getTotalCount } = useCartStore();
   const { isAuthenticated } = useAuthStore();
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isAuthRequiredOpen, setIsAuthRequiredOpen] = useState(false);
 
   if (!isCartOpen) return null;
 
@@ -20,7 +25,11 @@ export const CartDrawer = () => {
   const count = getTotalCount();
 
   const handleOpenCheckout = () => {
-    setIsCheckoutOpen(true);
+    if (!isAuthenticated) {
+      setIsAuthRequiredOpen(true);
+    } else {
+      setIsCheckoutOpen(true);
+    }
   };
 
   return (
@@ -174,10 +183,45 @@ export const CartDrawer = () => {
                   </div>
                 </div>
 
+                {!isAuthenticated && (
+                  <div className="p-3 bg-amber-50/90 border border-amber-200/80 rounded-2xl flex items-start gap-2.5">
+                    <Lock className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] text-amber-900 leading-snug font-medium">
+                        {t('auth.guestNotice')}
+                      </p>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsCartOpen(false);
+                            navigate('/login', { state: { from: location.pathname } });
+                          }}
+                          className="text-xs font-bold text-amber-900 hover:text-emerald-700 underline cursor-pointer"
+                        >
+                          {t('auth.loginBtn')}
+                        </button>
+                        <span className="text-[10px] text-amber-400">•</span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsCartOpen(false);
+                            navigate('/register', { state: { from: location.pathname } });
+                          }}
+                          className="text-xs font-bold text-amber-900 hover:text-emerald-700 underline cursor-pointer"
+                        >
+                          {t('auth.registerBtn')}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <button
                   onClick={handleOpenCheckout}
-                  className="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2 transition transform active:scale-98"
+                  className="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2 transition transform active:scale-98 cursor-pointer"
                 >
+                  {!isAuthenticated && <Lock className="w-4 h-4" />}
                   <span>{t('cart.checkout')}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
@@ -187,13 +231,19 @@ export const CartDrawer = () => {
         </div>
       </div>
 
-      {/* Checkout Modal */}
+      {/* Checkout Modal (Authenticated) */}
       {isCheckoutOpen && (
         <CheckoutModal
           isOpen={isCheckoutOpen}
           onClose={() => setIsCheckoutOpen(false)}
         />
       )}
+
+      {/* Auth Required Modal (Guest) */}
+      <AuthRequiredModal
+        isOpen={isAuthRequiredOpen}
+        onClose={() => setIsAuthRequiredOpen(false)}
+      />
     </>
   );
 };

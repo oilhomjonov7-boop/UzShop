@@ -1684,6 +1684,76 @@
           "note": "Mijozga muvaffaqiyatli yetkazildi"
         }
       ]
+    },
+    {
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-101",
+          "title": "iPhone 15 Pro Max",
+          "quantity": 1,
+          "price": 1350,
+          "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1350,
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "egw",
+        "phone": "+998",
+        "address": "dw",
+        "note": ""
+      },
+      "id": "sI-s_jYJTU4",
+      "status": "Cancelled",
+      "createdAt": "2026-09-17T14:49:09.648Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-17T14:49:09.648Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Cancelled",
+          "date": "2026-09-17T14:52:31.648Z",
+          "note": "Operator tomonidan bekor qilindi"
+        }
+      ]
+    },
+    {
+      "userId": 4,
+      "items": [
+        {
+          "productId": "prod-102",
+          "title": "Samsung Galaxy S24 Ultra",
+          "quantity": 1,
+          "price": 1250,
+          "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "totalAmount": 1250,
+      "paymentMethod": "Payme",
+      "customerInfo": {
+        "name": "h",
+        "phone": "+998",
+        "address": "gh",
+        "note": ""
+      },
+      "id": "C-491KXee68",
+      "status": "Cancelled",
+      "createdAt": "2026-09-17T14:56:20.978Z",
+      "history": [
+        {
+          "status": "Pending",
+          "date": "2026-09-17T14:56:20.978Z",
+          "note": "Buyurtma muvaffaqiyatli qabul qilindi"
+        },
+        {
+          "status": "Cancelled",
+          "date": "2026-09-17T15:16:43.087Z",
+          "note": "Operator tomonidan bekor qilindi"
+        }
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

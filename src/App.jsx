@@ -4,6 +4,7 @@ import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
 import { CartDrawer } from './components/cart/CartDrawer';
 import { ToastContainer } from './components/common/Toast';
+import { PeriodicAuthReminder } from './components/auth/PeriodicAuthReminder';
 import { ProtectedRoute, GuestRoute } from './components/auth/ProtectedRoute';
 import { useAuthStore } from './store/useAuthStore';
 
@@ -115,6 +116,7 @@ export function App() {
       <Footer />
       <CartDrawer />
       <ToastContainer />
+      <PeriodicAuthReminder />
     </div>
   );
 }

@@ -370,6 +370,21 @@ export const TRANSLATIONS = {
       rights: 'Barcha huquqlar himoyalangan.',
       supportTitle: "Operator ko'magi",
       supportDesc: 'Har kuni 09:00 dan 21:00 gacha'
+    },
+    auth: {
+      authRequiredTitle: 'Xarid qilish uchun tizimga kiring',
+      authRequiredDesc: "Buyurtmani rasmiylashtirish va yetkazib berish jarayonini kuzatib borish uchun hisobingizga kiring yoki yangi ro'yxatdan o'ting.",
+      loginBtn: 'Tizimga kirish',
+      registerBtn: "Ro'yxatdan o'tish",
+      guestNotice: "Narsalarni bemalol ko'rishingiz mumkin, ammo sotib olish uchun tizimga kirish talab etiladi.",
+      continueBrowsing: "Tovarlarni ko'rishda davom etish",
+      benefit1: "24 soat ichida butun O'zbekiston bo'ylab yetkazish",
+      benefit2: "Buyurtmalar tarixini real vaqtda kuzatib borish",
+      benefit3: "0-0-12 Muddatli to'lov va rasmiy kafolat",
+      reminderTitle: "Tizimga kiring yoki ro'yxatdan o'ting!",
+      reminderDesc: "Xaridlardan to'liq foydalanish va buyurtma berish uchun tizimga kiring yoki yangi hisob oching.",
+      reminderLater: "Keyinroq",
+      reminderBadge: "30 soniyalik eslatma"
     }
   },
 
@@ -621,6 +636,21 @@ export const TRANSLATIONS = {
       rights: 'Все права защищены.',
       supportTitle: 'Поддержка оператора',
       supportDesc: 'Ежедневно с 09:00 до 21:00'
+    },
+    auth: {
+      authRequiredTitle: 'Войдите для оформления покупки',
+      authRequiredDesc: 'Чтобы оформить заказ и отслеживать статус доставки, войдите в свой профиль или зарегистрируйтесь.',
+      loginBtn: 'Войти в аккаунт',
+      registerBtn: 'Зарегистрироваться',
+      guestNotice: 'Вы можете свободно просматривать товары, но для покупки необходимо войти или зарегистрироваться.',
+      continueBrowsing: 'Продолжить просмотр товаров',
+      benefit1: 'Быстрая доставка по всему Узбекистану за 24 часа',
+      benefit2: 'Отслеживание статуса заказов в реальном времени',
+      benefit3: '0-0-12 Рассрочка платежа и официальная гарантия',
+      reminderTitle: 'Войдите или зарегистрируйтесь!',
+      reminderDesc: 'Чтобы в полной мере пользоваться возможностями UzShop и совершать покупки, войдите в аккаунт или зарегистрируйтесь.',
+      reminderLater: 'Позже',
+      reminderBadge: 'Напоминание (30 сек)'
     }
   },
 
@@ -872,6 +902,21 @@ export const TRANSLATIONS = {
       rights: 'All rights reserved.',
       supportTitle: 'Operator Support',
       supportDesc: 'Every day from 09:00 to 21:00'
+    },
+    auth: {
+      authRequiredTitle: 'Log in to complete purchase',
+      authRequiredDesc: 'To place an order and track your delivery, please log in to your account or create a new one.',
+      loginBtn: 'Log In',
+      registerBtn: 'Register',
+      guestNotice: 'You can freely browse items, but logging in or registering is required to purchase.',
+      continueBrowsing: 'Continue browsing products',
+      benefit1: 'Fast 24h delivery across Uzbekistan',
+      benefit2: 'Real-time order tracking and history',
+      benefit3: '0-0-12 Installment plans and official warranty',
+      reminderTitle: 'Log in or Register!',
+      reminderDesc: 'To enjoy all features of UzShop and make purchases, please log in to your account or create a new one.',
+      reminderLater: 'Later',
+      reminderBadge: '30-sec reminder'
     }
   },
 
@@ -1123,6 +1168,21 @@ export const TRANSLATIONS = {
       rights: 'Барча ҳуқуқлар ҳимояланган.',
       supportTitle: 'Оператор кўмаги',
       supportDesc: 'Ҳар куни 09:00 дан 21:00 гача'
+    },
+    auth: {
+      authRequiredTitle: 'Харид қилиш учун тизимга киринг',
+      authRequiredDesc: 'Буюртмани расмийлаштириш ва етказиб бериш жараёнини кузатиб бориш учун ҳисобингизга киринг ёки янги рўйхатдан ўтинг.',
+      loginBtn: 'Тизимга кириш',
+      registerBtn: 'Рўйхатдан ўтиш',
+      guestNotice: 'Нарсаларни бемалол кўришингиз мумкин, аммо сотиб олиш учун тизимга кириш талаб этилади.',
+      continueBrowsing: 'Товарларни кўришда давом этиш',
+      benefit1: '24 соат ичида бутун Ўзбекистон бўйлаб етказиш',
+      benefit2: 'Буюртмалар тарихини реал вақтда кузатиб бориш',
+      benefit3: '0-0-12 Муддатли тўлов ва расмий кафолат',
+      reminderTitle: 'Тизимга киринг ёки рўйхатдан ўтинг!',
+      reminderDesc: 'UzShop имкониятларидан тўлиқ фойдаланиш ва харид қилиш учун ҳисобингизга киринг ёки рўйхатдан ўтинг.',
+      reminderLater: 'Кейинроқ',
+      reminderBadge: '30 сониялик эслатма'
     }
   }
 };
