@@ -9,56 +9,106 @@ const STORAGE_KEY = 'uzshop_database';
 const getLocalDb = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_DATA));
-      return INITIAL_DATA;
+    let parsed = null;
+    if (raw) {
+      try {
+        parsed = JSON.parse(raw);
+      } catch (e) {
+        parsed = null;
+      }
     }
-    const parsed = JSON.parse(raw);
-    if (parsed && Array.isArray(parsed.users)) {
-      const adminUser = INITIAL_DATA.users.find(u => u.role === 'Admin');
+
+    if (!parsed || typeof parsed !== 'object') {
+      const initial = {
+        users: Array.isArray(INITIAL_DATA.users) ? [...INITIAL_DATA.users] : [],
+        categories: Array.isArray(INITIAL_DATA.categories) ? [...INITIAL_DATA.categories] : [],
+        products: Array.isArray(INITIAL_DATA.products) ? [...INITIAL_DATA.products] : [],
+        orders: Array.isArray(INITIAL_DATA.orders) ? [...INITIAL_DATA.orders] : []
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+      return initial;
+    }
+
+    let needsSave = false;
+
+    if (!Array.isArray(parsed.orders)) {
+      parsed.orders = Array.isArray(INITIAL_DATA.orders) ? [...INITIAL_DATA.orders] : [];
+      needsSave = true;
+    }
+
+    if (!Array.isArray(parsed.users)) {
+      parsed.users = Array.isArray(INITIAL_DATA.users) ? [...INITIAL_DATA.users] : [];
+      needsSave = true;
+    } else {
+      const adminUser = INITIAL_DATA.users?.find(u => u.role === 'Admin');
       const idx = parsed.users.findIndex(u => u.role === 'Admin' || u.email === 'admin@uzshop.uz' || u.email === 'oilhomjonov7@gmail.com');
       if (idx !== -1 && adminUser) {
         parsed.users[idx] = { ...parsed.users[idx], ...adminUser };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+        needsSave = true;
       }
     }
-    if (parsed && Array.isArray(parsed.products)) {
-      let needsSave = false;
-      const initialMap = new Map(INITIAL_DATA.products.map(p => [p.id, p]));
+
+    if (!Array.isArray(parsed.categories) || parsed.categories.length < (INITIAL_DATA.categories?.length || 0)) {
+      parsed.categories = Array.isArray(INITIAL_DATA.categories) ? [...INITIAL_DATA.categories] : [];
+      needsSave = true;
+    }
+
+    if (!Array.isArray(parsed.products)) {
+      parsed.products = Array.isArray(INITIAL_DATA.products) ? [...INITIAL_DATA.products] : [];
+      needsSave = true;
+    } else {
+      const initialMap = new Map((INITIAL_DATA.products || []).map(p => [p.id, p]));
       parsed.products.forEach(p => {
         const init = initialMap.get(p.id);
-        if (init && init.image) {
-          // If product in local storage has broken 404 URL or is missing image
-          if (
-            !p.image ||
-            p.image.includes('photo-1622445262464-84b1456045b6') ||
-            p.image.includes('photo-1584990347449-3997782b7194') ||
-            p.image.includes('photo-1559591937-e10323971e48') ||
-            p.image.includes('photo-1609592424368-278c2e6f4370')
-          ) {
-            p.image = init.image;
+        if (init) {
+          // Sync discountPrice from initial data so selective discounts take effect
+          if (init.discountPrice === null && p.discountPrice !== null) {
+            p.discountPrice = null;
             needsSave = true;
+          } else if (init.discountPrice !== undefined && p.discountPrice !== init.discountPrice) {
+            p.discountPrice = init.discountPrice;
+            needsSave = true;
+          }
+
+          if (init.image) {
+            // If product in local storage has broken 404 URL or is missing image
+            if (
+              !p.image ||
+              p.image.includes('photo-1622445262464-84b1456045b6') ||
+              p.image.includes('photo-1584990347449-3997782b7194') ||
+              p.image.includes('photo-1559591937-e10323971e48') ||
+              p.image.includes('photo-1609592424368-278c2e6f4370')
+            ) {
+              p.image = init.image;
+              needsSave = true;
+            }
           }
         }
       });
       // Also ensure all products exist if localStorage was created with an old subset
-      if (parsed.products.length < INITIAL_DATA.products.length) {
+      if (parsed.products.length < (INITIAL_DATA.products?.length || 0)) {
         const existingIds = new Set(parsed.products.map(p => p.id));
-        INITIAL_DATA.products.forEach(p => {
+        (INITIAL_DATA.products || []).forEach(p => {
           if (!existingIds.has(p.id)) {
             parsed.products.push(p);
             needsSave = true;
           }
         });
       }
-      if (needsSave) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
-      }
+    }
+
+    if (needsSave) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
     }
     return parsed;
   } catch (err) {
     console.error('Error reading localStorage DB:', err);
-    return INITIAL_DATA;
+    return {
+      users: Array.isArray(INITIAL_DATA.users) ? [...INITIAL_DATA.users] : [],
+      categories: Array.isArray(INITIAL_DATA.categories) ? [...INITIAL_DATA.categories] : [],
+      products: Array.isArray(INITIAL_DATA.products) ? [...INITIAL_DATA.products] : [],
+      orders: Array.isArray(INITIAL_DATA.orders) ? [...INITIAL_DATA.orders] : []
+    };
   }
 };
 
@@ -232,7 +282,7 @@ export const productsApi = {
     if (serverResult) return serverResult;
 
     const db = getLocalDb();
-    return db.products.find(p => String(p.id) === String(id)) || null;
+    return (db.products || []).find(p => String(p.id) === String(id)) || null;
   },
 
   async create(productData) {
@@ -254,6 +304,9 @@ export const productsApi = {
 
     const finalProduct = serverResult || newProduct;
     const db = getLocalDb();
+    if (!Array.isArray(db.products)) {
+      db.products = [];
+    }
     db.products.unshift(finalProduct);
     saveLocalDb(db);
     return finalProduct;
@@ -273,6 +326,9 @@ export const productsApi = {
     });
 
     const db = getLocalDb();
+    if (!Array.isArray(db.products)) {
+      db.products = [];
+    }
     const index = db.products.findIndex(p => String(p.id) === String(id));
     const finalProduct = serverResult || { ...(index > -1 ? db.products[index] : {}), ...payload };
     if (index > -1) {
@@ -292,6 +348,9 @@ export const productsApi = {
     });
 
     const db = getLocalDb();
+    if (!Array.isArray(db.products)) {
+      db.products = [];
+    }
     const index = db.products.findIndex(p => String(p.id) === String(id));
     if (index > -1) {
       db.products[index].stock = stockVal;
@@ -307,7 +366,7 @@ export const productsApi = {
     });
 
     const db = getLocalDb();
-    db.products = db.products.filter(p => String(p.id) !== String(id));
+    db.products = (db.products || []).filter(p => String(p.id) !== String(id));
     saveLocalDb(db);
     return { success: true, id };
   }
@@ -326,7 +385,8 @@ export const ordersApi = {
       db.orders = serverResult;
       saveLocalDb(db);
     } else {
-      orders = getLocalDb().orders;
+      const db = getLocalDb();
+      orders = Array.isArray(db.orders) ? db.orders : [];
     }
 
     if (userId) {
@@ -357,7 +417,7 @@ export const ordersApi = {
     if (serverResult) return serverResult;
 
     const db = getLocalDb();
-    return db.orders.find(o => String(o.id) === String(id)) || null;
+    return (db.orders || []).find(o => String(o.id) === String(id)) || null;
   },
 
   async create(orderData) {
@@ -383,10 +443,16 @@ export const ordersApi = {
 
     const finalOrder = serverResult || newOrder;
     const db = getLocalDb();
+    if (!Array.isArray(db.orders)) {
+      db.orders = [];
+    }
     db.orders.unshift(finalOrder);
 
     // Reduce stock for purchased products
     if (orderData.items && Array.isArray(orderData.items)) {
+      if (!Array.isArray(db.products)) {
+        db.products = [];
+      }
       orderData.items.forEach(item => {
         const prod = db.products.find(p => String(p.id) === String(item.productId));
         if (prod) {
@@ -422,6 +488,9 @@ export const ordersApi = {
     if (patchResult) {
       // Sync into local DB
       const db = getLocalDb();
+      if (!Array.isArray(db.orders)) {
+        db.orders = [];
+      }
       const idx = db.orders.findIndex(o => String(o.id) === String(id));
       if (idx > -1) {
         db.orders[idx] = patchResult;
@@ -434,6 +503,9 @@ export const ordersApi = {
 
     // 2. Fallback to local DB if server is offline
     const db = getLocalDb();
+    if (!Array.isArray(db.orders)) {
+      db.orders = [];
+    }
     const orderIndex = db.orders.findIndex(o => String(o.id) === String(id));
     if (orderIndex > -1) {
       const order = db.orders[orderIndex];
@@ -447,7 +519,7 @@ export const ordersApi = {
       return order;
     }
 
-    throw new Error("Buyurtma topilmadi");
+    return null;
   }
 };
 
@@ -462,7 +534,8 @@ export const usersApi = {
       db.users = serverResult;
       saveLocalDb(db);
     } else {
-      users = getLocalDb().users;
+      const db = getLocalDb();
+      users = Array.isArray(db.users) ? db.users : [];
     }
     // Don't leak passwords
     return users.map(({ password: _, ...user }) => user);
@@ -475,6 +548,9 @@ export const usersApi = {
     });
 
     const db = getLocalDb();
+    if (!Array.isArray(db.users)) {
+      db.users = [];
+    }
     const index = db.users.findIndex(u => String(u.id) === String(id));
     if (index > -1) {
       db.users[index].role = newRole;
@@ -491,7 +567,7 @@ export const usersApi = {
     });
 
     const db = getLocalDb();
-    db.users = db.users.filter(u => String(u.id) !== String(id));
+    db.users = (db.users || []).filter(u => String(u.id) !== String(id));
     saveLocalDb(db);
     return { success: true, id };
   }
@@ -501,6 +577,7 @@ export const usersApi = {
 export const categoriesApi = {
   async getAll() {
     const serverResult = await request('/categories');
-    return serverResult || getLocalDb().categories;
+    const localCategories = getLocalDb().categories;
+    return serverResult || (Array.isArray(localCategories) ? localCategories : []);
   }
 };

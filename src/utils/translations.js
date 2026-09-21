@@ -79,6 +79,12 @@ export const CATEGORY_TRANSLATIONS = {
     ru: 'Детский мир',
     en: 'Kids World',
     'uz-cyr': 'Болалар Дунёси'
+  },
+  'cat-14': {
+    uz: 'Geyming & Konsollar',
+    ru: 'Гейминг и консоли',
+    en: 'Gaming & Consoles',
+    'uz-cyr': 'Гейминг ва Консоллар'
   }
 };
 

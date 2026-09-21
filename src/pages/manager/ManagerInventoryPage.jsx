@@ -154,10 +154,24 @@ export const ManagerInventoryPage = () => {
       return;
     }
 
+    const priceNum = Number(formData.price);
+    const discNum = formData.discountPrice ? Number(formData.discountPrice) : null;
+    if (discNum !== null && discNum >= priceNum) {
+      showToast.error("Chegirma narxi asosiy narxdan kichik (arzon) bo'lishi kerak");
+      return;
+    }
+
+    const payload = {
+      ...formData,
+      price: priceNum,
+      discountPrice: (discNum && discNum < priceNum) ? discNum : null,
+      stock: Number(formData.stock)
+    };
+
     if (editingProduct) {
-      updateMutation.mutate({ id: editingProduct.id, data: formData });
+      updateMutation.mutate({ id: editingProduct.id, data: payload });
     } else {
-      createMutation.mutate(formData);
+      createMutation.mutate(payload);
     }
   };
 
@@ -516,11 +530,13 @@ export const ManagerInventoryPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Chegirmali Narx ($)</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Chegirmali Narx ($) <span className="font-normal text-slate-400 text-[10px]">(ixtiyoriy)</span>
+                  </label>
                   <input
                     type="number"
                     min="0"
-                    placeholder="1100"
+                    placeholder="Masalan: 1100 (bo'sh = chegirmasiz)"
                     value={formData.discountPrice}
                     onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
                     className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none"

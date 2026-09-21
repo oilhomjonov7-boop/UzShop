@@ -47,12 +47,14 @@ export const ProductCard = ({ product, onSelect }) => {
     }
   };
 
-  const discountPercent = product.discountPrice
+  const hasDiscount = Boolean(product.discountPrice && product.discountPrice < product.price);
+  const discountPercent = hasDiscount
     ? Math.round(((product.price - product.discountPrice) / product.price) * 100)
     : null;
 
   // Monthly installment calculation (Uzum Nasiya 12 oy)
-  const monthlyUZS = Math.round(((product.discountPrice || product.price) / 12));
+  const currentPrice = hasDiscount ? product.discountPrice : product.price;
+  const monthlyUZS = Math.round(currentPrice / 12);
 
   return (
     <div
@@ -136,16 +138,16 @@ export const ProductCard = ({ product, onSelect }) => {
         {/* Price & Action Row */}
         <div className="pt-2 border-t border-slate-100 flex items-end justify-between gap-1.5">
           <div className="min-w-0 flex-1">
-            {product.discountPrice && (
+            {hasDiscount && (
               <span className="text-[10px] sm:text-[11px] text-slate-400 line-through leading-none block">
                 {formatCurrency(product.price)}
               </span>
             )}
             <span className="text-sm sm:text-base font-black text-slate-900 leading-tight block">
-              {formatCurrency(product.discountPrice || product.price)}
+              {formatCurrency(currentPrice)}
             </span>
             <span className="text-[9px] sm:text-[10px] text-slate-400 font-medium block truncate max-w-[120px] sm:max-w-[140px]">
-              ≈ {formatUZS(product.discountPrice || product.price)}
+              ≈ {formatUZS(currentPrice)}
             </span>
           </div>
 

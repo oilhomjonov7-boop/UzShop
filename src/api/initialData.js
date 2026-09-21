@@ -43,27 +43,98 @@ export const INITIAL_DATA = {
     }
   ],
   categories: [
-    { id: "cat-1", name: "Smartfonlar", slug: "smartphones", icon: "Smartphone" },
-    { id: "cat-2", name: "Noutbuklar", slug: "laptops", icon: "Laptop" },
-    { id: "cat-3", name: "Smart soatlar", slug: "smartwatches", icon: "Watch" },
-    { id: "cat-4", name: "Quloqchinlar", slug: "headphones", icon: "Headphones" },
-    { id: "cat-5", name: "Aksessuarlar", slug: "accessories", icon: "Cpu" },
-    { id: "cat-6", name: "Kiyim va Poyabzal", slug: "clothing", icon: "Shirt" },
-    { id: "cat-7", name: "Uy va Oshxona", slug: "home-kitchen", icon: "Home" },
-    { id: "cat-8", name: "Sport va Fitnes", slug: "sport", icon: "Dumbbell" },
-    { id: "cat-9", name: "Kitoblar", slug: "books", icon: "BookOpen" },
-    { id: "cat-10", name: "Go'zallik & Parvarish", slug: "beauty", icon: "Sparkles" },
-    { id: "cat-11", name: "Oziq-ovqat va Qahva", slug: "food-coffee", icon: "Coffee" },
-    { id: "cat-12", name: "Avtotovarlar", slug: "auto", icon: "Car" },
-    { id: "cat-13", name: "Bolalar Dunyosi", slug: "kids", icon: "Baby" }
-  ],
+    {
+        "id": "cat-1",
+        "name": "Smartfonlar",
+        "slug": "smartphones",
+        "icon": "Smartphone"
+    },
+    {
+        "id": "cat-2",
+        "name": "Noutbuklar",
+        "slug": "laptops",
+        "icon": "Laptop"
+    },
+    {
+        "id": "cat-3",
+        "name": "Smart soatlar",
+        "slug": "smartwatches",
+        "icon": "Watch"
+    },
+    {
+        "id": "cat-4",
+        "name": "Quloqchinlar",
+        "slug": "headphones",
+        "icon": "Headphones"
+    },
+    {
+        "id": "cat-5",
+        "name": "Aksessuarlar",
+        "slug": "accessories",
+        "icon": "Cpu"
+    },
+    {
+        "id": "cat-6",
+        "name": "Kiyim va Poyabzal",
+        "slug": "clothing",
+        "icon": "Shirt"
+    },
+    {
+        "id": "cat-7",
+        "name": "Uy va Oshxona",
+        "slug": "home-kitchen",
+        "icon": "Home"
+    },
+    {
+        "id": "cat-8",
+        "name": "Sport va Fitnes",
+        "slug": "sport",
+        "icon": "Dumbbell"
+    },
+    {
+        "id": "cat-9",
+        "name": "Kitoblar",
+        "slug": "books",
+        "icon": "BookOpen"
+    },
+    {
+        "id": "cat-10",
+        "name": "Go'zallik & Parvarish",
+        "slug": "beauty",
+        "icon": "Sparkles"
+    },
+    {
+        "id": "cat-11",
+        "name": "Oziq-ovqat va Qahva",
+        "slug": "food-coffee",
+        "icon": "Coffee"
+    },
+    {
+        "id": "cat-12",
+        "name": "Avtotovarlar",
+        "slug": "auto",
+        "icon": "Car"
+    },
+    {
+        "id": "cat-13",
+        "name": "Bolalar Dunyosi",
+        "slug": "kids",
+        "icon": "Baby"
+    },
+    {
+        "id": "cat-14",
+        "name": "Geyming va Konsollar",
+        "slug": "gaming",
+        "icon": "Gamepad2"
+    }
+],
   products: [
     {
         "id": "prod-101",
         "categoryId": "cat-1",
         "title": "iPhone 15 Pro Max",
         "price": 1450,
-        "discountPrice": 1350,
+        "discountPrice": null,
         "stock": 22,
         "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80",
         "description": "256GB Natural Titanium, Super Retina XDR OLED, A17 Pro chip, Dynamic Island.",
@@ -87,7 +158,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-1",
         "title": "Xiaomi 14 Ultra",
         "price": 1100,
-        "discountPrice": 990,
+        "discountPrice": null,
         "stock": 34,
         "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80",
         "description": "Leica optikasi, 1 dyuymli asosiy sensor, Snapdragon 8 Gen 3, 90W HyperCharge.",
@@ -99,7 +170,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-2",
         "title": "MacBook Pro 16\" M3 Max",
         "price": 3200,
-        "discountPrice": 2999,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80",
         "description": "36GB Unified Memory, 1TB SSD, Liquid Retina XDR displey, Space Black.",
@@ -111,7 +182,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-2",
         "title": "MacBook Air 15\" M2",
         "price": 1350,
-        "discountPrice": 1220,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80",
         "description": "Yupqa va yengil korpus, 18 soat batareya quvvati, 500 nit yorqinlik.",
@@ -135,7 +206,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-3",
         "title": "Apple Watch Ultra 2",
         "price": 890,
-        "discountPrice": 820,
+        "discountPrice": null,
         "stock": 9,
         "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=80",
         "description": "49mm Titandan korpus, 3000 nit displey, suv osti va tog' sporti uchun tayyor.",
@@ -147,7 +218,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-4",
         "title": "AirPods Max (Space Gray)",
         "price": 590,
-        "discountPrice": 520,
+        "discountPrice": null,
         "stock": 10,
         "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&auto=format&fit=crop&q=80",
         "description": "Active Noise Cancellation, Shaxsiy fazoviy ovoz, Hi-Fi akustika va nafis metall dizayn.",
@@ -171,7 +242,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-5",
         "title": "Apple MagSafe Battery Pack",
         "price": 110,
-        "discountPrice": 95,
+        "discountPrice": null,
         "stock": 25,
         "image": "/products/magsafe_battery_pack.jpg",
         "description": "iPhone uchun magnitli simsiz quvvatlagich, ixcham va xavfsiz.",
@@ -183,7 +254,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-1",
         "title": "Google Pixel 8 Pro",
         "price": 980,
-        "discountPrice": 880,
+        "discountPrice": null,
         "stock": 12,
         "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
         "description": "Tensor G3 protsessor, Magic Editor, 7 yillik rasmiy Android yangilanish kafolati.",
@@ -195,7 +266,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-6",
         "title": "Nike Air Force 1 '07 Krossovkasi",
         "price": 130,
-        "discountPrice": 115,
+        "discountPrice": null,
         "stock": 24,
         "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop&q=80",
         "description": "Klassik oq charm krossovka, qulay amortizatsiya va kundalik kiyish uchun ideal qulaylik.",
@@ -219,7 +290,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-6",
         "title": "Tabiiy Charm Kamar & Hamyon To'plami",
         "price": 55,
-        "discountPrice": 42,
+        "discountPrice": null,
         "stock": 19,
         "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=600&auto=format&fit=crop&q=80",
         "description": "100% tabiiy buzoq charmidan tayyorlangan, sovg'abop qutida erkaklar aksessuar to'plami.",
@@ -231,7 +302,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "DeLonghi Dedica Espresso Kofe Mashinasi",
         "price": 260,
-        "discountPrice": 225,
+        "discountPrice": null,
         "stock": 14,
         "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=600&auto=format&fit=crop&q=80",
         "description": "15 bar bosimli nasos, sut ko'pirtiruvchi kapuchinator, uyda professional kofe tayyorlash uchun.",
@@ -255,7 +326,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "Eko Keramika Choy Servizi (6 kishilik)",
         "price": 65,
-        "discountPrice": 49,
+        "discountPrice": null,
         "stock": 22,
         "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=80",
         "description": "Qo'lda ishlangan nafis sopol choynak va 6 dona piyola, yog'och patnis bilan birga.",
@@ -267,7 +338,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "Ultratovushli Havo Namlagich & Aroma Diffuzor",
         "price": 38,
-        "discountPrice": 28,
+        "discountPrice": null,
         "stock": 35,
         "image": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&auto=format&fit=crop&q=80",
         "description": "4 litrli hajm, 7 xil LED yorug'lik, efir moylari qo'shish imkoniyati, shovqinsiz tungi rejim.",
@@ -291,7 +362,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-8",
         "title": "Sport Termos-Butilkasi (1000 ml)",
         "price": 25,
-        "discountPrice": 19,
+        "discountPrice": null,
         "stock": 45,
         "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop&q=80",
         "description": "24 soat sovuq, 12 soat issiq saqlovchi ikki qavatli vakuumli zanglamas po'lat.",
@@ -303,7 +374,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-8",
         "title": "Sozlanuvchi Gantellar To'plami (20 kg)",
         "price": 85,
-        "discountPrice": 72,
+        "discountPrice": null,
         "stock": 16,
         "image": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&auto=format&fit=crop&q=80",
         "description": "Xrom qoplamali disklar, shtanga ulovchi maxsus bo'g'in va qulay rezina tutqichlar.",
@@ -327,7 +398,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-9",
         "title": "\"Boy Ota, Kambag'al Ota\" - Robert Kiyosaki",
         "price": 11,
-        "discountPrice": 8,
+        "discountPrice": null,
         "stock": 50,
         "image": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=80",
         "description": "Moliyaviy savodxonlik bo'yicha dunyodagi 1-raqamli kitob. Qattiq muqovali yangi nashr.",
@@ -339,7 +410,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-10",
         "title": "Dyson Supersonic Soch Quritgichi",
         "price": 520,
-        "discountPrice": 480,
+        "discountPrice": null,
         "stock": 7,
         "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop&q=80",
         "description": "Intellektual issiqlik nazorati, 5 xil magnitli nasadka, sochlarni kuydirmasdan tez quritish.",
@@ -363,7 +434,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-11",
         "title": "Lavazza Qualita Oro Qahva Donalari (1 kg)",
         "price": 28,
-        "discountPrice": 22,
+        "discountPrice": null,
         "stock": 50,
         "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&auto=format&fit=crop&q=80",
         "description": "100% Arabica, Italiya qovurilishi, nozik va gulli hidli premium qahva donalari.",
@@ -387,7 +458,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-11",
         "title": "Lindt Excellence 85% Qora Shokolad (100g)",
         "price": 6,
-        "discountPrice": 4.5,
+        "discountPrice": null,
         "stock": 80,
         "image": "https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&auto=format&fit=crop&q=80",
         "description": "Haqiqiy Shveysariya qora shokoladi, 85% sof kakao, boy va nafis ta'm.",
@@ -399,7 +470,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-12",
         "title": "70mai 4K A810 Smart Video-Registrator",
         "price": 165,
-        "discountPrice": 145,
+        "discountPrice": null,
         "stock": 18,
         "image": "/products/dashcam_4k.jpg",
         "description": "Sony Starvis 2 sensori, 4K HDR tasvir, GPS, ADAS xavfsizlik tizimi va Wi-Fi ulanish.",
@@ -423,7 +494,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-12",
         "title": "Xiaomi Mi Portable Elektr Shina Nasosi 2",
         "price": 42,
-        "discountPrice": 34,
+        "discountPrice": null,
         "stock": 34,
         "image": "/products/tire_inflator.jpg",
         "description": "Avtomatik bosim o'lchash va to'xtatish, ixcham akkumulyatorli, velosiped va to'plarga ham mos.",
@@ -435,7 +506,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-13",
         "title": "Lego City Politsiya Boshqarmasi To'plami",
         "price": 75,
-        "discountPrice": 64,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?w=600&auto=format&fit=crop&q=80",
         "description": "668 ta detal, vertolyot, mashinalar va mini-figuralar bilan original Lego konstruktori.",
@@ -447,7 +518,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-13",
         "title": "Katta Yumshoq Ayiqcha Teddy (120 sm)",
         "price": 45,
-        "discountPrice": 35,
+        "discountPrice": null,
         "stock": 21,
         "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?w=600&auto=format&fit=crop&q=80",
         "description": "Gipoallergen momiq mato, bolalar va sovg'a uchun juda yoqimli va xavfsiz.",
@@ -471,7 +542,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "Tefal Ingenio Non-Stick Tovalar To'plami (3 dona)",
         "price": 95,
-        "discountPrice": 79,
+        "discountPrice": null,
         "stock": 16,
         "image": "/products/tefal_ingenio_pans.jpg",
         "description": "Yechiluvchi universal tutqich, Thermo-Signal harorat indikatori, pechda ham ishlatish mumkin.",
@@ -483,7 +554,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "Braun MultiQuick 7 Zanglamas Blender (1000W)",
         "price": 88,
-        "discountPrice": 74,
+        "discountPrice": null,
         "stock": 19,
         "image": "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=600&auto=format&fit=crop&q=80",
         "description": "ActiveBlade texnologiyasi, maydalagich kosa, ko'pirtiruvchi venchik va o'lchov stakani.",
@@ -495,7 +566,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-6",
         "title": "Issiq Erkaklar Qishki Parka Kurtkasi",
         "price": 98,
-        "discountPrice": 82,
+        "discountPrice": null,
         "stock": 21,
         "image": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=600&auto=format&fit=crop&q=80",
         "description": "Suv va shamol o'tkazmaydigan membranali mato, tabiiy par to'ldiruvchi, yechiluvchi kapyushon.",
@@ -507,7 +578,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-6",
         "title": "Klassik Ayollar Teri Elka Sumkasi",
         "price": 65,
-        "discountPrice": 49,
+        "discountPrice": null,
         "stock": 26,
         "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80",
         "description": "Sifatli ekologik charm, bir nechta qulay bo'limlar, tilla rang metall furnitura.",
@@ -519,7 +590,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-6",
         "title": "Erkaklar Tabiiy Teri Oksford Poyabzali (Qora)",
         "price": 280,
-        "discountPrice": 240,
+        "discountPrice": null,
         "stock": 20,
         "image": "/products/mens_oxford_shoes.jpg",
         "description": "Yuqori sifatli tabiiy buzoq terisidan ishlangan klassik erkaklar poyabzali. Rasmiy tadbirlar va kundalik ofis uslubi uchun.",
@@ -531,7 +602,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-10",
         "title": "Dior Sauvage Erkaklar Parfyumi (100 ml)",
         "price": 145,
-        "discountPrice": 129,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&auto=format&fit=crop&q=80",
         "description": "Bergamot, qalampir va ambra notalari bilan dunyodagi eng mashhur va jozibador parfyum.",
@@ -543,7 +614,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-10",
         "title": "Chanel Coco Mademoiselle (100 ml)",
         "price": 160,
-        "discountPrice": 142,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&auto=format&fit=crop&q=80",
         "description": "Apelsin, atirgul va pachuli notalari bilan nozik, nafis va esda qolarli ayollar ifori.",
@@ -555,7 +626,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-10",
         "title": "Oral-B iO Series 9 Smart Tish Cho'tkasi",
         "price": 195,
-        "discountPrice": 170,
+        "discountPrice": null,
         "stock": 30,
         "image": "/products/oral_b_smart_toothbrush.jpg",
         "description": "Magnit mikro-vibratsiya texnologiyasi, sun'iy intellektli tozalash tahlili, sayohat zaryadlovchi g'ilofi.",
@@ -567,7 +638,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-9",
         "title": "\"Stiv Jobs\" — Uolter Ayzekson",
         "price": 15,
-        "discountPrice": 12,
+        "discountPrice": null,
         "stock": 40,
         "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80",
         "description": "Apple asoschisining yagona rasmiy biografiyasi. O'zbek tiliga o'girilgan to'liq nashr.",
@@ -579,7 +650,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-9",
         "title": "\"Alkimyogar\" — Paulo Koelo (Jahon Bestselleri)",
         "price": 45,
-        "discountPrice": 36,
+        "discountPrice": null,
         "stock": 25,
         "image": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=600&auto=format&fit=crop&q=80",
         "description": "O'z orzulari ortidan borgan cho'pon Santyagoning afsonaviy sayohati. Dunyoning 80 dan ortiq tillariga tarjima qilingan asar.",
@@ -591,7 +662,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-8",
         "title": "Garmin Forerunner 265 GPS Sport Soati",
         "price": 430,
-        "discountPrice": 390,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1510017803434-a899398421b3?w=600&auto=format&fit=crop&q=80",
         "description": "Yorqin AMOLED displey, professional yugurish va yurak urishi dinamikasi, 13 kunlik batareya.",
@@ -603,7 +674,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-8",
         "title": "Yonex Badminton Raketkalari & Volanlar To'plami",
         "price": 55,
-        "discountPrice": 42,
+        "discountPrice": null,
         "stock": 28,
         "image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=600&auto=format&fit=crop&q=80",
         "description": "Uglerod tolali engil 2 ta raketka, 6 ta volan va qulay tashish sumkasi.",
@@ -627,7 +698,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-1",
         "title": "OnePlus 12 512GB (Silky Black)",
         "price": 860,
-        "discountPrice": 790,
+        "discountPrice": null,
         "stock": 25,
         "image": "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&auto=format&fit=crop&q=80",
         "description": "Snapdragon 8 Gen 3, Hasselblad 4-avlod kamerasi, 100W SUPERVOOC tez zaryad.",
@@ -639,7 +710,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-2",
         "title": "Dell XPS 15 9530 OLED",
         "price": 2100,
-        "discountPrice": 1950,
+        "discountPrice": null,
         "stock": 12,
         "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80",
         "description": "Intel Core i7-13700H, 3.5K OLED sensorli ekran, 32GB RAM, RTX 4060, 1TB SSD.",
@@ -663,7 +734,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-3",
         "title": "Samsung Galaxy Watch 6 Classic 47mm",
         "price": 380,
-        "discountPrice": 340,
+        "discountPrice": null,
         "stock": 20,
         "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80",
         "description": "Aylanuvchi mexanik bezel, EKG, qon bosimi va uyqu sifatini chuqur tahlil qilish.",
@@ -687,7 +758,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-4",
         "title": "Bose QuietComfort Ultra Quloqchin",
         "price": 440,
-        "discountPrice": 399,
+        "discountPrice": null,
         "stock": 16,
         "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=600&auto=format&fit=crop&q=80",
         "description": "Dunyodagi eng ilg'or shovqinni so'ndirish (ANC), Spatial Audio va a'lo qulaylik.",
@@ -723,7 +794,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-6",
         "title": "Nike Air Jordan 1 Retro High OG",
         "price": 210,
-        "discountPrice": 185,
+        "discountPrice": null,
         "stock": 18,
         "image": "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&auto=format&fit=crop&q=80",
         "description": "Haqiqiy charm, afsonaviy Chicago ranglar uyg'unligi, har kuni kiyish uchun qulay.",
@@ -759,7 +830,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "Dyson V15 Detect Simsiz Vertikal Changyutgich",
         "price": 680,
-        "discountPrice": 599,
+        "discountPrice": null,
         "stock": 12,
         "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&auto=format&fit=crop&q=80",
         "description": "Lazerli mikroskopik chang aniqlash tizimi, 240 AW kuchli so'rish quvvati va 60 daqiqalik avtonom batareya.",
@@ -771,7 +842,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-7",
         "title": "Tefal OptiGrill+ XL Aqlli Elektr Gril (2000W)",
         "price": 280,
-        "discountPrice": 245,
+        "discountPrice": null,
         "stock": 15,
         "image": "/products/tefal_smart_grill.jpg",
         "description": "Go'sht pishirish darajasini avtomatik aniqlaydigan aqlli sensorli elektr gril. 9 ta avtomatik dastur va yopishmas qoplama.",
@@ -783,7 +854,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-8",
         "title": "Bowflex SelectTech Sozlanuvchi Gantellar",
         "price": 420,
-        "discountPrice": 369,
+        "discountPrice": null,
         "stock": 10,
         "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&auto=format&fit=crop&q=80",
         "description": "2 kg dan 24 kg gacha 15 xil vaznga tez o'zgaruvchi patentlangan uy trenajori.",
@@ -795,7 +866,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-9",
         "title": "\"Muvaffaqiyatli Insonlarning 7 Ko'nikmasi\" — Stiven Kovi",
         "price": 18,
-        "discountPrice": 14,
+        "discountPrice": null,
         "stock": 120,
         "image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80",
         "description": "Shaxsiy samaradorlik va yetakchilik bo'yicha dunyodagi №1 eng mashhur biznes qo'llanma. Qattiq muqovali to'liq nashr.",
@@ -807,7 +878,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-9",
         "title": "\"Psixologiya va Pul\" - Morgan Hausel",
         "price": 16,
-        "discountPrice": 12,
+        "discountPrice": null,
         "stock": 85,
         "image": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=600&auto=format&fit=crop&q=80",
         "description": "Boylik, ochko'zlik va baxt haqida abadiy saboqlar to'plami.",
@@ -819,7 +890,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-10",
         "title": "Dyson Airwrap Multi-Styler Complete Long (Nikelli mis)",
         "price": 540,
-        "discountPrice": 489,
+        "discountPrice": null,
         "stock": 14,
         "image": "/products/dyson_airwrap_set.jpg",
         "description": "Sochni qizdirmasdan Coanda effekti bilan turmaklaydigan premium multi-stayler to'plami. Maxsus charm saqlash qutisi bilan.",
@@ -831,7 +902,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-10",
         "title": "CeraVe Dermatologik Yuz Parvarishi To'plami",
         "price": 45,
-        "discountPrice": 36,
+        "discountPrice": null,
         "stock": 60,
         "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&auto=format&fit=crop&q=80",
         "description": "3 xil muhim keramidlar va gialuron kislotasi bilan to'yintirilgan namlantiruvchi krem va gel.",
@@ -843,7 +914,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-11",
         "title": "Illy Espresso Klassik Donador Qahva (250g)",
         "price": 28,
-        "discountPrice": 22,
+        "discountPrice": null,
         "stock": 70,
         "image": "https://images.unsplash.com/photo-1587734195503-904fca47e0e9?w=600&auto=format&fit=crop&q=80",
         "description": "100% Arabika oliy navli donador Italiya qahvasi. O'rtacha qovurilgan, yumshoq karamel ta'mga ega metall bankada.",
@@ -855,7 +926,7 @@ export const INITIAL_DATA = {
         "categoryId": "cat-12",
         "title": "70mai Dash Cam Omni 360° Smart Registrator",
         "price": 185,
-        "discountPrice": 159,
+        "discountPrice": null,
         "stock": 25,
         "image": "/products/dashcam_omni_360.jpg",
         "description": "360 daraja aylanuvchi kamera, sun'iy intellekt xavfsizlik nazorati, tungi aniq tasvir.",
@@ -867,12 +938,341 @@ export const INITIAL_DATA = {
         "categoryId": "cat-13",
         "title": "LEGO Creator Expert Politsiya Mahkamasi 10278",
         "price": 240,
-        "discountPrice": 210,
+        "discountPrice": null,
         "stock": 15,
         "image": "https://images.unsplash.com/photo-1560969184-10fe8719e047?w=600&auto=format&fit=crop&q=80",
         "description": "2923 bo'lakli kolleksion modul konstruktor, 5 ta minifigurka va ajoyib detallar.",
         "rating": 5,
         "salesCount": 35
+    },
+    {
+        "id": "prod-2001",
+        "categoryId": "cat-14",
+        "title": "Sony PlayStation 5 Slim (1TB Digital Edition)",
+        "price": 580,
+        "discountPrice": null,
+        "stock": 14,
+        "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&auto=format&fit=crop&q=80",
+        "description": "Ultra-tezkor 1TB SSD, 4K 120Hz geyming, Ray Tracing, 3D Audio va ota ixcham zamonaviy dizayn.",
+        "rating": 4.9,
+        "salesCount": 88
+    },
+    {
+        "id": "prod-2002",
+        "categoryId": "cat-14",
+        "title": "Sony PlayStation DualSense Simsiz Geympad",
+        "price": 79,
+        "discountPrice": null,
+        "stock": 35,
+        "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=800&auto=format&fit=crop&q=80",
+        "description": "Haptic feedback, moslashuvchan dinamik triggerlar, ornatilgan mikrofon va Type-C zaryadlash.",
+        "rating": 4.9,
+        "salesCount": 142
+    },
+    {
+        "id": "prod-2003",
+        "categoryId": "cat-14",
+        "title": "Microsoft Xbox Series X (1TB SSD, Carbon Black)",
+        "price": 590,
+        "discountPrice": null,
+        "stock": 12,
+        "image": "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=800&auto=format&fit=crop&q=80",
+        "description": "12 Teraflops hisoblash quvvati, 4K 120 FPS, Xbox Velocity Architecture va Quick Resume imkoniyati.",
+        "rating": 4.8,
+        "salesCount": 53
+    },
+    {
+        "id": "prod-2004",
+        "categoryId": "cat-14",
+        "title": "Nintendo Switch OLED Model (Neon Red/Blue)",
+        "price": 360,
+        "discountPrice": 329,
+        "stock": 20,
+        "image": "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=800&auto=format&fit=crop&q=80",
+        "description": "7 dyuymli yorqin OLED displey, kengaytirilgan sozlanuvchi tirgak, 64GB ichki xotira va kabel LAN porti.",
+        "rating": 4.9,
+        "salesCount": 76
+    },
+    {
+        "id": "prod-2005",
+        "categoryId": "cat-14",
+        "title": "ASUS ROG Ally Z1 Extreme Gaming Handheld (512GB)",
+        "price": 680,
+        "discountPrice": null,
+        "stock": 9,
+        "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=80",
+        "description": "AMD Ryzen Z1 Extreme, 120Hz 1080p ekran, 16GB LPDDR5, Windows 11 portativ kuchli kompyuter.",
+        "rating": 4.7,
+        "salesCount": 31
+    },
+    {
+        "id": "prod-2006",
+        "categoryId": "cat-14",
+        "title": "Logitech G Pro X Superlight 2 Simsiz Gaming Sichqoncha",
+        "price": 160,
+        "discountPrice": 139,
+        "stock": 25,
+        "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&auto=format&fit=crop&q=80",
+        "description": "60 gramm ultra-yengil vazn, HERO 2 sensori, 32000 DPI, LIGHTSPEED simsiz texnologiyasi va 95 soatlik quvvat.",
+        "rating": 5,
+        "salesCount": 94
+    },
+    {
+        "id": "prod-2007",
+        "categoryId": "cat-14",
+        "title": "Razer BlackWidow V4 Pro Mexanik Gaming Klaviatura",
+        "price": 220,
+        "discountPrice": null,
+        "stock": 16,
+        "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&auto=format&fit=crop&q=80",
+        "description": "Razer Green Switchlar, individual RGB Chroma yoritish, Command Dial gildragi va magnitli charm bilak suyanchi.",
+        "rating": 4.8,
+        "salesCount": 47
+    },
+    {
+        "id": "prod-2008",
+        "categoryId": "cat-14",
+        "title": "SteelSeries Arctis Nova Pro Wireless Gaming Quloqchin",
+        "price": 350,
+        "discountPrice": 310,
+        "stock": 11,
+        "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&auto=format&fit=crop&q=80",
+        "description": "Aktiv shovqinni bostirish (ANC), Hi-Res Audio, 360 Spatial Audio va ikkita uzluksiz almashinuvchi akkumulyator.",
+        "rating": 4.9,
+        "salesCount": 38
+    },
+    {
+        "id": "prod-2009",
+        "categoryId": "cat-14",
+        "title": "Steam Deck OLED 512GB Portativ Gaming Konsol",
+        "price": 620,
+        "discountPrice": null,
+        "stock": 15,
+        "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&auto=format&fit=crop&q=80",
+        "description": "7.4 dyuymli 90Hz HDR OLED ekran, 6nm AMD APU, 50Wh batareya, Wi-Fi 6E va butun Steam oyinlar kutubxonasi.",
+        "rating": 4.9,
+        "salesCount": 62
+    },
+    {
+        "id": "prod-2010",
+        "categoryId": "cat-14",
+        "title": "Samsung Odyssey Neo G9 49\" Curved Gaming Monitor",
+        "price": 1450,
+        "discountPrice": 1290,
+        "stock": 6,
+        "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&auto=format&fit=crop&q=80",
+        "description": "49 dyuymli 1000R egri Quantum Mini-LED, 240Hz yangilanish tezligi, 1ms reaksiya, Dual QHD (5120x1440).",
+        "rating": 4.9,
+        "salesCount": 19
+    },
+    {
+        "id": "prod-2011",
+        "categoryId": "cat-14",
+        "title": "HyperX QuadCast S RGB USB Gaming Mikrofon",
+        "price": 160,
+        "discountPrice": null,
+        "stock": 28,
+        "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&auto=format&fit=crop&q=80",
+        "description": "Dinamik RGB yoritish, ornatilgan pop-filtr va tebranishga qarshi korpus, 4 ta yonalishli yozib olish rejimi.",
+        "rating": 4.8,
+        "salesCount": 82
+    },
+    {
+        "id": "prod-2012",
+        "categoryId": "cat-14",
+        "title": "Secretlab TITAN Evo 2024 Ergonomik Gaming Kreslo",
+        "price": 540,
+        "discountPrice": null,
+        "stock": 8,
+        "image": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&auto=format&fit=crop&q=80",
+        "description": "NEO Hybrid suniy teri, 4-yonalishli L-ADAPT bel suyanchigi, magnitli xotira kopikli magnit bosh yostiqchasi.",
+        "rating": 4.9,
+        "salesCount": 27
     }
-]
+  ],
+  orders: [
+    {
+      id: "ord-5001",
+      userId: 4,
+      items: [
+        {
+          productId: "prod-101",
+          title: "iPhone 15 Pro Max",
+          quantity: 1,
+          price: 1350,
+          image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      totalAmount: 1350,
+      status: "Delivered",
+      paymentMethod: "Payme",
+      customerInfo: {
+        name: "Ali Valiyev",
+        phone: "+998991234567",
+        address: "Toshkent sh., Chilonzor 5-mavze, 12-uy"
+      },
+      createdAt: "2026-09-10T12:00:00Z",
+      history: [
+        {
+          status: "Pending",
+          date: "2026-09-10T12:00:00Z",
+          note: "Buyurtma qabul qilindi"
+        },
+        {
+          status: "Confirmed",
+          date: "2026-09-11T09:38:48.946Z",
+          note: "Mijoz bilan bogʻlanib tasdiqlandi"
+        },
+        {
+          status: "Shipped",
+          date: "2026-09-11T09:46:52.655Z",
+          note: "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          status: "Delivered",
+          date: "2026-09-11T09:57:37.168Z",
+          note: "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      id: "ord-5002",
+      userId: 5,
+      items: [
+        {
+          productId: "prod-107",
+          title: "Apple Watch Ultra 2",
+          quantity: 1,
+          price: 820,
+          image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          productId: "prod-110",
+          title: "Sony WH-1000XM5",
+          quantity: 1,
+          price: 360,
+          image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      totalAmount: 1180,
+      status: "Delivered",
+      paymentMethod: "Click",
+      customerInfo: {
+        name: "Nigora Yusupova",
+        phone: "+998909876543",
+        address: "Samarqand sh., Registon ko'chasi 45"
+      },
+      createdAt: "2026-09-09T16:30:00Z",
+      history: [
+        {
+          status: "Pending",
+          date: "2026-09-09T16:30:00Z",
+          note: "Buyurtma berildi"
+        },
+        {
+          status: "Confirmed",
+          date: "2026-09-09T17:10:00Z",
+          note: "Operator tomonidan telefon orqali tasdiqlandi"
+        },
+        {
+          status: "Shipped",
+          date: "2026-09-11T09:46:51.821Z",
+          note: "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          status: "Delivered",
+          date: "2026-09-11T09:57:17.701Z",
+          note: "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      id: "ord-5003",
+      userId: 4,
+      items: [
+        {
+          productId: "prod-105",
+          title: "MacBook Air 15\" M2",
+          quantity: 1,
+          price: 1220,
+          image: "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      totalAmount: 1220,
+      status: "Delivered",
+      paymentMethod: "Naqd pul",
+      customerInfo: {
+        name: "Ali Valiyev",
+        phone: "+998991234567",
+        address: "Toshkent sh., Yunusobod 14-mavze"
+      },
+      createdAt: "2026-09-08T09:15:00Z",
+      history: [
+        {
+          status: "Pending",
+          date: "2026-09-08T09:15:00Z",
+          note: "Buyurtma berildi"
+        },
+        {
+          status: "Confirmed",
+          date: "2026-09-08T10:00:00Z",
+          note: "Tasdiqlandi"
+        },
+        {
+          status: "Shipped",
+          date: "2026-09-08T14:20:00Z",
+          note: "Kuryerga topshirildi"
+        },
+        {
+          status: "Delivered",
+          date: "2026-09-11T09:56:17.318Z",
+          note: "Mijozga muvaffaqiyatli yetkazildi"
+        }
+      ]
+    },
+    {
+      id: "ord-5004",
+      userId: 1,
+      items: [
+        {
+          productId: "prod-102",
+          title: "Samsung Galaxy S24 Ultra",
+          quantity: 1,
+          price: 1250,
+          image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      totalAmount: 1250,
+      status: "Delivered",
+      paymentMethod: "Payme",
+      customerInfo: {
+        name: "Odiljon Ilhomjonov",
+        phone: "+998991370023",
+        address: "Toshkent sh., Amir Temur shoh ko'chasi 107"
+      },
+      createdAt: "2026-09-07T11:00:00Z",
+      history: [
+        {
+          status: "Pending",
+          date: "2026-09-07T11:00:00Z",
+          note: "Yaratildi"
+        },
+        {
+          status: "Confirmed",
+          date: "2026-09-07T11:45:00Z",
+          note: "Tasdiqlandi"
+        },
+        {
+          status: "Shipped",
+          date: "2026-09-07T14:00:00Z",
+          note: "Yetkazishga jo'natildi"
+        },
+        {
+          status: "Delivered",
+          date: "2026-09-07T18:30:00Z",
+          note: "Muvaffaqiyatli yetkazildi"
+        }
+      ]
+    }
+  ]
 };

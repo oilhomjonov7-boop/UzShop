@@ -72,7 +72,8 @@ export const useCartStore = create(
 
       getTotalPrice: () => {
         return get().items.reduce((total, item) => {
-          const price = item.product.discountPrice || item.product.price;
+          const hasDiscount = item.product.discountPrice && item.product.discountPrice < item.product.price;
+          const price = hasDiscount ? item.product.discountPrice : item.product.price;
           return total + (price * item.quantity);
         }, 0);
       }

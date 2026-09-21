@@ -48,7 +48,8 @@ const CATEGORY_ICONS_MAP = {
   'cat-10': '💄', // Go'zallik & Parvarish
   'cat-11': '☕', // Qahva va Oziq-ovqat
   'cat-12': '🚗', // Avtotovarlar
-  'cat-13': '🧸'  // Bolalar Dunyosi
+  'cat-13': '🧸', // Bolalar Dunyosi
+  'cat-14': '🎮'  // Geyming va Konsollar
 };
 
 export const Navbar = () => {

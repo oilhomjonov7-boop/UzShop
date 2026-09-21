@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { productsApi, categoriesApi } from '../../api/client';
 import { ProductCard } from '../../components/shop/ProductCard';
 import { ProductDetailModal } from '../../components/shop/ProductDetailModal';
+import { HeroBannerSwiper } from '../../components/shop/HeroBannerSwiper';
 import { ProductSkeleton } from '../../components/common/SkeletonLoader';
 import { handleImageError } from '../../utils/imageFallback';
 import {
@@ -40,13 +41,17 @@ const CATEGORY_ICONS_MAP = {
   'cat-10': '💄', // Go'zallik & Parvarish
   'cat-11': '☕', // Qahva va Oziq-ovqat
   'cat-12': '🚗', // Avtotovarlar
-  'cat-13': '🧸'  // Bolalar Dunyosi
+  'cat-13': '🧸', // Bolalar Dunyosi
+  'cat-14': '🎮'  // Geyming va Konsollar
 };
 
 // Helper to accurately return emoji matching product type/category
 export const getProductCategoryEmoji = (product) => {
   if (!product) return '🛍️';
   const text = `${product.title || ''} ${product.categoryId || ''} ${product.description || ''}`.toLowerCase();
+  if (text.includes('playstation') || text.includes('ps5') || text.includes('xbox') || text.includes('nintendo') || text.includes('gaming') || text.includes('geyming') || text.includes('geympad') || text.includes('switch') || product.categoryId === 'cat-14') {
+    return '🎮';
+  }
   if (text.includes('iphone') || text.includes('smartfon') || text.includes('samsung') || text.includes('xiaomi') || text.includes('telefon') || text.includes('phone') || product.categoryId === 'cat-1') {
     return '📱';
   }
@@ -89,61 +94,6 @@ export const getProductCategoryEmoji = (product) => {
   return '✨';
 };
 
-const PROMO_SLIDES = [
-  {
-    id: 1,
-    badge: "🔥 BAHORIY MEGA CHEGIRMALAR",
-    title: "50% gacha Super Chegirmalar",
-    subtitle: "Eng sara smartfonlar, noutbuklar va gadjetlarga rasmiy kafolat bilan maxsus narxlar!",
-    ctaText: "Xarid qilish",
-    actionCategory: "cat-1",
-    tag: "Aksiya",
-    bgGradient: "from-emerald-900 via-teal-950 to-slate-950",
-    accentColor: "from-emerald-400 to-teal-300",
-    highlight: "Kafolatlangan chegirma",
-    image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 2,
-    badge: "⚡ 1 KUNDA YETKAZISH • 100% BEPUL",
-    title: "Butun O'zbekiston Bo'ylab Yetkazish",
-    subtitle: "Bugun xarid qiling — ertaga ostonangizda qabul qiling. Tezkor kuryerlik xizmati!",
-    ctaText: "Katalogni ko'rish",
-    actionCategory: "all",
-    tag: "Tezkor",
-    bgGradient: "from-indigo-950 via-slate-900 to-blue-950",
-    accentColor: "from-cyan-400 to-indigo-300",
-    highlight: "24 soatda yetkazish",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 3,
-    badge: "✨ YANGI MAVSUM TRENDLARI",
-    title: "Zamonaviy Kiyim & Poyabzallar",
-    subtitle: "Erkaklar va ayollar uchun yangi mavsum kolleksiyasi: bejirim uslub va yuqori qulaylik!",
-    ctaText: "Kolleksiyani tanlash",
-    actionCategory: "cat-6",
-    tag: "Yangi",
-    bgGradient: "from-slate-950 via-stone-900 to-amber-950",
-    accentColor: "from-amber-400 to-orange-300",
-    highlight: "Yangi kolleksiya",
-    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=80"
-  },
-  {
-    id: 4,
-    badge: "💳 0-0-12 MUDDATLI TO'LOV",
-    title: "Boshlang'ich To'lovsiz Bo'lib To'lash",
-    subtitle: "Ortiqcha foizsiz va hujjatlarsiz 12 oygacha qulay muddatli xarid imkoniyati!",
-    ctaText: "Barchasini ko'rish",
-    actionCategory: "all",
-    tag: "0% Nasiya",
-    bgGradient: "from-teal-950 via-slate-900 to-cyan-950",
-    accentColor: "from-emerald-300 to-cyan-300",
-    highlight: "0% Boshlang'ich to'lov",
-    image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&auto=format&fit=crop&q=80"
-  }
-];
-
 export const CatalogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -158,23 +108,7 @@ export const CatalogPage = () => {
   const { addItem } = useCartStore();
   const { t, getCategoryName, currentLanguage } = useTranslation();
 
-  const promoSlides = useMemo(() => {
-    return PROMO_SLIDES.map((slide, idx) => ({
-      ...slide,
-      badge: t(`catalog.slides.${idx}.badge`, slide.badge),
-      title: t(`catalog.slides.${idx}.title`, slide.title),
-      subtitle: t(`catalog.slides.${idx}.subtitle`, slide.subtitle),
-      ctaText: t(`catalog.slides.${idx}.ctaText`, slide.ctaText),
-      highlight: t(`catalog.slides.${idx}.highlight`, slide.highlight)
-    }));
-  }, [t, currentLanguage]);
-
-  // Carousel & Deal of the Day state
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isSlidePaused, setIsSlidePaused] = useState(false);
-  const [featuredIndex, setFeaturedIndex] = useState(0);
-
-  // Countdown timer state for Kun Tovari
+  // Countdown timer state for hot deals showcase
   const [timeLeft, setTimeLeft] = useState({ hours: 7, minutes: 48, seconds: 25 });
 
   useEffect(() => {
@@ -193,27 +127,11 @@ export const CatalogPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Carousel auto-advance (every 5 seconds)
-  useEffect(() => {
-    if (isSlidePaused) return;
-    const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % promoSlides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isSlidePaused, promoSlides.length]);
-
   // Fetch Categories
   const { data: categories = [] } = useQuery({
     queryKey: ['categories'],
     queryFn: () => categoriesApi.getAll(),
     staleTime: 1000 * 60 * 5,
-  });
-
-  // Dedicated flagship catalog for the hero "Kun Tovari" card
-  const { data: allHeroCatalog = [] } = useQuery({
-    queryKey: ['hero-all-products'],
-    queryFn: () => productsApi.getAll(),
-    staleTime: 1000 * 60 * 5
   });
 
   // Fetch Products for the main catalog
@@ -241,25 +159,6 @@ export const CatalogPage = () => {
     return products.slice(start, start + itemsPerPage);
   }, [products, currentPage, itemsPerPage]);
 
-  // Featured flagship showcase items (iPhone 15 Pro Max, MacBook Pro 16, Apple Watch Ultra 2)
-  const heroFeaturedProducts = useMemo(() => {
-    const sourceList = allHeroCatalog.length ? allHeroCatalog : products;
-    if (!sourceList.length) return [];
-    const ids = ['prod-101', 'prod-104', 'prod-107']; // iPhone, MacBook, Apple Watch
-    const matched = ids.map(id => sourceList.find(p => p.id === id)).filter(Boolean);
-    return matched.length === 3 ? matched : sourceList.slice(0, 3);
-  }, [allHeroCatalog, products]);
-
-  const activeFeaturedProduct = heroFeaturedProducts[featuredIndex] || heroFeaturedProducts[0] || null;
-
-  const handleHeroAddToCart = (product, e) => {
-    if (e) e.stopPropagation();
-    if (!product) return;
-    const added = addItem(product, 1);
-    if (added) {
-      showToast.success(`"${product.title}" savatchaga qo'shildi!`);
-    }
-  };
 
   const handleCategorySelect = (catId) => {
     setCurrentPage(1);
@@ -292,13 +191,6 @@ export const CatalogPage = () => {
     setSearchParams(newParams);
   };
 
-  const handleBannerAction = (slide) => {
-    if (slide.actionCategory && slide.actionCategory !== 'all') {
-      navigate(`/products?category=${slide.actionCategory}`);
-    } else {
-      navigate('/products');
-    }
-  };
 
   const hasActiveFilters = selectedCategory !== 'all' || urlSearch || priceRange.min || priceRange.max || sortOption !== 'default';
 
@@ -320,211 +212,11 @@ export const CatalogPage = () => {
   return (
     <div className="min-h-screen pb-16">
       {/* ========================================================================= */}
-      {/* HERO MARKETPLACE SHOWCASE (Uzum Market Style Carousel + Deal of the Day) */}
+      {/* HERO MARKETPLACE SHOWCASE (Big Swiper Banner + 4-Pillar Trust Ribbon) */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
-          {/* Main Promo Banner Carousel (8 Columns on Desktop) */}
-          <div
-            className="lg:col-span-8 relative rounded-3xl overflow-hidden shadow-md border border-slate-200/80 bg-slate-900 min-h-[340px] sm:min-h-[390px] flex flex-col justify-between group select-none"
-            onMouseEnter={() => setIsSlidePaused(true)}
-            onMouseLeave={() => setIsSlidePaused(false)}
-          >
-            {/* Background Gradient & Pattern */}
-            <div className={`absolute inset-0 bg-gradient-to-r ${promoSlides[currentSlide].bgGradient} transition-colors duration-700`} />
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff_0.7px,transparent_0.7px)] [background-size:20px_20px] opacity-10 pointer-events-none" />
-
-            {/* Slide Content */}
-            <div className="relative z-10 p-6 sm:p-8 lg:p-10 flex flex-col justify-between h-full">
-              {/* Top Badge & Slide Indicator */}
-              <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-xs font-black tracking-wide shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-                  <span>{promoSlides[currentSlide].badge}</span>
-                </span>
-
-                <span className="px-3 py-1 rounded-full bg-black/30 backdrop-blur-md text-white/90 text-[11px] font-bold border border-white/10">
-                  {currentSlide + 1} / {promoSlides.length}
-                </span>
-              </div>
-
-              {/* Main Heading & Subtitle */}
-              <div className="my-auto py-5 max-w-lg">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-                  {promoSlides[currentSlide].title}
-                </h2>
-                <p className="mt-3 text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
-                  {promoSlides[currentSlide].subtitle}
-                </p>
-
-                {/* Banner Actions */}
-                <div className="flex items-center gap-3 mt-6">
-                  <button
-                    onClick={() => handleBannerAction(promoSlides[currentSlide])}
-                    className="px-6 py-3 rounded-2xl bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-xs sm:text-sm shadow-lg shadow-black/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2 group/btn cursor-pointer"
-                  >
-                    <span>{promoSlides[currentSlide].ctaText}</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform text-emerald-600" />
-                  </button>
-
-                  <span className="px-3.5 py-2.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white text-xs font-bold hidden sm:inline-block">
-                    {promoSlides[currentSlide].highlight}
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom Navigation Dots & Manual Arrow Buttons */}
-              <div className="flex items-center justify-between gap-4 pt-2">
-                {/* Dots / Pills */}
-                <div className="flex items-center gap-2">
-                  {promoSlides.map((slide, idx) => (
-                    <button
-                      key={slide.id}
-                      onClick={() => setCurrentSlide(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                        currentSlide === idx
-                          ? 'w-8 bg-white shadow-sm'
-                          : 'w-2 bg-white/40 hover:bg-white/70'
-                      }`}
-                      aria-label={`Slide ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Arrow Controls */}
-                <div className="flex items-center gap-1.5">
-                  <button
-                    onClick={() => setCurrentSlide(prev => (prev - 1 + promoSlides.length) % promoSlides.length)}
-                    className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition active:scale-90 cursor-pointer"
-                    aria-label={t('catalog.pagination.prev', 'Oldingi')}
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setCurrentSlide(prev => (prev + 1) % promoSlides.length)}
-                    className="w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition active:scale-90 cursor-pointer"
-                    aria-label={t('catalog.pagination.next', 'Keyingi')}
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Deal of the Day / Kun Tovari Card (4 Columns on Desktop) */}
-          <div className="lg:col-span-4 rounded-3xl bg-white border border-slate-200/90 shadow-md p-4 sm:p-5 flex flex-col justify-between hover:shadow-lg transition-shadow">
-            {/* Top Section */}
-            <div>
-              {/* Badge & Countdown Timer */}
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-[11px] font-black">
-                  <Flame className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
-                  <span>{t('catalog.dealOfTheDay', 'KUN TOVARI')}</span>
-                </span>
-
-                <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg">
-                  <Clock className="w-3 h-3 text-rose-500" />
-                  <span>
-                    {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
-                  </span>
-                </div>
-              </div>
-
-              {/* Dynamic Tabs with Emojis Strictly Matching Each Product! */}
-              {heroFeaturedProducts.length > 1 && (
-                <div className="flex items-center gap-1 p-1 bg-slate-100/90 rounded-xl mb-3">
-                  {heroFeaturedProducts.map((p, idx) => {
-                    const isSelected = featuredIndex === idx;
-                    const emoji = getProductCategoryEmoji(p);
-                    return (
-                      <button
-                        key={p.id}
-                        onClick={() => setFeaturedIndex(idx)}
-                        className={`flex-1 py-1 px-1.5 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer ${
-                          isSelected
-                            ? 'bg-white text-slate-900 shadow-xs ring-1 ring-slate-200 font-extrabold'
-                            : 'text-slate-500 hover:text-slate-900'
-                        }`}
-                      >
-                        <span className="text-sm">{emoji}</span>
-                        <span className="truncate max-w-[70px] sm:max-w-[85px] text-[11px]">
-                          {p.title.split(' ')[0]} {p.title.split(' ')[1] || ''}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* Product Image Showcase */}
-              {activeFeaturedProduct && (
-                <div
-                  onClick={() => setSelectedProduct(activeFeaturedProduct)}
-                  className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 cursor-pointer group/img mb-3"
-                >
-                  <img
-                    src={activeFeaturedProduct.image}
-                    alt={activeFeaturedProduct.title}
-                    onError={(e) => handleImageError(e, activeFeaturedProduct.title)}
-                    className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
-                  />
-
-                  {activeFeaturedProduct.discountPrice && (
-                    <span className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-rose-600 text-white text-[11px] font-black shadow-md">
-                      -${activeFeaturedProduct.price - activeFeaturedProduct.discountPrice} {t('catalog.discountOff', 'Chegirma')}
-                    </span>
-                  )}
-
-                  <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-md text-slate-800 text-[10px] font-bold border border-slate-200 flex items-center gap-1 shadow-xs">
-                    <span>⭐ {activeFeaturedProduct.rating || '4.9'}</span>
-                    <span className="text-slate-400">({activeFeaturedProduct.salesCount || 30}+ {t('catalog.purchases', 'xarid')})</span>
-                  </div>
-                </div>
-              )}
-
-              {/* Product Title with Category Emoji & Description */}
-              {activeFeaturedProduct && (
-                <div>
-                  <h3
-                    onClick={() => setSelectedProduct(activeFeaturedProduct)}
-                    className="text-sm sm:text-base font-black text-slate-900 hover:text-emerald-700 transition cursor-pointer flex items-center gap-1.5 truncate"
-                  >
-                    <span>{getProductCategoryEmoji(activeFeaturedProduct)}</span>
-                    <span className="truncate">{activeFeaturedProduct.title}</span>
-                  </h3>
-                  <p className="text-xs text-slate-500 line-clamp-1 mt-0.5 font-medium">
-                    {activeFeaturedProduct.description}
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* Bottom Section: Price & Add to Cart */}
-            {activeFeaturedProduct && (
-              <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
-                    ${activeFeaturedProduct.discountPrice || activeFeaturedProduct.price}
-                  </p>
-                  {activeFeaturedProduct.discountPrice && (
-                    <p className="text-xs text-slate-400 line-through">
-                      ${activeFeaturedProduct.price}
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  onClick={(e) => handleHeroAddToCart(activeFeaturedProduct, e)}
-                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-md shadow-emerald-600/20 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <ShoppingCart className="w-4 h-4" />
-                  <span>{t('catalog.addToCart', 'Savatga')}</span>
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
+        {/* BIG HERO BANNER SWIPER */}
+        <HeroBannerSwiper />
 
         {/* 4-Pillar Trust Ribbon (Uzum Market Kafolati) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-4 sm:mt-5">
@@ -654,14 +346,20 @@ export const CatalogPage = () => {
         {/* Hot Deals Showcase Section (When viewing all products and no search) */}
         {selectedCategory === 'all' && !urlSearch && hotDeals.length > 0 && (
           <div className="mb-8 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-rose-50/80 via-amber-50/70 to-orange-50/80 border border-rose-200/70 shadow-sm">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-rose-500 text-white flex items-center justify-center shadow-md shadow-rose-500/20">
+                <div className="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center shadow-md shadow-rose-500/20 flex-shrink-0">
                   <Flame className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900">{t('filters.allDiscountsTitle', 'Mega Chegirmalar & Maxsus Takliflar')}</h3>
-                  <p className="text-xs text-slate-500">{t('filters.searchSubtext', 'Eng yuqori chegirmaga ega tovarlar')}</p>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-black text-slate-900">{t('filters.allDiscountsTitle', 'Mega Chegirmalar & Qaynoq Takliflar')}</h3>
+                    <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono font-bold text-rose-700 bg-rose-100/90 px-2 py-0.5 rounded-lg border border-rose-200">
+                      <Clock className="w-3 h-3 text-rose-600" />
+                      <span>{String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}</span>
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500">{t('filters.searchSubtext', 'Faqat tanlangan aksiyadagi tovarlar')}</p>
                 </div>
               </div>
 

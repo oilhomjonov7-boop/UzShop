@@ -18,9 +18,11 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
   const cartQty = inCart ? inCart.quantity : 0;
   const maxCanAdd = Math.max(0, product.stock - cartQty);
 
-  const discountPercent = product.discountPrice
+  const hasDiscount = Boolean(product.discountPrice && product.discountPrice < product.price);
+  const discountPercent = hasDiscount
     ? Math.round(((product.price - product.discountPrice) / product.price) * 100)
     : null;
+  const currentPrice = hasDiscount ? product.discountPrice : product.price;
 
   const handleAdd = () => {
     if (isOutOfStock) return;
@@ -79,15 +81,15 @@ export const ProductDetailModal = ({ product, isOpen, onClose }) => {
 
             <div className="mt-3 flex items-baseline gap-2">
               <span className="text-2xl font-black text-brand-600">
-                {formatCurrency(product.discountPrice || product.price)}
+                {formatCurrency(currentPrice)}
               </span>
-              {product.discountPrice && (
+              {hasDiscount && (
                 <span className="text-sm text-slate-400 line-through">
                   {formatCurrency(product.price)}
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-400">≈ {formatUZS(product.discountPrice || product.price)}</p>
+            <p className="text-xs text-slate-400">≈ {formatUZS(currentPrice)}</p>
 
             {/* Description */}
             <div className="mt-4 pt-4 border-t border-slate-100">

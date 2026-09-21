@@ -77,7 +77,8 @@ export const CartDrawer = () => {
                 </div>
               ) : (
                 items.map(({ product, quantity }) => {
-                  const effectivePrice = product.discountPrice || product.price;
+                  const hasDiscount = Boolean(product.discountPrice && product.discountPrice < product.price);
+                  const effectivePrice = hasDiscount ? product.discountPrice : product.price;
                   const itemTotal = effectivePrice * quantity;
                   const isMaxStock = quantity >= product.stock;
 
@@ -110,7 +111,7 @@ export const CartDrawer = () => {
                             <span className="text-xs font-black text-brand-600">
                               {formatCurrency(effectivePrice)}
                             </span>
-                            {product.discountPrice && (
+                            {hasDiscount && (
                               <span className="text-[10px] text-slate-400 line-through">
                                 {formatCurrency(product.price)}
                               </span>
