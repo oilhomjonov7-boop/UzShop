@@ -77,12 +77,12 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
           onClick={onClose}
           className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
         />
-        <div className="relative bg-white rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-100 z-10 animate-slide-up space-y-4">
-          <div className="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto">
+        <div className="relative bg-white dark:bg-slate-900 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl border border-slate-100 dark:border-slate-800 z-10 animate-slide-up space-y-4">
+          <div className="w-14 h-14 rounded-2xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto">
             <Lock className="w-7 h-7" />
           </div>
-          <h3 className="text-xl font-black text-slate-900">{t('auth.authRequiredTitle')}</h3>
-          <p className="text-xs text-slate-500 leading-relaxed">{t('auth.authRequiredDesc')}</p>
+          <h3 className="text-xl font-black text-slate-900 dark:text-white">{t('auth.authRequiredTitle')}</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{t('auth.authRequiredDesc')}</p>
           <div className="flex gap-2.5 pt-2">
             <button
               onClick={() => {
@@ -100,7 +100,7 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
                 setIsCartOpen(false);
                 navigate('/register');
               }}
-              className="flex-1 py-3 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-xs transition cursor-pointer"
+              className="flex-1 py-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold text-xs transition cursor-pointer"
             >
               {t('auth.registerBtn')}
             </button>
@@ -155,20 +155,20 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
       />
 
       {/* Modal Dialog */}
-      <div className="relative bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden z-10 max-h-[90vh] flex flex-col animate-slide-up">
+      <div className="relative bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden z-10 max-h-[90vh] flex flex-col animate-slide-up text-slate-900 dark:text-white">
         {/* Header */}
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+        <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-slate-50/50 dark:bg-slate-800/50">
           <div>
-            <h3 className="text-lg font-bold text-slate-900">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
               {createdOrder ? "Buyurtma Qabul Qilindi!" : "Buyurtmani Rasmiylashtirish"}
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               {createdOrder ? "Tez orada operatorimiz siz bilan bog'lanadi" : "Yetkazib berish ma'lumotlarini kiriting"}
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200/50 transition"
+            className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -178,44 +178,44 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
         <div className="p-6 overflow-y-auto flex-1">
           {createdOrder ? (
             <div className="text-center py-4 space-y-5">
-              <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-100 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto shadow-inner">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
 
               <div>
-                <h4 className="text-xl font-black text-slate-900">Buyurtma Raqami: #{createdOrder.id}</h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Buyurtma holati: <span className="font-semibold text-amber-600">Pending (Kutilmoqda)</span>
+                <h4 className="text-xl font-black text-slate-900 dark:text-white">Buyurtma Raqami: #{createdOrder.id}</h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  Buyurtma holati: <span className="font-semibold text-amber-600 dark:text-amber-400">Pending (Kutilmoqda)</span>
                 </p>
               </div>
 
-              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 text-left text-xs space-y-2">
+              <div className="p-4 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-100 dark:border-slate-700 text-left text-xs space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Qabul qiluvchi:</span>
-                  <span className="font-semibold text-slate-900">{createdOrder.customerInfo?.name}</span>
+                  <span className="text-slate-500 dark:text-slate-400">Qabul qiluvchi:</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{createdOrder.customerInfo?.name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Telefon:</span>
-                  <span className="font-semibold text-slate-900">{createdOrder.customerInfo?.phone}</span>
+                  <span className="text-slate-500 dark:text-slate-400">Telefon:</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">{createdOrder.customerInfo?.phone}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">Manzil:</span>
-                  <span className="font-semibold text-slate-900 truncate max-w-[200px]">{createdOrder.customerInfo?.address}</span>
+                  <span className="text-slate-500 dark:text-slate-400">Manzil:</span>
+                  <span className="font-semibold text-slate-900 dark:text-white truncate max-w-[200px]">{createdOrder.customerInfo?.address}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-500">To'lov turi:</span>
-                  <span className="font-semibold text-brand-600">{createdOrder.paymentMethod}</span>
+                  <span className="text-slate-500 dark:text-slate-400">To'lov turi:</span>
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">{createdOrder.paymentMethod}</span>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-slate-200 text-sm">
-                  <span className="font-bold text-slate-800">Jami to'lov:</span>
-                  <span className="font-black text-brand-600">{formatCurrency(createdOrder.totalAmount)}</span>
+                <div className="flex justify-between pt-2 border-t border-slate-200 dark:border-slate-700 text-sm">
+                  <span className="font-bold text-slate-800 dark:text-slate-200">Jami to'lov:</span>
+                  <span className="font-black text-emerald-600 dark:text-emerald-400">{formatCurrency(createdOrder.totalAmount)}</span>
                 </div>
               </div>
 
               <div className="flex flex-col gap-2 pt-2">
                 <button
                   onClick={handleGoToOrders}
-                  className="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2"
+                  className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Package className="w-4 h-4" />
                   <span>Mening buyurtmalarimga o'tish</span>
@@ -225,7 +225,7 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
                     onClose();
                     setIsCartOpen(false);
                   }}
-                  className="w-full py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-semibold text-xs transition"
+                  className="w-full py-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-xs transition cursor-pointer"
                 >
                   Xaridni davom ettirish
                 </button>
@@ -235,7 +235,7 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Name */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
                   <User className="w-3.5 h-3.5 text-slate-400" />
                   <span>Ism va Familiya *</span>
                 </label>
@@ -245,13 +245,13 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
                   placeholder="Masalan: Ali Valiyev"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5 text-slate-400" />
                   <span>Telefon raqami *</span>
                 </label>
@@ -261,13 +261,13 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
                   placeholder="+998 90 123 45 67"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
                 />
               </div>
 
               {/* Delivery Address */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-slate-400" />
                   <span>Yetkazib berish manzili *</span>
                 </label>
@@ -277,29 +277,29 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
                   placeholder="Shahar, tuman, ko'cha, uy va xonadon raqami"
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-xs focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition resize-none"
                 />
               </div>
 
               {/* Payment Method Selector */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-2">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
                   To'lov usulini tanlang:
                 </label>
                 <div className="grid grid-cols-3 gap-2.5">
                   {[
-                    { id: 'Payme', icon: CreditCard, color: 'text-cyan-600' },
-                    { id: 'Click', icon: CreditCard, color: 'text-blue-600' },
-                    { id: 'Naqd pul', icon: Banknote, color: 'text-emerald-600' }
+                    { id: 'Payme', icon: CreditCard, color: 'text-cyan-600 dark:text-cyan-400' },
+                    { id: 'Click', icon: CreditCard, color: 'text-blue-600 dark:text-blue-400' },
+                    { id: 'Naqd pul', icon: Banknote, color: 'text-emerald-600 dark:text-emerald-400' }
                   ].map(({ id, icon: Icon, color }) => (
                     <button
                       key={id}
                       type="button"
                       onClick={() => setFormData({ ...formData, paymentMethod: id })}
-                      className={`p-3 rounded-xl border text-center transition flex flex-col items-center gap-1.5 ${
+                      className={`p-3 rounded-xl border text-center transition flex flex-col items-center gap-1.5 cursor-pointer ${
                         formData.paymentMethod === id
-                          ? 'border-brand-500 bg-brand-50/50 ring-2 ring-brand-500/20 text-brand-900 font-bold'
-                          : 'border-slate-200 hover:border-slate-300 text-slate-700'
+                          ? 'border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/60 ring-2 ring-emerald-500/20 text-emerald-900 dark:text-emerald-300 font-bold'
+                          : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 text-slate-700 dark:text-slate-300'
                       }`}
                     >
                       <Icon className={`w-5 h-5 ${color}`} />
@@ -310,14 +310,14 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
               </div>
 
               {/* Order summary info */}
-              <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-between text-xs mt-2">
+              <div className="p-3.5 bg-slate-50 dark:bg-slate-800/70 rounded-2xl border border-slate-100 dark:border-slate-700 flex items-center justify-between text-xs mt-2">
                 <div>
-                  <span className="text-slate-500">Jami ({items.length} turdagi tovar):</span>
-                  <span className="block font-bold text-slate-800 mt-0.5">Bepul tezkor yetkazib berish</span>
+                  <span className="text-slate-500 dark:text-slate-400">Jami ({items.length} turdagi tovar):</span>
+                  <span className="block font-bold text-slate-800 dark:text-slate-200 mt-0.5">Bepul tezkor yetkazib berish</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-base font-black text-brand-600 block">{formatCurrency(total)}</span>
-                  <span className="text-[10px] text-slate-400">≈ {formatUZS(total)}</span>
+                  <span className="text-base font-black text-emerald-600 dark:text-emerald-400 block">{formatCurrency(total)}</span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">≈ {formatUZS(total)}</span>
                 </div>
               </div>
 
@@ -325,7 +325,7 @@ export const CheckoutModal = ({ isOpen, onClose }) => {
               <button
                 type="submit"
                 disabled={orderMutation.isPending}
-                className="w-full py-3.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2 transition disabled:opacity-50"
+                className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition disabled:opacity-50 cursor-pointer"
               >
                 {orderMutation.isPending ? (
                   <span>Rasmiylashtirilmoqda...</span>

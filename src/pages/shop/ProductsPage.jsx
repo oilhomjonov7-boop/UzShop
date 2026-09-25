@@ -196,19 +196,19 @@ export const ProductsPage = () => {
   ].filter(Boolean).length;
 
   return (
-    <div className="min-h-screen bg-slate-50 py-4 sm:py-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-4 sm:py-6 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-4 overflow-x-auto no-scrollbar">
-          <Link to="/" className="hover:text-slate-900 transition font-medium">
+        <nav className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-4 overflow-x-auto no-scrollbar">
+          <Link to="/" className="hover:text-slate-900 dark:hover:text-white transition font-medium">
             {t('nav.home')}
           </Link>
           <span>/</span>
-          <span className="font-medium text-slate-700">{t('nav.catalog')}</span>
+          <span className="font-medium text-slate-700 dark:text-slate-300">{t('nav.catalog')}</span>
           {activeCategoryObj && (
             <>
               <span>/</span>
-              <span className="font-bold text-emerald-600">
+              <span className="font-bold text-emerald-600 dark:text-emerald-400">
                 {CATEGORY_ICONS_MAP[activeCategoryObj.id]} {getCategoryName(activeCategoryObj)}
               </span>
             </>
@@ -216,7 +216,7 @@ export const ProductsPage = () => {
           {urlSearch && (
             <>
               <span>/</span>
-              <span className="font-bold text-slate-900">
+              <span className="font-bold text-slate-900 dark:text-white">
                 "{urlSearch}"
               </span>
             </>
@@ -228,17 +228,17 @@ export const ProductsPage = () => {
           {/* ========================================================================= */}
           {/* DESKTOP FILTER SIDEBAR (3 Columns) */}
           {/* ========================================================================= */}
-          <aside className="hidden lg:block lg:col-span-3 bg-white rounded-3xl border border-slate-200/80 p-5 shadow-sm sticky top-24">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+          <aside className="hidden lg:block lg:col-span-3 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-5 shadow-sm sticky top-24">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4 text-emerald-600" />
-                <h3 className="font-black text-sm text-slate-900">{t('filters.title')}</h3>
+                <h3 className="font-black text-sm text-slate-900 dark:text-white">{t('filters.title')}</h3>
               </div>
 
               {hasActiveFilters && (
                 <button
                   onClick={handleClearAllFilters}
-                  className="text-xs text-rose-600 hover:text-rose-700 font-bold transition flex items-center gap-1 cursor-pointer"
+                  className="text-xs text-rose-600 hover:text-rose-700 dark:text-rose-400 font-bold transition flex items-center gap-1 cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>{t('filters.clearAll')}</span>
@@ -247,8 +247,8 @@ export const ProductsPage = () => {
             </div>
 
             {/* Category Filter List */}
-            <div className="py-4 border-b border-slate-100">
-              <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-2.5">
+            <div className="py-4 border-b border-slate-100 dark:border-slate-800">
+              <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-2.5">
                 {t('filters.categories')}
               </h4>
               <div className="space-y-1 max-h-64 overflow-y-auto pr-1 no-scrollbar">
@@ -257,14 +257,14 @@ export const ProductsPage = () => {
                   className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between cursor-pointer ${
                     selectedCategory === 'all'
                       ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <span className="flex items-center gap-2">
                     <span>⚡</span>
                     <span>{t('filters.allGoods')}</span>
                   </span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'}`}>
                     {categoryCounts.all || 0}
                   </span>
                 </button>
@@ -279,14 +279,14 @@ export const ProductsPage = () => {
                       className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between cursor-pointer ${
                         isSelected
                           ? 'bg-emerald-600 text-white shadow-xs'
-                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                       }`}
                     >
                       <span className="flex items-center gap-2 truncate">
                         <span>{CATEGORY_ICONS_MAP[cat.id] || '🏷️'}</span>
                         <span className="truncate">{getCategoryName(cat)}</span>
                       </span>
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'}`}>
                         {count}
                       </span>
                     </button>
@@ -296,30 +296,30 @@ export const ProductsPage = () => {
             </div>
 
             {/* Price Range Filter */}
-            <div className="py-4 border-b border-slate-100">
-              <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-2.5">
+            <div className="py-4 border-b border-slate-100 dark:border-slate-800">
+              <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-2.5">
                 {t('filters.priceRange')}
               </h4>
 
               <div className="grid grid-cols-2 gap-2 mb-2.5">
                 <div>
-                  <label className="text-[10px] text-slate-400 font-medium block mb-1">{t('filters.from')}</label>
+                  <label className="text-[10px] text-slate-400 dark:text-slate-500 font-medium block mb-1">{t('filters.from')}</label>
                   <input
                     type="number"
                     placeholder="0"
                     value={priceRange.min}
                     onChange={(e) => setPriceRange(p => ({ ...p, min: e.target.value }))}
-                    className="w-full px-2.5 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-2.5 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-emerald-500 outline-none"
                   />
                 </div>
                 <div>
-                  <label className="text-[10px] text-slate-400 font-medium block mb-1">{t('filters.to')}</label>
+                  <label className="text-[10px] text-slate-400 dark:text-slate-500 font-medium block mb-1">{t('filters.to')}</label>
                   <input
                     type="number"
                     placeholder="3000"
                     value={priceRange.max}
                     onChange={(e) => setPriceRange(p => ({ ...p, max: e.target.value }))}
-                    className="w-full px-2.5 py-1.5 text-xs rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                    className="w-full px-2.5 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-800 focus:ring-2 focus:ring-emerald-500 outline-none"
                   />
                 </div>
               </div>
@@ -329,28 +329,28 @@ export const ProductsPage = () => {
                 <button
                   type="button"
                   onClick={() => handlePricePreset('', '100')}
-                  className="px-2 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[10px] font-bold text-slate-600 transition"
+                  className="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300 transition"
                 >
                   {t('filters.upTo100')}
                 </button>
                 <button
                   type="button"
                   onClick={() => handlePricePreset('100', '500')}
-                  className="px-2 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[10px] font-bold text-slate-600 transition"
+                  className="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300 transition"
                 >
                   {t('filters.range100_500')}
                 </button>
                 <button
                   type="button"
                   onClick={() => handlePricePreset('500', '1000')}
-                  className="px-2 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[10px] font-bold text-slate-600 transition"
+                  className="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300 transition"
                 >
                   {t('filters.range500_1000')}
                 </button>
                 <button
                   type="button"
                   onClick={() => handlePricePreset('1000', '')}
-                  className="px-2 py-1 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[10px] font-bold text-slate-600 transition"
+                  className="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-[10px] font-bold text-slate-600 dark:text-slate-300 transition"
                 >
                   {t('filters.above1000')}
                 </button>
@@ -366,14 +366,14 @@ export const ProductsPage = () => {
             </div>
 
             {/* Quick Toggles */}
-            <div className="py-4 space-y-2.5 border-b border-slate-100">
-              <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-1">
+            <div className="py-4 space-y-2.5 border-b border-slate-100 dark:border-slate-800">
+              <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-1">
                 {t('filters.specialOffers')}
               </h4>
 
               {/* Discount Only Toggle */}
               <label className="flex items-center justify-between cursor-pointer py-1 group">
-                <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900 flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white flex items-center gap-1.5">
                   <Flame className="w-3.5 h-3.5 text-rose-500" />
                   <span>{t('filters.onlyDiscounted')}</span>
                 </span>
@@ -381,13 +381,13 @@ export const ProductsPage = () => {
                   type="checkbox"
                   checked={urlDiscountOnly}
                   onChange={(e) => updateFilterParam('discount', e.target.checked)}
-                  className="w-4 h-4 text-emerald-600 rounded-md border-slate-300 focus:ring-emerald-500 cursor-pointer"
+                  className="w-4 h-4 text-emerald-600 rounded-md border-slate-300 dark:border-slate-600 focus:ring-emerald-500 cursor-pointer"
                 />
               </label>
 
               {/* In-Stock Only Toggle */}
               <label className="flex items-center justify-between cursor-pointer py-1 group">
-                <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900 flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white flex items-center gap-1.5">
                   <Package className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{t('filters.onlyInStock')}</span>
                 </span>
@@ -395,13 +395,13 @@ export const ProductsPage = () => {
                   type="checkbox"
                   checked={urlInStockOnly}
                   onChange={(e) => updateFilterParam('inStock', e.target.checked)}
-                  className="w-4 h-4 text-emerald-600 rounded-md border-slate-300 focus:ring-emerald-500 cursor-pointer"
+                  className="w-4 h-4 text-emerald-600 rounded-md border-slate-300 dark:border-slate-600 focus:ring-emerald-500 cursor-pointer"
                 />
               </label>
 
               {/* High Rating Only */}
               <label className="flex items-center justify-between cursor-pointer py-1 group">
-                <span className="text-xs font-semibold text-slate-700 group-hover:text-slate-900 flex items-center gap-1.5">
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white flex items-center gap-1.5">
                   <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   <span>{t('filters.highRating')}</span>
                 </span>
@@ -409,7 +409,7 @@ export const ProductsPage = () => {
                   type="checkbox"
                   checked={urlMinRating === '4.8'}
                   onChange={(e) => updateFilterParam('rating', e.target.checked ? '4.8' : '')}
-                  className="w-4 h-4 text-emerald-600 rounded-md border-slate-300 focus:ring-emerald-500 cursor-pointer"
+                  className="w-4 h-4 text-emerald-600 rounded-md border-slate-300 dark:border-slate-600 focus:ring-emerald-500 cursor-pointer"
                 />
               </label>
             </div>
@@ -420,11 +420,11 @@ export const ProductsPage = () => {
           {/* ========================================================================= */}
           <main className="lg:col-span-9">
             {/* Top Toolbar Card */}
-            <div className="bg-white rounded-3xl border border-slate-200/80 p-4 sm:p-6 mb-5 shadow-sm space-y-4">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-4 sm:p-6 mb-5 shadow-sm space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                 {/* Title & Count */}
                 <div>
-                  <h1 className="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2.5">
+                  <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2.5">
                     <span>
                       {urlSearch
                         ? t('filters.searchResultsTitle')
@@ -434,13 +434,13 @@ export const ProductsPage = () => {
                         ? t('filters.allDiscountsTitle')
                         : t('filters.allCatalogTitle')}
                     </span>
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-extrabold border border-emerald-200">
+                    <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 font-extrabold border border-emerald-200 dark:border-emerald-800/60">
                       {products.length} {t('common.itemsCount')}
                     </span>
                   </h1>
 
                   {urlSearch && (
-                    <p className="text-xs text-slate-500 mt-1">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                       "{urlSearch}" {t('filters.searchSubtext')}
                     </p>
                   )}
@@ -452,7 +452,7 @@ export const ProductsPage = () => {
                   <button
                     type="button"
                     onClick={() => setIsMobileFilterOpen(true)}
-                    className="lg:hidden px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer shadow-xs"
+                    className="lg:hidden px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer shadow-xs"
                   >
                     <SlidersHorizontal className="w-4 h-4 text-emerald-600" />
                     <span>{t('filters.title')}</span>
@@ -468,7 +468,7 @@ export const ProductsPage = () => {
                     <select
                       value={urlSort}
                       onChange={(e) => updateFilterParam('sort', e.target.value)}
-                      className="appearance-none pl-3.5 pr-9 py-2.5 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 bg-slate-50 hover:bg-white focus:bg-white text-slate-700 hover:border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer shadow-xs"
+                      className="appearance-none pl-3.5 pr-9 py-2.5 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-white dark:hover:bg-slate-700 focus:bg-white dark:focus:bg-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-300 dark:hover:border-slate-600 focus:ring-2 focus:ring-emerald-500 outline-none cursor-pointer shadow-xs"
                     >
                       <option value="default">{t('catalog.sort.popular')}</option>
                       <option value="popular">{t('catalog.sort.mostBought')}</option>
@@ -497,7 +497,7 @@ export const ProductsPage = () => {
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                     placeholder={t('filters.searchCatalogPlaceholder')}
-                    className="w-full pl-12 sm:pl-14 pr-28 sm:pr-36 py-3.5 sm:py-4 rounded-2xl border-2 border-slate-200 hover:border-slate-300 focus:border-emerald-500 bg-slate-50/70 hover:bg-white focus:bg-white text-sm sm:text-base font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 transition-all shadow-inner"
+                    className="w-full pl-12 sm:pl-14 pr-28 sm:pr-36 py-3.5 sm:py-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 focus:border-emerald-500 bg-slate-50/70 dark:bg-slate-800 hover:bg-white dark:hover:bg-slate-800 focus:bg-white dark:focus:bg-slate-800 text-sm sm:text-base font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-emerald-500/15 transition-all shadow-inner"
                   />
                   <div className="absolute right-2 flex items-center gap-1.5">
                     {searchInput && (
@@ -527,58 +527,58 @@ export const ProductsPage = () => {
 
               {/* Active Filter Badges */}
               {hasActiveFilters && (
-                <div className="flex items-center gap-2 pt-3 mt-3 border-t border-slate-100 flex-wrap">
-                  <span className="text-xs text-slate-400 font-medium">{t('filters.activeFilters')}</span>
+                <div className="flex items-center gap-2 pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 flex-wrap">
+                  <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">{t('filters.activeFilters')}</span>
 
                   {selectedCategory !== 'all' && activeCategoryObj && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800">
                       <span>{CATEGORY_ICONS_MAP[activeCategoryObj.id]} {getCategoryName(activeCategoryObj)}</span>
-                      <button onClick={() => handleCategorySelect('all')} className="hover:text-emerald-950">
+                      <button onClick={() => handleCategorySelect('all')} className="hover:text-emerald-950 dark:hover:text-white">
                         <X className="w-3 h-3" />
                       </button>
                     </span>
                   )}
 
                   {urlSearch && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700">
                       <span>{t('filters.searchBadge')} "{urlSearch}"</span>
-                      <button onClick={() => updateFilterParam('search', '')} className="hover:text-slate-950">
+                      <button onClick={() => updateFilterParam('search', '')} className="hover:text-slate-950 dark:hover:text-white">
                         <X className="w-3 h-3" />
                       </button>
                     </span>
                   )}
 
                   {(urlMinPrice || urlMaxPrice) && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold border border-slate-200">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700">
                       <span>{t('filters.priceBadge')} ${urlMinPrice || '0'} - ${urlMaxPrice || '∞'}</span>
-                      <button onClick={() => handlePricePreset('', '')} className="hover:text-slate-950">
+                      <button onClick={() => handlePricePreset('', '')} className="hover:text-slate-950 dark:hover:text-white">
                         <X className="w-3 h-3" />
                       </button>
                     </span>
                   )}
 
                   {urlDiscountOnly && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 text-xs font-bold border border-rose-200">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/70 text-rose-800 dark:text-rose-300 text-xs font-bold border border-rose-200 dark:border-rose-800">
                       <span>{t('filters.onlyDiscounted')}</span>
-                      <button onClick={() => updateFilterParam('discount', false)} className="hover:text-rose-950">
+                      <button onClick={() => updateFilterParam('discount', false)} className="hover:text-rose-950 dark:hover:text-white">
                         <X className="w-3 h-3" />
                       </button>
                     </span>
                   )}
 
                   {urlInStockOnly && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-50 text-teal-800 text-xs font-bold border border-teal-200">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-50 dark:bg-teal-950/70 text-teal-800 dark:text-teal-300 text-xs font-bold border border-teal-200 dark:border-teal-800">
                       <span>{t('filters.onlyInStock')}</span>
-                      <button onClick={() => updateFilterParam('inStock', false)} className="hover:text-teal-950">
+                      <button onClick={() => updateFilterParam('inStock', false)} className="hover:text-teal-950 dark:hover:text-white">
                         <X className="w-3 h-3" />
                       </button>
                     </span>
                   )}
 
                   {urlMinRating && (
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 text-xs font-bold border border-amber-200">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 text-xs font-bold border border-amber-200 dark:border-amber-800">
                       <span>4.8+ {t('filters.ratingBadge')}</span>
-                      <button onClick={() => updateFilterParam('rating', '')} className="hover:text-amber-950">
+                      <button onClick={() => updateFilterParam('rating', '')} className="hover:text-amber-950 dark:hover:text-white">
                         <X className="w-3 h-3" />
                       </button>
                     </span>
@@ -586,7 +586,7 @@ export const ProductsPage = () => {
 
                   <button
                     onClick={handleClearAllFilters}
-                    className="text-xs font-bold text-rose-600 hover:text-rose-700 ml-auto cursor-pointer"
+                    className="text-xs font-bold text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 ml-auto cursor-pointer"
                   >
                     {t('filters.clearAllBtn')}
                   </button>
@@ -602,24 +602,24 @@ export const ProductsPage = () => {
                 ))}
               </div>
             ) : isError ? (
-              <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-900">{t('filters.errorTitle')}</h3>
-                <p className="text-xs text-slate-500 mt-1">{t('filters.errorDesc')}</p>
+              <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{t('catalog.empty.title', 'Xatolik yuz berdi')}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{t('catalog.empty.desc', 'Iltimos, qayta urinib ko\'ring.')}</p>
               </div>
             ) : products.length === 0 ? (
-              <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-                <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-3">
+              <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+                <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 mx-auto mb-3">
                   <Search className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-black text-slate-800">{t('filters.noResultsTitle')}</h3>
-                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-                  {t('filters.noResultsDesc')}
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">{t('catalog.empty.title', 'Hech qanday mahsulot topilmadi')}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
+                  {t('catalog.empty.desc', "Qidiruv parametrlarini o'zgartirib ko'ring yoki filtrlarni tozalang.")}
                 </p>
                 <button
                   onClick={handleClearAllFilters}
-                  className="mt-4 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md cursor-pointer transition"
+                  className="mt-4 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md cursor-pointer transition"
                 >
-                  {t('filters.clearAllFiltersBtn')}
+                  {t('catalog.empty.btn', 'Filtrlarni tozalash')}
                 </button>
               </div>
             ) : (
@@ -634,81 +634,41 @@ export const ProductsPage = () => {
                   ))}
                 </div>
 
-                {/* Pagination Controls */}
+                {/* Pagination */}
                 {totalPages > 1 && (
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-10 pt-6 border-t border-slate-200">
-                    <p className="text-xs text-slate-500 font-medium">
-                      {(currentPage - 1) * itemsPerPage + 1}–{Math.min(currentPage * itemsPerPage, products.length)} / {products.length} {t('common.productsCount')}
-                    </p>
+                  <div className="flex items-center justify-center gap-2 mt-12">
+                    <button
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                      className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
 
-                    <div className="flex items-center gap-1.5 self-center">
-                      <button
-                        disabled={currentPage === 1}
-                        onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                        className="p-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
-                        aria-label={t('catalog.pagination.prev')}
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                      </button>
-
-                      {Array.from({ length: totalPages }).map((_, idx) => {
-                        const pageNum = idx + 1;
-                        if (
-                          pageNum === 1 ||
-                          pageNum === totalPages ||
-                          (pageNum >= currentPage - 1 && pageNum <= currentPage + 1)
-                        ) {
-                          return (
-                            <button
-                              key={pageNum}
-                              onClick={() => setCurrentPage(pageNum)}
-                              className={`w-9 h-9 rounded-xl text-xs font-bold transition cursor-pointer ${
-                                currentPage === pageNum
-                                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
-                                  : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
-                              }`}
-                            >
-                              {pageNum}
-                            </button>
-                          );
-                        } else if (
-                          pageNum === currentPage - 2 ||
-                          pageNum === currentPage + 2
-                        ) {
-                          return <span key={pageNum} className="text-slate-400 px-1">...</span>;
-                        }
-                        return null;
-                      })}
-
-                      <button
-                        disabled={currentPage === totalPages}
-                        onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                        className="p-2 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
-                        aria-label={t('catalog.pagination.next')}
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 text-xs">
-                      <span className="text-slate-500 font-medium">{t('filters.perPage')}</span>
-                      {[16, 24, 36, 48].map(size => (
+                    {Array.from({ length: totalPages }).map((_, idx) => {
+                      const pageNum = idx + 1;
+                      return (
                         <button
-                          key={size}
-                          onClick={() => {
-                            setItemsPerPage(size);
-                            setCurrentPage(1);
-                          }}
-                          className={`px-2.5 py-1 rounded-lg font-bold transition text-xs cursor-pointer ${
-                            itemsPerPage === size
-                              ? 'bg-slate-900 text-white shadow-xs'
-                              : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100'
+                          key={pageNum}
+                          onClick={() => setCurrentPage(pageNum)}
+                          className={`w-10 h-10 rounded-xl text-xs font-bold transition cursor-pointer ${
+                            currentPage === pageNum
+                              ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                              : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700'
                           }`}
                         >
-                          {size}
+                          {pageNum}
                         </button>
-                      ))}
-                    </div>
+                      );
+                    })}
+
+                    <button
+                      disabled={currentPage === totalPages}
+                      onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                      className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
                   </div>
                 )}
               </>
@@ -725,20 +685,20 @@ export const ProductsPage = () => {
           {/* Backdrop */}
           <div
             onClick={() => setIsMobileFilterOpen(false)}
-            className="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity animate-fade-in"
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity animate-fade-in"
           />
 
           {/* Drawer content */}
-          <div className="relative ml-auto w-full max-w-xs sm:max-w-sm bg-white h-full shadow-2xl flex flex-col justify-between p-5 overflow-y-auto animate-slide-left z-10">
+          <div className="relative ml-auto w-full max-w-xs sm:max-w-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-white h-full shadow-2xl flex flex-col justify-between p-5 overflow-y-auto animate-slide-left z-10 border-l border-slate-200 dark:border-slate-800">
             <div>
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-                <h3 className="font-black text-base text-slate-900 flex items-center gap-2">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-4">
+                <h3 className="font-black text-base text-slate-900 dark:text-white flex items-center gap-2">
                   <Filter className="w-4 h-4 text-emerald-600" />
                   <span>{t('filters.title')}</span>
                 </h3>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="p-1 rounded-full text-slate-400 hover:text-slate-700"
+                  className="p-1 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -746,7 +706,7 @@ export const ProductsPage = () => {
 
               {/* Mobile Category Selection */}
               <div className="mb-5">
-                <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-2">
+                <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-2">
                   {t('filters.categories')}
                 </h4>
                 <div className="space-y-1 max-h-48 overflow-y-auto">
@@ -758,7 +718,7 @@ export const ProductsPage = () => {
                     className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between ${
                       selectedCategory === 'all'
                         ? 'bg-emerald-600 text-white'
-                        : 'text-slate-600 hover:bg-slate-50'
+                        : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                     }`}
                   >
                     <span>⚡ {t('filters.allGoods')}</span>
@@ -775,7 +735,7 @@ export const ProductsPage = () => {
                       className={`w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between ${
                         selectedCategory === cat.id
                           ? 'bg-emerald-600 text-white'
-                          : 'text-slate-600 hover:bg-slate-50'
+                          : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                       }`}
                     >
                       <span className="truncate">{CATEGORY_ICONS_MAP[cat.id]} {getCategoryName(cat)}</span>
@@ -786,8 +746,8 @@ export const ProductsPage = () => {
               </div>
 
               {/* Mobile Price */}
-              <div className="mb-5 pt-3 border-t border-slate-100">
-                <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-2">
+              <div className="mb-5 pt-3 border-t border-slate-100 dark:border-slate-800">
+                <h4 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-wider mb-2">
                   {t('filters.priceRange')}
                 </h4>
                 <div className="grid grid-cols-2 gap-2 mb-2">
@@ -796,21 +756,21 @@ export const ProductsPage = () => {
                     placeholder={t('filters.from')}
                     value={priceRange.min}
                     onChange={(e) => setPriceRange(p => ({ ...p, min: e.target.value }))}
-                    className="px-2.5 py-1.5 text-xs rounded-xl border border-slate-200"
+                    className="px-2.5 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
                   />
                   <input
                     type="number"
                     placeholder={t('filters.to')}
                     value={priceRange.max}
                     onChange={(e) => setPriceRange(p => ({ ...p, max: e.target.value }))}
-                    className="px-2.5 py-1.5 text-xs rounded-xl border border-slate-200"
+                    className="px-2.5 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
                   />
                 </div>
               </div>
 
               {/* Mobile Special Offers */}
-              <div className="mb-5 pt-3 border-t border-slate-100 space-y-2">
-                <label className="flex items-center justify-between text-xs font-bold text-slate-700">
+              <div className="mb-5 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                <label className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
                   <span>🔥 {t('filters.onlyDiscounted')}</span>
                   <input
                     type="checkbox"
@@ -819,7 +779,7 @@ export const ProductsPage = () => {
                     className="w-4 h-4 text-emerald-600 rounded"
                   />
                 </label>
-                <label className="flex items-center justify-between text-xs font-bold text-slate-700">
+                <label className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
                   <span>📦 {t('filters.onlyInStock')}</span>
                   <input
                     type="checkbox"
@@ -832,14 +792,14 @@ export const ProductsPage = () => {
             </div>
 
             {/* Mobile Actions */}
-            <div className="pt-4 border-t border-slate-100 flex gap-2">
+            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-2">
               <button
                 type="button"
                 onClick={() => {
                   handleClearAllFilters();
                   setIsMobileFilterOpen(false);
                 }}
-                className="flex-1 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50"
+                className="flex-1 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               >
                 {t('filters.clearAll')}
               </button>

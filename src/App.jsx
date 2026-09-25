@@ -7,6 +7,7 @@ import { ToastContainer } from './components/common/Toast';
 import { PeriodicAuthReminder } from './components/auth/PeriodicAuthReminder';
 import { ProtectedRoute, GuestRoute } from './components/auth/ProtectedRoute';
 import { useAuthStore } from './store/useAuthStore';
+import { useThemeStore } from './store/useThemeStore';
 
 // Pages
 import { CatalogPage } from './pages/shop/CatalogPage';
@@ -23,6 +24,16 @@ import { NotFoundPage } from './pages/NotFoundPage';
 
 export function App() {
   const { user, isAuthenticated, syncProfile } = useAuthStore();
+  const { theme } = useThemeStore();
+
+  // Ensure dark class is maintained on html whenever theme changes
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   // Auto-sync profile with json-server db.json when mounted or user changes
   useEffect(() => {
@@ -32,7 +43,7 @@ export function App() {
   }, [isAuthenticated, user?.email]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 text-slate-800 antialiased font-sans">
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans transition-colors duration-200">
       <Navbar />
 
       <main className="flex-1">

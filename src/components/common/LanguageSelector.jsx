@@ -96,31 +96,31 @@ export const LanguageSelector = ({ compact = false, showLabel = true }) => {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-xl border border-slate-200/90 bg-white hover:bg-slate-50 hover:border-slate-300 shadow-2xs transition-all duration-200 active:scale-95 group focus:outline-none cursor-pointer ${
-          isOpen ? 'ring-2 ring-emerald-500/20 border-emerald-400 bg-emerald-50/30' : ''
+        className={`flex items-center gap-2 px-2.5 sm:px-3 py-2 rounded-xl border border-slate-200/90 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-300 dark:hover:border-slate-600 shadow-2xs transition-all duration-200 active:scale-95 group focus:outline-none cursor-pointer ${
+          isOpen ? 'ring-2 ring-emerald-500/20 border-emerald-400 bg-emerald-50/30 dark:bg-emerald-950/40' : ''
         }`}
         title={t('nav.selectLanguage', 'Tilni tanlash')}
       >
         <FlagIcon code={activeLang.flagCode} className="w-5 h-3.5 shadow-xs" />
         
         {showLabel && (
-          <span className="text-xs font-bold text-slate-700 group-hover:text-slate-900 hidden md:inline">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white hidden md:inline">
             {compact ? activeLang.shortName : activeLang.name}
           </span>
         )}
 
         <ChevronDown
-          className={`w-3.5 h-3.5 text-slate-400 group-hover:text-slate-700 transition-transform duration-200 ${
-            isOpen ? 'rotate-180 text-emerald-600' : ''
+          className={`w-3.5 h-3.5 text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-transform duration-200 ${
+            isOpen ? 'rotate-180 text-emerald-600 dark:text-emerald-400' : ''
           }`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-52 bg-white/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_-12px_rgba(15,23,42,0.18)] border border-slate-200/90 p-1.5 z-50 animate-fade-in">
-          <div className="px-2.5 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 mb-1 flex items-center justify-between">
+        <div className="absolute right-0 mt-2 w-52 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_-12px_rgba(15,23,42,0.18)] dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.6)] border border-slate-200/90 dark:border-slate-800 p-1.5 z-50 animate-fade-in">
+          <div className="px-2.5 py-1.5 text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider border-b border-slate-100 dark:border-slate-800 mb-1 flex items-center justify-between">
             <span>{t('nav.selectLanguage', 'Tilni tanlang')}</span>
-            <span className="text-[9px] text-emerald-600 font-extrabold lowercase">{t('nav.langLabel', 'til / язык')}</span>
+            <span className="text-[9px] text-emerald-600 dark:text-emerald-400 font-extrabold lowercase">{t('nav.langLabel', 'til / язык')}</span>
           </div>
 
           <div className="space-y-0.5">
@@ -133,22 +133,22 @@ export const LanguageSelector = ({ compact = false, showLabel = true }) => {
                   onClick={() => handleSelectLanguage(lang.code)}
                   className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer group text-left ${
                     isSelected
-                      ? 'bg-emerald-50 text-emerald-800'
-                      : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100/80'
+                      ? 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300'
+                      : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <FlagIcon code={lang.flagCode} className="w-5 h-3.5 shadow-2xs" />
                     <div>
                       <span className="block leading-tight">{lang.name}</span>
-                      <span className="text-[10px] font-normal text-slate-400 block group-hover:text-slate-500">
+                      <span className="text-[10px] font-normal text-slate-400 dark:text-slate-500 block group-hover:text-slate-500 dark:group-hover:text-slate-400">
                         {lang.nativeName}
                       </span>
                     </div>
                   </div>
 
                   {isSelected && (
-                    <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
                   )}
                 </button>
               );

@@ -222,7 +222,7 @@
       "title": "Apple Watch Ultra 2",
       "price": 890,
       "discountPrice": null,
-      "stock": 9,
+      "stock": 20,
       "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&auto=format&fit=crop&q=80",
       "description": "49mm Titandan korpus, 3000 nit displey, suv osti va tog' sporti uchun tayyor.",
       "rating": 4.9,
@@ -270,7 +270,7 @@
       "title": "Google Pixel 8 Pro",
       "price": 980,
       "discountPrice": null,
-      "stock": 12,
+      "stock": 20,
       "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
       "description": "Tensor G3 protsessor, Magic Editor, 7 yillik rasmiy Android yangilanish kafolati.",
       "rating": 4.6,
@@ -1103,6 +1103,126 @@
       "description": "NEO Hybrid suniy teri, 4-yonalishli L-ADAPT bel suyanchigi, magnitli xotira kopikli magnit bosh yostiqchasi.",
       "rating": 4.9,
       "salesCount": 27
+    },
+    {
+      "id": "prod-1101",
+      "categoryId": "cat-1",
+      "title": "Apple iPhone 16 Pro Max 256GB Natural Titanium",
+      "price": 1480,
+      "discountPrice": 1399,
+      "stock": 15,
+      "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80",
+      "description": "Apple A18 Pro chip, 48MP Fusion kamera tizimi, 5x optik zoom va titan korpus.",
+      "rating": 5,
+      "salesCount": 88
+    },
+    {
+      "id": "prod-1102",
+      "categoryId": "cat-2",
+      "title": "Apple MacBook Pro 16 M3 Max 36GB / 1TB Space Black",
+      "price": 3250,
+      "discountPrice": 2999,
+      "stock": 7,
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80",
+      "description": "M3 Max protsessori, Liquid Retina XDR displey, 22 soatgacha batareya quvvati.",
+      "rating": 4.9,
+      "salesCount": 34
+    },
+    {
+      "id": "prod-1103",
+      "categoryId": "cat-6",
+      "title": "Nike Air Max Pulse Rohat Sport Krossovkasi",
+      "price": 165,
+      "discountPrice": 129,
+      "stock": 24,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop&q=80",
+      "description": "Nuqtasimon havo yostig'i, maksimal qulaylik va zamonaviy ko'cha uslubi.",
+      "rating": 4.8,
+      "salesCount": 142
+    },
+    {
+      "id": "prod-1104",
+      "categoryId": "cat-6",
+      "title": "New Balance 550 White Green Original Sneaker",
+      "price": 145,
+      "discountPrice": 115,
+      "stock": 18,
+      "image": "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=800&auto=format&fit=crop&q=80",
+      "description": "Klassik 90-yillar basketbol uslubi, haqiqiy charm va mustahkam rezina taglik.",
+      "rating": 4.9,
+      "salesCount": 96
+    },
+    {
+      "id": "prod-1105",
+      "categoryId": "cat-14",
+      "title": "Sony PlayStation 5 Slim 1TB + 2 ta DualSense Pult",
+      "price": 650,
+      "discountPrice": 589,
+      "stock": 12,
+      "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=800&auto=format&fit=crop&q=80",
+      "description": "Ultra-tezkor SSD, 4K 120Hz geyming va haptic feedbackli 2 ta simsiz kontroller.",
+      "rating": 5,
+      "salesCount": 167
+    },
+    {
+      "id": "prod-1106",
+      "categoryId": "cat-14",
+      "title": "Sony DualSense Wireless Controller Midnight Black",
+      "price": 85,
+      "discountPrice": 72,
+      "stock": 35,
+      "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=800&auto=format&fit=crop&q=80",
+      "description": "PS5 uchun taktil qaytarish va moslashuvchan triggerlarga ega simsiz geympad.",
+      "rating": 4.9,
+      "salesCount": 210
+    },
+    {
+      "id": "prod-1107",
+      "categoryId": "cat-7",
+      "title": "Dyson V15 Detect Extra Simsiz Changyutgich",
+      "price": 890,
+      "discountPrice": 799,
+      "stock": 9,
+      "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=800&auto=format&fit=crop&q=80",
+      "description": "Lazer nuri bilan changni aniqlash, piezo sensor va 60 daqiqagacha tinimsiz ishlash.",
+      "rating": 4.9,
+      "salesCount": 45
+    },
+    {
+      "id": "prod-1108",
+      "categoryId": "cat-7",
+      "title": "De'Longhi Magnifica S Avtomatik Kofe Mashinasi",
+      "price": 540,
+      "discountPrice": 470,
+      "stock": 14,
+      "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=800&auto=format&fit=crop&q=80",
+      "description": "Yangi yanchilgan donalardan espresso va kapuchino tayyorlash, qulay sut ko'pirtirgich.",
+      "rating": 4.8,
+      "salesCount": 68
+    },
+    {
+      "id": "prod-1109",
+      "categoryId": "cat-7",
+      "title": "Philips Airfryer XXL Smart Sensing Issiq Havo Pechi",
+      "price": 290,
+      "discountPrice": 239,
+      "stock": 20,
+      "image": "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=800&auto=format&fit=crop&q=80",
+      "description": "Yog'siz mazali va qarsildoq taomlar pishirish uchun aqlli harorat datchikli aero-gril.",
+      "rating": 4.9,
+      "salesCount": 112
+    },
+    {
+      "id": "prod-1110",
+      "categoryId": "cat-3",
+      "title": "Apple Watch Ultra 2 Titanium GPS + Cellular",
+      "price": 890,
+      "discountPrice": 820,
+      "stock": 11,
+      "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&auto=format&fit=crop&q=80",
+      "description": "Ekstremal sport va sho'ng'ish uchun 49mm titan korpus, 3000 nit displey va 72 soat batareya.",
+      "rating": 5,
+      "salesCount": 53
     }
   ],
   "orders": [
@@ -2765,7 +2885,7 @@
         "note": ""
       },
       "id": "K-_8xUWMQBA",
-      "status": "Shipped",
+      "status": "Delivered",
       "createdAt": "2026-09-21T09:01:23.157Z",
       "history": [
         {
@@ -2782,6 +2902,11 @@
           "status": "Shipped",
           "date": "2026-09-21T09:02:35.524Z",
           "note": "Kuryerga yetkazish uchun topshirildi"
+        },
+        {
+          "status": "Delivered",
+          "date": "2026-09-21T17:20:30.839Z",
+          "note": "Mijozga muvaffaqiyatli yetkazildi"
         }
       ]
     }

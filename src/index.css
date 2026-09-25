@@ -14,6 +14,13 @@
     color: #1e293b;
     background-color: #f8fafc;
     -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark, html.dark body {
+    color-scheme: dark;
+    color: #f1f5f9;
+    background-color: #0b0f19;
   }
 
   #root {
@@ -38,21 +45,38 @@
   background: #f1f5f9;
 }
 
+html.dark ::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
 /* Glassmorphism utility */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+html.dark .glass-panel {
+  background: rgba(17, 24, 39, 0.85);
+  border-color: rgba(51, 65, 85, 0.6);
 }
 
 .glass-dark {
@@ -60,4 +84,26 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+/* Floating 3D Graphic Animation */
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(-5deg) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-1deg) scale(1.04);
+  }
+}
+
+.animate-hero-float {
+  animation: heroFloat 5.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Bubble Display Typography for Hero */
+.hero-bubble-title {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.045em;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  font-weight: 900;
 }

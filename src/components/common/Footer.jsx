@@ -42,8 +42,8 @@ export const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
-          <div className="md:col-span-4 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-6">
+          <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
               <img
                 src="/uzshop-emblem.png"
@@ -66,7 +66,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2 space-y-3 text-sm">
+          <div className="md:col-span-3 space-y-3 text-sm">
             <h5 className="font-bold text-white tracking-wider uppercase text-xs">{t('footer.catalogTitle')}</h5>
             <ul className="space-y-2 text-slate-400 text-xs">
               <li><Link to="/?category=cat-1" className="hover:text-white transition">{getCategoryName('cat-1')}</Link></li>
@@ -77,22 +77,12 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="md:col-span-3 space-y-3 text-sm">
-            <h5 className="font-bold text-white tracking-wider uppercase text-xs">{t('footer.rolesTitle')}</h5>
-            <ul className="space-y-2 text-slate-400">
-              <li><span className="text-emerald-400 font-medium">User:</span> Katalog, savatcha, buyurtma berish</li>
-              <li><span className="text-amber-400 font-medium">CallCenter:</span> Buyurtmalar statusi va mijoz aloqasi</li>
-              <li><span className="text-indigo-400 font-medium">Manager:</span> Mahsulotlar CRUD, zaxira va narxlar</li>
-              <li><span className="text-rose-400 font-medium">Admin:</span> Tizim tushumi, analitika va rollar</li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-3 space-y-3 text-sm">
+          <div className="md:col-span-4 space-y-3 text-sm">
             <h5 className="font-bold text-white tracking-wider uppercase text-xs">{t('footer.contactTitle')}</h5>
-            <div className="space-y-2 text-slate-400">
+            <div className="space-y-2.5 text-slate-400">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-brand-400" />
-                <span>+998 (71) 200-00-00</span>
+                <a href="tel:+998991370023" className="hover:text-white transition">+998 99 137 00 23</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-brand-400" />
@@ -104,17 +94,6 @@ export const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} UzShop. {t('footer.rights')}</p>
-          <p className="flex items-center gap-2">
-            <span>React + Vite</span> •
-            <span>Tailwind CSS</span> •
-            <span>Zustand</span> •
-            <span>TanStack Query</span>
-          </p>
         </div>
       </div>
     </footer>

@@ -63,8 +63,8 @@ export const MyOrdersPage = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 min-h-screen">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900">{t('orders.title')}</h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">{t('orders.title')}</h1>
+        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
           {t('orders.desc')}
         </p>
       </div>
@@ -72,18 +72,18 @@ export const MyOrdersPage = () => {
       {isLoading ? (
         <TableSkeleton rows={4} cols={4} />
       ) : isError ? (
-        <div className="text-center py-12 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
+        <div className="text-center py-12 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
           <AlertCircle className="w-10 h-10 text-rose-500 mx-auto mb-2" />
-          <h3 className="text-base font-bold text-slate-900">Xatolik yuz berdi</h3>
-          <p className="text-xs text-slate-500 mt-1">Iltimos, qayta urinib ko'ring.</p>
+          <h3 className="text-base font-bold text-slate-900 dark:text-white">Xatolik yuz berdi</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Iltimos, qayta urinib ko'ring.</p>
         </div>
       ) : orders.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-          <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mx-auto mb-3">
+        <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+          <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 mx-auto mb-3">
             <Package className="w-8 h-8" />
           </div>
-          <h3 className="text-lg font-bold text-slate-800">{t('orders.emptyTitle')}</h3>
-          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+          <h3 className="text-lg font-bold text-slate-800 dark:text-white">{t('orders.emptyTitle')}</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-sm mx-auto">
             {t('orders.emptyDesc')}
           </p>
           <Link
@@ -104,47 +104,47 @@ export const MyOrdersPage = () => {
             return (
               <div
                 key={order.id}
-                className="bg-white rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden hover:shadow-md transition"
+                className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm overflow-hidden hover:shadow-md transition"
               >
                 {/* Order Top Bar */}
-                <div className="p-5 bg-slate-50/70 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                <div className="p-5 bg-slate-50/70 dark:bg-slate-800/60 border-b border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-brand-50 border border-brand-100 flex items-center justify-center text-brand-600 font-bold">
+                    <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/60 border border-brand-100 dark:border-brand-900/50 flex items-center justify-center text-brand-600 dark:text-brand-400 font-bold">
                       <Package className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-extrabold text-sm text-slate-900">{t('orders.orderNo')} #{order.id}</h3>
+                        <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">{t('orders.orderNo')} #{order.id}</h3>
                         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border ${statusConfig.badgeClass}`}>
                           <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${statusConfig.dotClass}`}></span>
                           {getStatusLabel(order.status)}
                         </span>
                       </div>
-                      <span className="text-[11px] text-slate-400 block mt-0.5">
+                      <span className="text-[11px] text-slate-400 dark:text-slate-500 block mt-0.5">
                         {t('orders.datePlaced')} {formatDate(order.createdAt)}
                       </span>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-xs text-slate-400 block font-medium">{t('orders.totalPay')}</span>
-                    <span className="text-base font-black text-brand-600 block">
+                    <span className="text-xs text-slate-400 dark:text-slate-500 block font-medium">{t('orders.totalPay')}</span>
+                    <span className="text-base font-black text-brand-600 dark:text-brand-400 block">
                       {formatCurrency(order.totalAmount)}
                     </span>
-                    <span className="text-[10px] text-slate-400 block">
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 block">
                       ({order.paymentMethod})
                     </span>
                   </div>
                 </div>
 
                 {/* Visual Timeline Stepper */}
-                <div className="p-5 sm:p-6 border-b border-slate-100">
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                <div className="p-5 sm:p-6 border-b border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">
                     {t('orders.stepperTitle')}
                   </h4>
 
                   {isCancelled ? (
-                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl flex items-center gap-2.5 text-rose-700 text-xs">
+                    <div className="p-3 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 rounded-xl flex items-center gap-2.5 text-rose-700 dark:text-rose-400 text-xs">
                       <XCircle className="w-5 h-5 flex-shrink-0" />
                       <span>{t('orders.cancelledAlert')}</span>
                     </div>
@@ -162,10 +162,10 @@ export const MyOrdersPage = () => {
                               <div
                                 className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
                                   isCurrent
-                                    ? 'bg-brand-600 text-white ring-4 ring-brand-100 shadow-md scale-110'
+                                    ? 'bg-brand-600 text-white ring-4 ring-brand-100 dark:ring-brand-950 shadow-md scale-110'
                                     : isDone
-                                    ? 'bg-brand-100 text-brand-700 border border-brand-200'
-                                    : 'bg-slate-100 text-slate-400'
+                                    ? 'bg-brand-100 dark:bg-brand-950/80 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-900'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
                                 }`}
                               >
                                 <Icon className="w-4 h-4" />
@@ -173,10 +173,10 @@ export const MyOrdersPage = () => {
                               <span
                                 className={`text-[11px] mt-2 font-semibold ${
                                   isCurrent
-                                    ? 'text-brand-700 font-bold'
+                                    ? 'text-brand-700 dark:text-brand-400 font-bold'
                                     : isDone
-                                    ? 'text-slate-800'
-                                    : 'text-slate-400'
+                                    ? 'text-slate-800 dark:text-slate-200'
+                                    : 'text-slate-400 dark:text-slate-500'
                                 }`}
                               >
                                 {step.label}
@@ -187,7 +187,7 @@ export const MyOrdersPage = () => {
                       </div>
 
                       {/* Connecting line */}
-                      <div className="absolute top-5 left-12 right-12 h-0.5 bg-slate-200 -z-0">
+                      <div className="absolute top-5 left-12 right-12 h-0.5 bg-slate-200 dark:bg-slate-800 -z-0">
                         <div
                           className="h-full bg-brand-500 transition-all duration-500"
                           style={{ width: `${(currentStepIdx / 3) * 100}%` }}
@@ -198,26 +198,26 @@ export const MyOrdersPage = () => {
                 </div>
 
                 {/* Items & Customer info */}
-                <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/30">
+                <div className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/30 dark:bg-slate-950/40">
                   {/* Items list */}
                   <div>
-                    <h5 className="text-xs font-bold text-slate-700 mb-3">{t('orders.orderedGoods')}</h5>
+                    <h5 className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-3">{t('orders.orderedGoods')}</h5>
                     <div className="space-y-2.5">
                       {order.items?.map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 p-2 rounded-xl bg-white border border-slate-100">
+                        <div key={i} className="flex items-center gap-3 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-100 dark:border-slate-700/80">
                           <img
                             src={item.image}
                             alt={item.title}
                             onError={(e) => handleImageError(e, item.title)}
-                            className="w-12 h-12 rounded-lg object-cover border border-slate-200"
+                            className="w-12 h-12 rounded-lg object-cover border border-slate-200 dark:border-slate-700"
                           />
                           <div className="flex-1 min-w-0">
-                            <h6 className="text-xs font-bold text-slate-900 truncate">{item.title}</h6>
-                            <p className="text-[11px] text-slate-500">
+                            <h6 className="text-xs font-bold text-slate-900 dark:text-white truncate">{item.title}</h6>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400">
                               {item.quantity} {t('common.itemsCount')} × {formatCurrency(item.price)}
                             </p>
                           </div>
-                          <span className="text-xs font-extrabold text-slate-900">
+                          <span className="text-xs font-extrabold text-slate-900 dark:text-white">
                             {formatCurrency(item.quantity * item.price)}
                           </span>
                         </div>
@@ -226,16 +226,16 @@ export const MyOrdersPage = () => {
                   </div>
 
                   {/* Customer details */}
-                  <div className="bg-white p-4 rounded-2xl border border-slate-100 flex flex-col justify-between">
+                  <div className="bg-white dark:bg-slate-800/90 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/80 flex flex-col justify-between">
                     <div>
-                      <h5 className="text-xs font-bold text-slate-700 mb-2.5">{t('orders.deliveryInfo')}</h5>
-                      <div className="space-y-2 text-xs text-slate-600">
+                      <h5 className="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2.5">{t('orders.deliveryInfo')}</h5>
+                      <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
                         <div className="flex items-center gap-2">
-                          <MapPin className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                          <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 flex-shrink-0" />
                           <span className="truncate">{order.customerInfo?.address}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Phone className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                          <Phone className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 flex-shrink-0" />
                           <span>{order.customerInfo?.phone}</span>
                         </div>
                         <div className="flex items-center gap-2">
@@ -246,8 +246,8 @@ export const MyOrdersPage = () => {
                     </div>
 
                     {order.history && order.history.length > 0 && (
-                      <div className="mt-3 pt-3 border-t border-slate-100 text-[11px] text-slate-500">
-                        <span className="font-semibold text-slate-700">So'nggi harakat: </span>
+                      <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/80 text-[11px] text-slate-500 dark:text-slate-400">
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">So'nggi harakat: </span>
                         {order.history[order.history.length - 1].note} ({formatDate(order.history[order.history.length - 1].date)})
                       </div>
                     )}
